@@ -1,0 +1,186 @@
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
+const API_URL = 'http://localhost:3001/api/links';
+
+export const useAddView = () => {
+  const navigate = useNavigate();
+  const [url, setUrl] = useState('');
+  const [title, setTitle] = useState('');
+  const [subtitle, setSubtitle] = useState('');
+  const [description, setDescription] = useState('');
+  const [note, setNote] = useState('');
+  const [selectedTags, setSelectedTags] = useState<string[]>([]);
+  const [availableTags, setAvailableTags] = useState<string[]>(['Favorites', 'Work', 'Personal']);
+  const [imageUrl, setImageUrl] = useState<string | null>(null);
+  const [iconUrl, setIconUrl] = useState<string | null>(null);
+  const [isFetchingPreview, setIsFetchingPreview] = useState(false);
+  const [errors, setErrors] = useState<Record<string, string>>({});
+  const [isSaving, setIsSaving] = useState(false);
+
+  const validateUrl = () => {
+    if (!url.trim()) {
+      return 'La URL es obligatoria';
+    }
+    try {
+      new URL(url);
+      return '';
+    } catch {
+      return 'Por favor ingresa una URL válida';
+    }
+  };
+
+  const validateTitle = () => {
+    if (!title.trim()) {
+      return 'El título es obligatorio';
+    }
+    return '';
+  };
+
+  const validateForm = () => {
+    const newErrors: Record<string, string> = {};
+    
+    const urlError = validateUrl();
+    if (urlError) newErrors.url = urlError;
+    
+    const titleError = validateTitle();
+    if (titleError) newErrors.title = titleError;
+    
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleUrlChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setUrl(e.target.value);
+    if (errors.url) {
+      setErrors(prev => ({ ...prev, url: '' }));
+    }
+  };
+
+  const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setTitle(e.target.value);
+    if (errors.title) {
+      setErrors(prev => ({ ...prev, title: '' }));
+    }
+  };
+
+  const handleSubtitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSubtitle(e.target.value);
+  };
+
+  const handleDescriptionChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setDescription(e.target.value);
+  };
+
+  const handleNoteChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setNote(e.target.value);
+  };
+
+  const handleTagToggle = (tag: string) => {
+    setSelectedTags(prev => {
+      if (prev.includes(tag)) {
+        return prev.filter(t => t !== tag);
+      } else {
+        return [...prev, tag];
+      }
+    });
+  };
+
+  const addNewTag = (tag: string) => {
+    if (tag.trim() && !availableTags.includes(tag)) {
+      setAvailableTags(prev => [...prev, tag]);
+      setSelectedTags(prev => [...prev, tag]);
+    }
+  };
+
+  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setImageUrl(reader.result as string);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const fetchLinkPreview = async () => {
+    if (!url.trim()) return;
+    
+    setIsFetchingPreview(true);
+    try {
+      new URL(url);
+      
+      const hostname = new URL(url).hostname;
+      if (!title) setTitle(hostname.replace('www.', ''));
+      if (!iconUrl) setIconUrl(`https://www.google.com/s2/favicons?domain=${hostname}&sz=128`);
+      if (!imageUrl) {
+        setImageUrl(`https://source.unsplash.com/800x450/?${encodeURIComponent(hostname)}&sig=${Date.now()}`);
+      }
+    } catch (error) {
+      console.error('Error fetching link preview:', error);
+    } finally {
+      setIsFetchingPreview(false);
+    }
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (validateForm()) {
+      setIsSaving(true);
+      try {
+        const newLinkData = {
+          url,
+          title,
+          subtitle,
+          description,
+          note,
+          tags: selectedTags,
+          imageUrl,
+          iconUrl
+        };
+        
+        const response = await fetch(API_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(newLinkData)
+        });
+        
+        if (response.ok) {
+          navigate('/');
+        }
+      } catch (error) {
+        console.error('Error saving link:', error);
+      } finally {
+        setIsSaving(false);
+      }
+    }
+  };
+
+  return {
+    url,
+    title,
+    subtitle,
+    description,
+    note,
+    selectedTags,
+    availableTags,
+    imageUrl,
+    iconUrl,
+    isFetchingPreview,
+    errors,
+    isSaving,
+    handleUrlChange,
+    handleTitleChange,
+    handleSubtitleChange,
+    handleDescriptionChange,
+    handleNoteChange,
+    handleImageChange,
+    handleTagToggle,
+    addNewTag,
+    fetchLinkPreview,
+    handleSubmit,
+    setIconUrl
+  };
+};
