@@ -64,6 +64,27 @@ export const useEditLinkView = () => {
     fetchLink();
   }, [id]);
 
+  useEffect(() => {
+    if (!url || !url.startsWith('http')) return;
+    
+    const timer = setTimeout(() => {
+      try {
+        const parsedUrl = new URL(url);
+        const hostname = parsedUrl.hostname;
+        const autoIconUrl = `https://www.google.com/s2/favicons?domain=${hostname}&sz=64`;
+        const autoImageUrl = `https://image.thum.io/get/${url}`;
+        
+        if (!title) setTitle(hostname.replace('www.', ''));
+        if (!iconUrl) setIconUrl(autoIconUrl);
+        if (!imageUrl) setImageUrl(autoImageUrl);
+      } catch (err) {
+        // Ignore invalid URLs
+      }
+    }, 800);
+    
+    return () => clearTimeout(timer);
+  }, [url]);
+
   const validateUrl = () => {
     if (!url.trim()) return 'La URL es obligatoria';
     try {
@@ -139,11 +160,12 @@ export const useEditLinkView = () => {
     if (!url.trim()) return;
     setIsFetchingPreview(true);
     try {
-      new URL(url);
-      if (!title) setTitle('Título desde la URL');
-      if (!subtitle) setSubtitle('Subtítulo desde la URL');
-      if (!description) setDescription('Descripción obtenida automáticamente');
-      if (!iconUrl) setIconUrl(`https://www.google.com/s2/favicons?domain=${new URL(url).hostname}&sz=64`);
+      const parsedUrl = new URL(url);
+      const hostname = parsedUrl.hostname;
+      
+      if (!title) setTitle(hostname.replace('www.', ''));
+      if (!iconUrl) setIconUrl(`https://www.google.com/s2/favicons?domain=${hostname}&sz=64`);
+      if (!imageUrl) setImageUrl(`https://image.thum.io/get/${url}`);
     } catch (error) {
       console.error('Error fetching link preview:', error);
     } finally {

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const API_URL = 'http://localhost:3001/api/links';
@@ -17,6 +17,30 @@ export const useAddView = () => {
   const [isFetchingPreview, setIsFetchingPreview] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isSaving, setIsSaving] = useState(false);
+
+  useEffect(() => {
+    if (!url || url.length < 8) return;
+    
+    const timer = setTimeout(() => {
+      let urlToParse = url;
+      if (!url.startsWith('http://') && !url.startsWith('https://')) {
+        urlToParse = 'https://' + url;
+      }
+      
+      try {
+        const parsedUrl = new URL(urlToParse);
+        const hostname = parsedUrl.hostname;
+        
+        if (!title) setTitle(hostname.replace('www.', ''));
+        if (!iconUrl) setIconUrl(`https://www.google.com/s2/favicons?domain=${hostname}&sz=64`);
+        if (!imageUrl) setImageUrl(`https://image.thum.io/get/${urlToParse}`);
+      } catch (err) {
+        // Ignore invalid URLs
+      }
+    }, 800);
+    
+    return () => clearTimeout(timer);
+  }, [url]);
 
   const validateUrl = () => {
     if (!url.trim()) {

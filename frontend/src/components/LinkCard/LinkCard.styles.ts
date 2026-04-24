@@ -27,10 +27,8 @@ export const Container = styled.div`
   }
   
   &:hover {
-    transform: translateY(-8px) scale(1.01);
-    box-shadow: 
-      0 20px 40px rgba(0, 0, 0, 0.12),
-      0 8px 16px rgba(0, 0, 0, 0.08);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-card-hover);
     border-color: var(--color-primary);
     
     &::before {
@@ -38,48 +36,40 @@ export const Container = styled.div`
     }
     
     img {
-      transform: scale(1.08);
+      transform: scale(1.05);
     }
     
-    .card-arrow {
-      span {
-        color: var(--color-primary-dark);
-      }
-      svg {
-        transform: translateX(6px);
-        color: var(--color-primary-dark);
-      }
+    .card-arrow span {
+      color: var(--color-primary);
+    }
+    .card-arrow svg {
+      transform: translateX(4px);
+      color: var(--color-primary);
     }
   }
   
   &:active {
-    transform: translateY(-4px) scale(1);
+    transform: translateY(-2px);
   }
   
   @media (max-width: 768px) {
     border-radius: var(--radius-lg);
-    
-    &:hover {
-      transform: translateY(-4px);
-    }
   }
 `;
 
 export const ImageContainer = styled.div`
   width: 100%;
-  padding-bottom: 56.25%;
-  background: linear-gradient(135deg, #f5f5f7 0%, #e8e8ed 100%);
+  height: 140px;
+  max-height: 140px;
+  background: var(--surface-secondary);
   position: relative;
   overflow: hidden;
+  flex-shrink: 0;
   
   img {
-    position: absolute;
-    top: 0;
-    left: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1), opacity 0.3s ease;
   }
 `;
 

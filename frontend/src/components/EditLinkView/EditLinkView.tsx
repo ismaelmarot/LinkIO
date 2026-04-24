@@ -154,7 +154,12 @@ const EditLinkView: React.FC = () => {
                   <img src={imageUrl} alt="Vista previa" />
                 </styles.ImagePreview>
               ) : (
-                <styles.UploadArea onClick={() => document.getElementById('imageUpload')?.click()}>
+                <styles.UploadArea 
+                  onClick={(e) => {
+                    e.preventDefault();
+                    document.getElementById('imageUpload')?.click();
+                  }}
+                >
                   <UploadIcon size={36} />
                   <p>Subir imagen</p>
                 </styles.UploadArea>

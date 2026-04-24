@@ -2,6 +2,19 @@ const express = require('express');
 const router = express.Router();
 const { load, save } = require('../db/storage');
 
+router.get('/fetch-preview', async (req, res) => {
+  try {
+    const url = decodeURIComponent(req.query.url || '');
+    if (!url) {
+      return res.status(400).json({ error: 'URL required' });
+    }
+    const preview = await fetchLinkPreview(url);
+    res.json(preview);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
 router.get('/', (req, res) => {
   try {
     const links = load();
@@ -99,16 +112,6 @@ router.delete('/:id', (req, res) => {
   }
 });
 
-router.get('/preview/:url', async (req, res) => {
-  try {
-    const url = decodeURIComponent(req.params.url);
-    const preview = await fetchLinkPreview(url);
-    res.json(preview);
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
-});
-
 function extractDomain(url) {
   try {
     const hostname = new URL(url).hostname;
@@ -134,7 +137,7 @@ async function fetchLinkPreview(url) {
     const preview = {
       title: extractDomain(url),
       iconUrl: generateIconUrl(url),
-      imageUrl: `https://source.unsplash.com/800x450/?${encodeURIComponent(hostname)}&sig=${Date.now()}`,
+      imageUrl: '',
       description: '',
       subtitle: ''
     };
