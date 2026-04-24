@@ -11,9 +11,10 @@ export const TitleRow = styled.div`
   max-width: 600px;
   margin: 0 auto;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   padding: var(--space-lg) 0;
+  position: relative;
 `
 
 export const Title = styled.h1`
@@ -22,6 +23,35 @@ export const Title = styled.h1`
   color: var(--color-text-primary);
   letter-spacing: -1px;
   margin: 0;
+  text-align: center;
+`
+
+export const ActionButton = styled.button`
+  position: absolute;
+  right: 0;
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  padding: var(--space-sm) var(--space-lg);
+  background-color: var(--color-primary);
+  color: white;
+  border: none;
+  border-radius: var(--radius-xxl);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: var(--shadow-sm);
+
+  &:hover {
+    background-color: var(--color-primary-dark);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
 `
 
 export const Content = styled.main`

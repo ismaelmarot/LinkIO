@@ -1,5 +1,6 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useI18n } from '../../app/i18n'
 import * as styles from './AddView.styles'
 import { useAddView } from './useAddView'
 import * as Header from '../Header'
@@ -7,6 +8,7 @@ import { BackArrowIcon, UploadIcon } from '../../constants/icons.constants'
 
 const AddView: React.FC = () => {
   const navigate = useNavigate()
+  const { t } = useI18n()
   const {
     url, title, subtitle, description, note,
     selectedTags, availableTags,
@@ -17,23 +19,30 @@ const AddView: React.FC = () => {
     handleSubmit
   } = useAddView()
 
+  const translateTag = (tag: string): string => {
+    if (tag === 'Favorites') return t('home.tag_favorites')
+    if (tag === 'Work') return t('home.tag_work')
+    if (tag === 'Personal') return t('home.tag_personal')
+    return tag
+  }
+
   return (
     <styles.Container>
       <Header.HeaderContainer>
         <Header.BackButton onClick={() => navigate('/')}>
           <BackArrowIcon size={20} />
-          Atrás
+          {t('add.cancel')}
         </Header.BackButton>
-        <Header.Title>Agregar</Header.Title>
+        <Header.Title>{t('add.title')}</Header.Title>
         <Header.Spacer />
       </Header.HeaderContainer>
       
       <styles.Form onSubmit={handleSubmit}>
         <styles.FormContent>
           <styles.FieldGroup>
-            <styles.Label>Enlace</styles.Label>
+            <styles.Label>{t('add.url')}</styles.Label>
             <styles.Input
-              placeholder="https://ejemplo.com"
+              placeholder="https://example.com"
               value={url}
               onChange={handleUrlChange}
               className={errors.url ? 'error' : ''}
@@ -42,20 +51,20 @@ const AddView: React.FC = () => {
           </styles.FieldGroup>
           
           <styles.FieldGroup>
-            <styles.Label>Icono</styles.Label>
+            <styles.Label>{t('add.icon')}</styles.Label>
             {iconUrl ? (
               <styles.IconDisplay>
                 <img src={iconUrl} alt="" />
               </styles.IconDisplay>
             ) : (
-              <styles.HelperText>Se obtendrá de la URL</styles.HelperText>
+              <styles.HelperText>{t('add.get_from_url')}</styles.HelperText>
             )}
           </styles.FieldGroup>
           
           <styles.FieldGroup>
-            <styles.Label>Título</styles.Label>
+            <styles.Label>{t('add.title_field')}</styles.Label>
             <styles.Input
-              placeholder="Título del enlace"
+              placeholder={t('add.title_placeholder')}
               value={title}
               onChange={handleTitleChange}
               className={errors.title ? 'error' : ''}
@@ -64,34 +73,34 @@ const AddView: React.FC = () => {
           </styles.FieldGroup>
           
           <styles.FieldGroup>
-            <styles.Label>Subtítulo</styles.Label>
+            <styles.Label>{t('add.subtitle')}</styles.Label>
             <styles.Input
-              placeholder="Subtítulo opcional"
+              placeholder={t('add.subtitle_placeholder')}
               value={subtitle}
               onChange={handleSubtitleChange}
             />
           </styles.FieldGroup>
           
           <styles.FieldGroup>
-            <styles.Label>Descripción</styles.Label>
+            <styles.Label>{t('add.description')}</styles.Label>
             <styles.TextArea
-              placeholder="Descripción..."
+              placeholder={t('add.description_placeholder')}
               value={description}
               onChange={handleDescriptionChange}
             />
           </styles.FieldGroup>
           
           <styles.FieldGroup>
-            <styles.Label>Nota</styles.Label>
+            <styles.Label>{t('add.note')}</styles.Label>
             <styles.TextArea
-              placeholder="Nota personal..."
+              placeholder={t('add.note_placeholder')}
               value={note}
               onChange={handleNoteChange}
             />
           </styles.FieldGroup>
           
           <styles.FieldGroup>
-            <styles.Label>Imagen</styles.Label>
+            <styles.Label>{t('add.image')}</styles.Label>
             {imageUrl ? (
               <styles.ImagePreview onClick={() => document.getElementById('imageUpload')?.click()}>
                 <img src={imageUrl} alt="" />
@@ -99,7 +108,7 @@ const AddView: React.FC = () => {
             ) : (
               <styles.UploadArea onClick={() => document.getElementById('imageUpload')?.click()}>
                 <UploadIcon size={36} />
-                <p>Subir imagen</p>
+                <p>{t('add.upload_image')}</p>
               </styles.UploadArea>
             )}
             <input
@@ -112,7 +121,7 @@ const AddView: React.FC = () => {
           </styles.FieldGroup>
           
           <styles.FieldGroup>
-            <styles.Label>Etiquetas</styles.Label>
+            <styles.Label>{t('add.tags')}</styles.Label>
             <styles.TagsContainer>
               {availableTags.map(tag => (
                 <styles.TagChip
@@ -121,13 +130,13 @@ const AddView: React.FC = () => {
                   $selected={selectedTags.includes(tag)}
                   onClick={() => handleTagToggle(tag)}
                 >
-                  {tag}
+                  {translateTag(tag)}
                 </styles.TagChip>
               ))}
               <styles.AddTagButton
                 type="button"
                 onClick={() => {
-                  const newTag = prompt('Nueva etiqueta:');
+                  const newTag = prompt(t('add.new_tag_prompt'));
                   if (newTag?.trim()) addNewTag(newTag.trim());
                 }}
               >
@@ -139,10 +148,10 @@ const AddView: React.FC = () => {
         
         <styles.ActionRow>
           <styles.CancelButton type="button" onClick={() => navigate('/')}>
-            Cancelar
+            {t('add.cancel')}
           </styles.CancelButton>
           <styles.SubmitButton type="submit" disabled={Object.keys(errors).length > 0}>
-            Guardar
+            {t('add.save')}
           </styles.SubmitButton>
         </styles.ActionRow>
       </styles.Form>

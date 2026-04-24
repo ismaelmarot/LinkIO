@@ -1,14 +1,15 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useI18n } from '../../app/i18n'
 import * as styles from './HomeView.styles'
 import { useHomeView } from './useHomeView'
-import * as Header from '../Header'
 import SearchBar from '../SearchBar'
 import LinkCard from '../LinkCard'
 import { AddIcon, LinkIcon } from '../../constants/icons.constants'
 
 const HomeView: React.FC = () => {
   const navigate = useNavigate()
+  const { t } = useI18n()
   const {
     filteredLinks,
     links,
@@ -27,11 +28,11 @@ const HomeView: React.FC = () => {
   return (
     <styles.Container>
       <styles.TitleRow>
-        <styles.Title>LinkIO</styles.Title>
-        <Header.ActionButton onClick={() => navigate('/add')}>
+        <styles.Title>{t('home.title')}</styles.Title>
+        <styles.ActionButton onClick={() => navigate('/add')}>
           <AddIcon size={18} color='white' />
-          Agregar
-        </Header.ActionButton>
+          {t('home.add')}
+        </styles.ActionButton>
       </styles.TitleRow>
       
       <styles.Content>
@@ -45,7 +46,7 @@ const HomeView: React.FC = () => {
           <>
             <styles.SectionHeader>
               <styles.SectionTitle>
-                {filteredLinks.length} {filteredLinks.length === 1 ? 'enlace' : 'enlaces'}
+                {filteredLinks.length} {filteredLinks.length === 1 ? t('home.enlace') : t('home.enlaces')}
               </styles.SectionTitle>
             </styles.SectionHeader>
             
@@ -66,8 +67,8 @@ const HomeView: React.FC = () => {
         ) : (
           <styles.EmptyState>
             <LinkIcon size={64} />
-            <h3>No hay enlaces todavía</h3>
-            <p>Comienza agregando tu primer enlace para construir tu biblioteca personal.</p>
+            <h3>{t('home.no_links')}</h3>
+            <p>{t('home.no_links_desc')}</p>
           </styles.EmptyState>
         )}
       </styles.Content>
@@ -107,14 +108,14 @@ const HomeView: React.FC = () => {
               color: 'var(--color-text-primary)',
               margin: '0 0 8px'
             }}>
-              ¿Eliminar enlace?
+              {t('home.delete_confirm')}
             </h2>
             <p style={{ 
               fontSize: '15px', 
               color: 'var(--color-text-secondary)',
               margin: '0 0 24px'
             }}>
-              ¿Estás seguro de eliminar "{deleteConfirm.title}"?
+              {t('home.delete_warning')} "{deleteConfirm.title}"?
             </p>
             <div style={{ display: 'flex', gap: '12px' }}>
               <button 
@@ -131,7 +132,7 @@ const HomeView: React.FC = () => {
                   cursor: 'pointer'
                 }}
               >
-                Cancelar
+                {t('home.cancel')}
               </button>
               <button 
                 onClick={handleDeleteConfirmYes} 
@@ -147,7 +148,7 @@ const HomeView: React.FC = () => {
                   cursor: 'pointer'
                 }}
               >
-                Eliminar
+                {t('home.delete')}
               </button>
             </div>
           </div>

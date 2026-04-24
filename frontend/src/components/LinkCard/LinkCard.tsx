@@ -3,6 +3,7 @@ import { WebsiteIcon, ArrowIcon } from '../../constants/icons.constants'
 import type { LinkCardProps, Tag } from '../../interface'
 import { useLinkCard } from './useLinkCard'
 import * as styles from './LinkCard.styles'
+import { useI18n } from '../../app/i18n'
 
 const LinkCard: React.FC<LinkCardProps> = ({
   imageUrl,
@@ -13,6 +14,7 @@ const LinkCard: React.FC<LinkCardProps> = ({
   id,
 }) => {
   const navigate = useNavigate()
+  const { t } = useI18n()
   const {
     handleMouseEnter,
     handleMouseLeave,
@@ -27,6 +29,14 @@ const LinkCard: React.FC<LinkCardProps> = ({
       return { name: tag, background: '#e3f2fd', color: '#1976d2' }
     }
     return { name: tag.name || '', background: tag.background || '#e3f2fd', color: tag.color || '#1976d2' }
+  }
+
+  const translateTag = (tag: string): string => {
+    if (tag === 'Favorites') return t('home.tag_favorites')
+    if (tag === 'Work') return t('home.tag_work')
+    if (tag === 'Personal') return t('home.tag_personal')
+    if (tag === 'All') return t('home.tag_all')
+    return tag
   }
 
   return (
@@ -59,20 +69,21 @@ const LinkCard: React.FC<LinkCardProps> = ({
         <styles.Tags>
           {tags.map((tag: Tag | string, index: number) => {
             const tagStyle = getTagStyle(tag);
+            const tagName = typeof tag === 'string' ? tag : (tag.name || '');
             return (
               <styles.Tag
                 key={index}
                 $background={tagStyle.background}
                 $color={tagStyle.color}
               >
-                {tagStyle.name}
+                {translateTag(tagName)}
               </styles.Tag>
             );
           })}
         </styles.Tags>
         
         <styles.Arrow className="card-arrow">
-          <span>Ver más</span>
+          <span>{t('home.see_more')}</span>
           <ArrowIcon size={24} color="currentColor" />
         </styles.Arrow>
       </styles.Content>

@@ -17,7 +17,8 @@ const ConfigView: React.FC = () => {
     isSaving,
     handleAddTag,
     handleRemoveTag,
-    handleSaveSettings
+    handleSaveSettings,
+    t
   } = useConfigView();
   const [newTag, setNewTag] = useState('')
 
@@ -26,21 +27,21 @@ const ConfigView: React.FC = () => {
       <Header.HeaderContainer>
         <Header.BackButton onClick={() => navigate('/')}>
           <BackArrowIcon size={20} />
-          Atrás
+          {t('detail.back')}
         </Header.BackButton>
-        <Header.Title>Configuración</Header.Title>
+        <Header.Title>{t('config.title')}</Header.Title>
         <Header.Spacer />
       </Header.HeaderContainer>
       
       <div style={{ maxWidth: 600, margin: '0 auto', padding: '0 16px' }}>
         {/* Appearance Mode Section */}
         <styles.Section>
-          <styles.SectionHeader>Apariencia</styles.SectionHeader>
+          <styles.SectionHeader>{t('config.appearance')}</styles.SectionHeader>
           <styles.SectionContent>
             <styles.SettingRow>
               <styles.SettingLabel>
-                <span>Modo</span>
-                <span>Selecciona entre claro, oscuro o automático</span>
+                <span>{t('config.mode')}</span>
+                <span>{t('config.mode_desc')}</span>
               </styles.SettingLabel>
               <div style={{ display: 'flex', gap: '12px' }}>
                 <label style={{ display: 'flex', alignItems: 'center', cursor: 'pointer' }}>
@@ -51,7 +52,7 @@ const ConfigView: React.FC = () => {
                     checked={appearanceMode === 'light'}
                     onChange={(e) => setAppearanceMode(e.target.value as 'light')}
                   />
-                  <span style={{ marginLeft: '8px' }}>Claro</span>
+                  <span style={{ marginLeft: '8px' }}>{t('config.light')}</span>
                 </label>
                 <label style={{ display: 'flex', alignItems: 'center', cursor: 'pointer' }}>
                   <input
@@ -61,7 +62,7 @@ const ConfigView: React.FC = () => {
                     checked={appearanceMode === 'dark'}
                     onChange={(e) => setAppearanceMode(e.target.value as 'dark')}
                   />
-                  <span style={{ marginLeft: '8px' }}>Oscuro</span>
+                  <span style={{ marginLeft: '8px' }}>{t('config.dark')}</span>
                 </label>
                 <label style={{ display: 'flex', alignItems: 'center', cursor: 'pointer' }}>
                   <input
@@ -71,7 +72,7 @@ const ConfigView: React.FC = () => {
                     checked={appearanceMode === 'auto'}
                     onChange={(e) => setAppearanceMode(e.target.value as 'auto')}
                   />
-                  <span style={{ marginLeft: '8px' }}>Automático</span>
+                  <span style={{ marginLeft: '8px' }}>{t('config.system')}</span>
                 </label>
               </div>
             </styles.SettingRow>
@@ -84,8 +85,8 @@ const ConfigView: React.FC = () => {
           <styles.SectionContent>
             <styles.SettingRow>
               <styles.SettingLabel>
-                <span>Idioma</span>
-                <span>Selecciona el idioma de la interfaz</span>
+                <span>{t('config.language')}</span>
+                <span>{t('config.language_desc')}</span>
               </styles.SettingLabel>
               <styles.SelectContainer>
                 <styles.Select
@@ -105,12 +106,12 @@ const ConfigView: React.FC = () => {
         
         {/* Tags Section */}
         <styles.Section>
-          <styles.SectionHeader>Tags</styles.SectionHeader>
+          <styles.SectionHeader>{t('config.tags')}</styles.SectionHeader>
           <styles.SectionContent>
             <styles.TagsSection>
               <styles.TagInputContainer>
                 <styles.TagInput
-                  placeholder="Nuevo tag..."
+                  placeholder={t('config.new_tag')}
                   value={newTag}
                   onChange={(e) => setNewTag(e.target.value)}
                   onKeyPress={(e) => {
@@ -135,7 +136,7 @@ const ConfigView: React.FC = () => {
                     transition: 'all 0.2s ease'
                   }}
                 >
-                  Agregar
+                  {t('config.add_tag')}
                 </button>
               </styles.TagInputContainer>
               
@@ -169,19 +170,17 @@ const ConfigView: React.FC = () => {
         <styles.AboutSection>
           <styles.AboutTitle>
             <styles.AppIcon src="/Linkio-icon.png" alt="LinkIO" />
-            Acerca de LinkIO
+            {t('config.about')}
           </styles.AboutTitle>
           <styles.AboutText>
-            LinkIO es tu gestor personal de enlaces organizado y visual. 
-            Guarda, categoriza y accede rápidamente a todos tus enlaces favoritos 
-            con una interfaz limpia y moderna inspirada en el diseño de Apple.
+            {t('config.about_desc')}
           </styles.AboutText>
           <styles.VersionInfo>
-            Versión {APP_VERSION} • Desarrollado por{' '}
+            {t('config.version')} {APP_VERSION} • {t('config.developed')}{' '}
             <a href="https://github.com/ismaelmarot" target="_blank" rel="noopener noreferrer">
               Ismael Marot
             </a>
-            {' '}• Todos los derechos reservados
+            {' '}• {t('config.rights')}
           </styles.VersionInfo>
         </styles.AboutSection>
         
@@ -204,7 +203,7 @@ const ConfigView: React.FC = () => {
               transform: isSaving ? 'scale(0.98)' : 'translateY(0)'
             }}
           >
-            {isSaving ? 'Guardando...' : 'Guardar Configuración'}
+            {isSaving ? t('config.saving') : t('config.save')}
           </button>
         </div>
       </div>

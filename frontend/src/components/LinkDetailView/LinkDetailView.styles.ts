@@ -3,13 +3,12 @@ import styled from 'styled-components'
 export const Container = styled.div`
   min-height: 100vh;
   background-color: var(--color-background);
-  padding-bottom: 100px;
+  padding: 0 var(--space-md) 100px;
 `
 
 export const Content = styled.main`
   max-width: 600px;
   margin: 0 auto;
-  padding: var(--space-md);
   display: flex;
   flex-direction: column;
   gap: var(--space-lg);

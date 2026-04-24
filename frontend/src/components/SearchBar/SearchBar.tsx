@@ -2,6 +2,7 @@ import React from 'react'
 import * as styles from './SearchBar.styles'
 import { useSearchBar } from './useSearchBar'
 import { SearchIcon as SearchIconComponent } from '../../constants/icons.constants'
+import { useI18n } from '../../app/i18n'
 
 const SearchBar: React.FC = () => {
   const {
@@ -11,6 +12,13 @@ const SearchBar: React.FC = () => {
     setActiveTag,
     tags,
   } = useSearchBar()
+  const { t, language } = useI18n()
+
+  const translateTag = (tag: string): string => {
+    if (tag === 'All') return t('home.tag_all')
+    if (tag === 'Favorites') return t('home.tag_favorites')
+    return tag
+  }
 
   return (
     <styles.Container>
@@ -20,7 +28,7 @@ const SearchBar: React.FC = () => {
         </styles.SearchIcon>
         <styles.SearchInput
           type="text"
-          placeholder="Buscar enlaces..."
+          placeholder={t('home.search')}
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
         />
@@ -32,7 +40,7 @@ const SearchBar: React.FC = () => {
             $active={activeTag === tag}
             onClick={() => setActiveTag(tag)}
           >
-            {tag}
+            {translateTag(tag)}
           </styles.TagButton>
         ))}
       </styles.TagFilters>

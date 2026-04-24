@@ -3,11 +3,13 @@ import { useNavigate, useParams } from 'react-router-dom';
 import * as styles from './EditLinkView.styles';
 import { useEditLinkView } from './useEditLinkView';
 import * as Header from '../Header';
+import { useI18n } from '../../app/i18n';
 import { BackArrowIcon, UploadIcon, GlobeIcon } from '../../constants/icons.constants';
 
 const EditLinkView: React.FC = () => {
   const navigate = useNavigate();
   const { id } = useParams<{ id: string }>();
+  const { t } = useI18n();
   const {
     url,
     title,
@@ -35,6 +37,13 @@ const EditLinkView: React.FC = () => {
     handleSubmit
   } = useEditLinkView();
 
+  const translateTag = (tag: string): string => {
+    if (tag === 'Favorites') return t('home.tag_favorites')
+    if (tag === 'Work') return t('home.tag_work')
+    if (tag === 'Personal') return t('home.tag_personal')
+    return tag
+  }
+
   const handleBack = () => {
     navigate(`/link/${id}`);
   };
@@ -45,9 +54,9 @@ const EditLinkView: React.FC = () => {
         <Header.HeaderContainer>
           <Header.BackButton onClick={handleBack}>
             <BackArrowIcon size={20} />
-            Atrás
+            {t('edit.cancel')}
           </Header.BackButton>
-          <Header.Title>Editar</Header.Title>
+          <Header.Title>{t('edit.title')}</Header.Title>
           <Header.Spacer />
         </Header.HeaderContainer>
         <styles.LoadingContainer>
@@ -196,7 +205,7 @@ const EditLinkView: React.FC = () => {
                     $selected={selectedTags.includes(tag)}
                     onClick={() => handleTagToggle(tag)}
                   >
-                    {tag}
+                    {translateTag(tag)}
                   </styles.TagChip>
                 ))}
                 <styles.AddTagButton
@@ -214,10 +223,10 @@ const EditLinkView: React.FC = () => {
           
           <styles.ActionRow>
             <styles.CancelButton type="button" onClick={handleBack}>
-              Cancelar
+              {t('edit.cancel')}
             </styles.CancelButton>
             <styles.SubmitButton type="submit" disabled={Object.keys(errors).length > 0 || isSaving}>
-              {isSaving ? 'Guardando...' : 'Guardar'}
+              {isSaving ? t('edit.saving') : t('edit.save')}
             </styles.SubmitButton>
           </styles.ActionRow>
         </styles.FormCard>

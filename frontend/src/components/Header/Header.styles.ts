@@ -6,8 +6,9 @@ export const HeaderContainer = styled.header`
   align-items: center;
   width: 100%;
   max-width: 600px;
-  margin-bottom: var(--space-xl);
-  padding: 0 var(--space-xs);
+  margin: 0 auto;
+  padding: var(--space-lg) var(--space-xs);
+  position: relative;
 `
 
 export const BackButton = styled.button`
@@ -22,6 +23,8 @@ export const BackButton = styled.button`
   font-weight: 400;
   cursor: pointer;
   transition: all 0.2s ease;
+  position: absolute;
+  left: 0;
   
   &:hover {
     opacity: 0.8;
@@ -38,12 +41,13 @@ export const BackButton = styled.button`
 `
 
 export const Title = styled.h1`
-  font-size: var(--font-size-3xl);
-  font-weight: 700;
+  font-size: 32px;
+  font-weight: 800;
   color: var(--color-text-primary);
-  letter-spacing: -0.5px;
+  letter-spacing: -1px;
   text-align: center;
   flex: 1;
+  margin: 0;
 `
 
 export const ActionButton = styled.button<{ $variant?: 'primary' | 'secondary' }>`
