@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export const Container = styled.div`
   background-color: var(--color-card-bg);
@@ -55,7 +55,7 @@ export const Container = styled.div`
   @media (max-width: 768px) {
     border-radius: var(--radius-lg);
   }
-`;
+`
 
 export const ImageContainer = styled.div`
   width: 100%;
@@ -71,7 +71,7 @@ export const ImageContainer = styled.div`
     height: 100%;
     object-fit: cover;
   }
-`;
+`
 
 export const Content = styled.div`
   padding: var(--space-lg) var(--space-xl);
@@ -80,14 +80,14 @@ export const Content = styled.div`
   flex-direction: column;
   position: relative;
   z-index: 2;
-`;
+`
 
 export const Header = styled.div`
   display: flex;
   align-items: center;
   gap: var(--space-md);
   margin-bottom: var(--space-sm);
-`;
+`
 
 export const Icon = styled.div<{ $hasIcon?: boolean }>`
   width: 44px;
@@ -111,7 +111,7 @@ export const Icon = styled.div<{ $hasIcon?: boolean }>`
     object-fit: contain;
     border-radius: var(--radius-sm);
   }
-`;
+`
 
 export const Title = styled.h3`
   font-size: var(--font-size-lg);
@@ -124,7 +124,7 @@ export const Title = styled.h3`
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
-`;
+`
 
 export const URL = styled.p`
   font-size: var(--font-size-sm);
@@ -137,14 +137,14 @@ export const URL = styled.p`
   -webkit-box-orient: vertical;
   overflow: hidden;
   transition: color 0.2s ease;
-`;
+`
 
 export const Tags = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-xs);
   margin-top: auto;
-`;
+`
 
 export const Tag = styled.span<{ $background: string; $color: string }>`
   padding: 6px var(--space-sm);
@@ -159,12 +159,13 @@ export const Tag = styled.span<{ $background: string; $color: string }>`
   &:hover {
     transform: scale(1.05);
   }
-`;
+`
 
 export const Arrow = styled.div`
   margin-top: var(--space-md);
   display: flex;
   align-items: center;
+  justify-content: flex-end;
   gap: var(--space-xs);
   
   span {
@@ -181,4 +182,4 @@ export const Arrow = styled.div`
     color: var(--color-primary);
     transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), color 0.3s ease;
   }
-`;
+`

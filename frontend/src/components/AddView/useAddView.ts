@@ -27,17 +27,16 @@ export const useAddView = () => {
         urlToParse = 'https://' + url;
       }
       
-      try {
-        const parsedUrl = new URL(urlToParse);
-        const hostname = parsedUrl.hostname;
-        
-        if (!title) setTitle(hostname.replace('www.', ''));
-        if (!iconUrl) setIconUrl(`https://www.google.com/s2/favicons?domain=${hostname}&sz=64`);
-        if (!imageUrl) setImageUrl(`${API_URL}/screenshot?url=${encodeURIComponent(urlToParse)}`);
-      } catch (err) {
-        // Ignore invalid URLs
+      const parsedUrl = new URL(urlToParse);
+      const hostname = parsedUrl.hostname;
+      const screenshotUrl = `${API_URL}/screenshot?url=${encodeURIComponent(urlToParse)}`;
+      
+      if (!title) setTitle(hostname.replace('www.', ''));
+      if (!iconUrl) setIconUrl(`https://www.google.com/s2/favicons?domain=${hostname}&sz=64`);
+      if (!imageUrl) {
+        setImageUrl(screenshotUrl);
       }
-    }, 800);
+    }, 1000);
     
     return () => clearTimeout(timer);
   }, [url]);
@@ -47,7 +46,11 @@ export const useAddView = () => {
       return 'La URL es obligatoria';
     }
     try {
-      new URL(url);
+      let urlToCheck = url;
+      if (!url.startsWith('http://') && !url.startsWith('https://')) {
+        urlToCheck = 'https://' + url;
+      }
+      new URL(urlToCheck);
       return '';
     } catch {
       return 'Por favor ingresa una URL válida';

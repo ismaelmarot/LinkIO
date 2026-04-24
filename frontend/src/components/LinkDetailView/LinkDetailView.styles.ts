@@ -1,10 +1,10 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export const Container = styled.div`
   min-height: 100vh;
   background-color: var(--color-background);
   padding-bottom: 100px;
-`;
+`
 
 export const Content = styled.main`
   max-width: 600px;
@@ -13,14 +13,14 @@ export const Content = styled.main`
   display: flex;
   flex-direction: column;
   gap: var(--space-lg);
-`;
+`
 
 export const LinkCard = styled.article`
   background: var(--color-card-bg);
   border-radius: var(--radius-xl);
   box-shadow: var(--shadow-card);
   overflow: hidden;
-`;
+`
 
 export const HeroImage = styled.div`
   width: 100%;
@@ -33,7 +33,7 @@ export const HeroImage = styled.div`
     height: 100%;
     object-fit: cover;
   }
-`;
+`
 
 export const HeroPlaceholder = styled.div`
   width: 100%;
@@ -49,20 +49,20 @@ export const HeroPlaceholder = styled.div`
     color: var(--color-text-tertiary);
     opacity: 0.3;
   }
-`;
+`
 
 export const CardContent = styled.div`
   padding: var(--space-xl);
   display: flex;
   flex-direction: column;
   gap: var(--space-lg);
-`;
+`
 
 export const Header = styled.div`
   display: flex;
   align-items: flex-start;
   gap: var(--space-md);
-`;
+`
 
 export const Favicon = styled.div<{ $hasImage?: boolean }>`
   width: 52px;
@@ -86,12 +86,12 @@ export const Favicon = styled.div<{ $hasImage?: boolean }>`
     height: 24px;
     color: var(--color-text-tertiary);
   }
-`;
+`
 
 export const TitleWrapper = styled.div`
   flex: 1;
   min-width: 0;
-`;
+`
 
 export const Title = styled.h1`
   font-size: 22px;
@@ -100,13 +100,13 @@ export const Title = styled.h1`
   margin: 0 0 4px;
   letter-spacing: -0.3px;
   line-height: 1.25;
-`;
+`
 
 export const URLWrapper = styled.div`
   display: flex;
   align-items: center;
   gap: var(--space-sm);
-`;
+`
 
 export const URL = styled.a`
   font-size: var(--font-size-sm);
@@ -120,7 +120,7 @@ export const URL = styled.a`
   &:hover {
     text-decoration: underline;
   }
-`;
+`
 
 export const CopyBtn = styled.button`
   width: 36px;
@@ -143,19 +143,19 @@ export const CopyBtn = styled.button`
     height: 16px;
     color: var(--color-text-secondary);
   }
-`;
+`
 
 export const Divider = styled.div`
   height: 1px;
   background: var(--color-border);
   margin: 0 calc(-1 * var(--space-xl));
-`;
+`
 
 export const Section = styled.section`
   display: flex;
   flex-direction: column;
   gap: var(--space-sm);
-`;
+`
 
 export const SectionTitle = styled.h3`
   font-size: 12px;
@@ -164,20 +164,19 @@ export const SectionTitle = styled.h3`
   text-transform: uppercase;
   letter-spacing: 0.5px;
   margin: 0;
-`;
+`
 
 export const Text = styled.p`
   font-size: var(--font-size-base);
   color: var(--color-text-secondary);
   margin: 0;
   line-height: 1.5;
-`;
+`
 
 export const NoteBox = styled.div`
   background: var(--surface-secondary);
   padding: var(--space-md);
   border-radius: var(--radius-lg);
-  border-left: 3px solid var(--color-primary);
   
   p {
     font-size: var(--font-size-sm);
@@ -186,13 +185,13 @@ export const NoteBox = styled.div`
     line-height: 1.6;
     white-space: pre-wrap;
   }
-`;
+`
 
 export const TagsWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-xs);
-`;
+`
 
 export const Tag = styled.span<{ $bg: string; $color: string }>`
   padding: 6px 12px;
@@ -201,13 +200,13 @@ export const Tag = styled.span<{ $bg: string; $color: string }>`
   font-weight: 500;
   background: ${({ $bg }) => $bg};
   color: ${({ $color }) => $color};
-`;
+`
 
 export const ActionsWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: var(--space-sm);
-`;
+`
 
 export const ActionBtn = styled.button<{ $variant?: 'primary' | 'danger' }>`
   width: 100%;
@@ -232,7 +231,7 @@ export const ActionBtn = styled.button<{ $variant?: 'primary' | 'danger' }>`
         
         &:hover { opacity: 0.9; }
         &:active { opacity: 0.8; }
-      `;
+      `
     }
     return `
       background: var(--color-primary);
@@ -240,7 +239,7 @@ export const ActionBtn = styled.button<{ $variant?: 'primary' | 'danger' }>`
       
       &:hover { background: var(--color-primary-dark); }
       &:active { opacity: 0.9; }
-    `;
+    `
   }}
   
   &:disabled {
@@ -252,7 +251,7 @@ export const ActionBtn = styled.button<{ $variant?: 'primary' | 'danger' }>`
     width: 20px;
     height: 20px;
   }
-`;
+`
 
 export const SecondaryActions = styled.div<{ $open?: boolean }>`
   display: grid;
@@ -262,7 +261,7 @@ export const SecondaryActions = styled.div<{ $open?: boolean }>`
   overflow: hidden;
   opacity: ${({ $open }) => ($open ? '1' : '0')};
   transition: all 0.3s ease;
-`;
+`
 
 export const MoreToggle = styled.button`
   width: 100%;
@@ -286,7 +285,7 @@ export const MoreToggle = styled.button`
     width: 20px;
     height: 20px;
   }
-`;
+`
 
 export const SecondaryBtn = styled.button`
   height: 48px;
@@ -316,14 +315,14 @@ export const SecondaryBtn = styled.button`
     width: 18px;
     height: 18px;
   }
-`;
+`
 
 export const DateText = styled.p`
   text-align: center;
   font-size: 12px;
   color: var(--color-text-tertiary);
   margin: 0;
-`;
+`
 
 export const LoadingWrapper = styled.div`
   min-height: 100vh;
@@ -350,7 +349,7 @@ export const LoadingWrapper = styled.div`
   @keyframes spin {
     to { transform: rotate(360deg); }
   }
-`;
+`
 
 export const ErrorWrapper = styled.div`
   min-height: 100vh;
@@ -374,7 +373,7 @@ export const ErrorWrapper = styled.div`
     font-size: var(--font-size-sm);
     margin: 0;
   }
-`;
+`
 
 export const BackBtn = styled.button`
   padding: 14px 28px;
@@ -389,7 +388,7 @@ export const BackBtn = styled.button`
   &:hover {
     background: var(--color-primary-dark);
   }
-`;
+`
 
 export const ModalBackdrop = styled.div`
   position: fixed;
@@ -409,7 +408,7 @@ export const ModalBackdrop = styled.div`
     from { opacity: 0; }
     to { opacity: 1; }
   }
-`;
+`
 
 export const ModalContent = styled.div`
   background: var(--color-card-bg);
@@ -423,7 +422,7 @@ export const ModalContent = styled.div`
     from { transform: translateY(20px); opacity: 0; }
     to { transform: translateY(0); opacity: 1; }
   }
-`;
+`
 
 export const ModalTitle = styled.h2`
   font-size: var(--font-size-lg);
@@ -431,7 +430,7 @@ export const ModalTitle = styled.h2`
   color: var(--color-text-primary);
   margin: 0 0 var(--space-sm);
   text-align: center;
-`;
+`
 
 export const ModalText = styled.p`
   font-size: var(--font-size-base);
@@ -439,12 +438,12 @@ export const ModalText = styled.p`
   margin: 0 0 var(--space-xl);
   text-align: center;
   line-height: 1.5;
-`;
+`
 
 export const ModalButtons = styled.div`
   display: flex;
   gap: var(--space-sm);
-`;
+`
 
 export const ModalCancelBtn = styled.button`
   flex: 1;
@@ -461,7 +460,7 @@ export const ModalCancelBtn = styled.button`
   &:hover {
     background: var(--color-border);
   }
-`;
+`
 
 export const ModalDeleteBtn = styled.button`
   flex: 1;
@@ -483,4 +482,4 @@ export const ModalDeleteBtn = styled.button`
     opacity: 0.5;
     cursor: not-allowed;
   }
-`;
+`

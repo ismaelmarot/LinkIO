@@ -4,6 +4,8 @@ export const Container = styled.div`
   min-height: 100vh;
   background-color: var(--color-background);
   padding: var(--space-xl) var(--space-md) 90px;
+  max-width: 600px;
+  margin: 0 auto;
 `;
 
 export const Header = styled.header`
@@ -144,7 +146,7 @@ export const Select = styled.select`
   width: 100%;
   padding: var(--space-sm) var(--space-md);
   border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-xxl);
   font-size: var(--font-size-base);
   background-color: var(--color-card-bg);
   color: var(--color-text-primary);
@@ -200,7 +202,7 @@ export const TagInput = styled.input`
   flex: 1;
   padding: var(--space-sm) var(--space-md);
   border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-xxl);
   font-size: var(--font-size-base);
   transition: all 0.2s ease;
   background-color: var(--color-card-bg);
@@ -283,6 +285,15 @@ export const AboutTitle = styled.h3`
   font-weight: 600;
   color: var(--color-text-primary);
   margin-bottom: var(--space-md);
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+`;
+
+export const AppIcon = styled.img`
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-lg);
 `;
 
 export const AboutText = styled.p`
@@ -299,4 +310,13 @@ export const VersionInfo = styled.p`
   margin-top: var(--space-lg);
   padding-top: var(--space-md);
   border-top: 1px solid var(--color-border);
+  
+  a {
+    color: var(--color-text-tertiary);
+    text-decoration: none;
+    
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 `;

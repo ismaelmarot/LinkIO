@@ -1,102 +1,102 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
-import * as styles from './LinkDetailView.styles';
-import * as Header from '../Header';
-import { BackArrowIcon, EditIcon, TrashIcon, GlobeIcon, ExternalLinkIcon, CopyIcon, ChevronDownIcon } from '../../constants/icons.constants';
+import React, { useState, useEffect } from 'react'
+import { useNavigate, useParams } from 'react-router-dom'
+import * as styles from './LinkDetailView.styles'
+import * as Header from '../Header'
+import { BackArrowIcon, EditIcon, TrashIcon, GlobeIcon, ExternalLinkIcon, CopyIcon, ChevronDownIcon } from '../../constants/icons.constants'
 
-const API_URL = 'http://localhost:3001/api/links';
+const API_URL = 'http://localhost:3001/api/links'
 
 const LinkDetailView: React.FC = () => {
-  const navigate = useNavigate();
-  const { id } = useParams<{ id: string }>();
-  const [link, setLink] = useState<any>(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-  const [isDeleting, setIsDeleting] = useState(false);
-  const [showDeleteModal, setShowDeleteModal] = useState(false);
-  const [copied, setCopied] = useState(false);
-  const [showMore, setShowMore] = useState(false);
+  const navigate = useNavigate()
+  const { id } = useParams<{ id: string }>()
+  const [link, setLink] = useState<any>(null)
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
+  const [isDeleting, setIsDeleting] = useState(false)
+  const [showDeleteModal, setShowDeleteModal] = useState(false)
+  const [copied, setCopied] = useState(false)
+  const [showMore, setShowMore] = useState(false)
 
   useEffect(() => {
     const fetchLink = async () => {
       if (!id) {
-        setError('ID no proporcionado');
-        setLoading(false);
+        setError('ID no proporcionado')
+        setLoading(false)
         return;
       }
       
       try {
-        const response = await fetch(`${API_URL}/${id}`);
+        const response = await fetch(`${API_URL}/${id}`)
         if (!response.ok) {
-          setError('Enlace no encontrado');
-          return;
+          setError('Enlace no encontrado')
+          return
         }
-        const data = await response.json();
-        setLink(data);
+        const data = await response.json()
+        setLink(data)
       } catch (err) {
-        setError('Error al cargar');
+        setError('Error al cargar')
       } finally {
-        setLoading(false);
+        setLoading(false)
       }
-    };
+    }
 
-    fetchLink();
-  }, [id]);
+    fetchLink()
+  }, [id])
 
   const handleOpenLink = () => {
     if (link?.url) {
-      window.open(link.url, '_blank');
+      window.open(link.url, '_blank')
     }
-  };
+  }
 
   const handleCopyLink = async () => {
     if (link?.url) {
       try {
-        await navigator.clipboard.writeText(link.url);
-        setCopied(true);
-        setTimeout(() => setCopied(false), 2000);
+        await navigator.clipboard.writeText(link.url)
+        setCopied(true)
+        setTimeout(() => setCopied(false), 2000)
       } catch (err) {
-        console.error('Error copying:', err);
+        console.error('Error copying:', err)
       }
     }
-  };
+  }
 
   const handleEdit = () => {
-    navigate(`/link/${id}/edit`);
-  };
+    navigate(`/link/${id}/edit`)
+  }
 
   const handleDelete = async () => {
-    setIsDeleting(true);
+    setIsDeleting(true)
     try {
-      await fetch(`${API_URL}/${id}`, { method: 'DELETE' });
-      navigate('/');
+      await fetch(`${API_URL}/${id}`, { method: 'DELETE' })
+      navigate('/')
     } catch (err) {
-      console.error('Error:', err);
+      console.error('Error:', err)
     } finally {
-      setIsDeleting(false);
+      setIsDeleting(false)
     }
-  };
+  }
 
   const getTagStyle = (tag: any) => {
     if (typeof tag === 'string') {
-      return { background: '#e3f2fd', color: '#1976d2', name: tag };
+      return { background: '#e3f2fd', color: '#1976d2', name: tag }
     }
     return { 
       background: tag.background || '#e3f2fd', 
       color: tag.color || '#1976d2', 
       name: tag.name || tag 
-    };
-  };
+    }
+  }
 
   const formatDate = (dateStr: string) => {
-    if (!dateStr) return '';
-    const date = new Date(dateStr);
+    if (!dateStr) return ''
+    const date = new Date(dateStr)
     return date.toLocaleDateString('es-ES', {
       day: 'numeric',
       month: 'long',
       year: 'numeric'
-    });
-  };
+    })
+  }
 
   if (loading) {
     return (
@@ -114,7 +114,7 @@ const LinkDetailView: React.FC = () => {
           <p>Cargando...</p>
         </styles.LoadingWrapper>
       </styles.Container>
-    );
+    )
   }
 
   if (error || !link) {
@@ -136,7 +136,7 @@ const LinkDetailView: React.FC = () => {
           </styles.BackBtn>
         </styles.ErrorWrapper>
       </styles.Container>
-    );
+    )
   }
 
   return (
@@ -279,7 +279,7 @@ const LinkDetailView: React.FC = () => {
         </styles.ModalBackdrop>
       )}
     </styles.Container>
-  );
-};
+  )
+}
 
-export default LinkDetailView;
+export default LinkDetailView

@@ -144,6 +144,23 @@ export const UploadArea = styled.button`
   }
 `
 
+export const IconDisplay = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  background: var(--surface-secondary);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  
+  img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+  }
+`;
+
 export const IconRow = styled.div`
   display: flex;
   align-items: center;

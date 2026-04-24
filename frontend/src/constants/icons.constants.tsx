@@ -4,7 +4,6 @@ import {
   MdUploadFile,
   MdClose,
   MdSettings,
-  MdShare,
   MdLanguage,
   MdEdit,
   MdDeleteForever,

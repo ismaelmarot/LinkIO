@@ -1,12 +1,13 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import * as styles from './ConfigView.styles';
-import { useConfigView } from './useConfigView';
-import * as Header from '../Header';
-import { BackArrowIcon, ArrowIcon } from '../../constants/icons.constants';
+import React, { useState } from 'react'
+const APP_VERSION = '1.0.0';
+import { useNavigate } from 'react-router-dom'
+import * as styles from './ConfigView.styles'
+import { useConfigView } from './useConfigView'
+import * as Header from '../Header'
+import { BackArrowIcon, ArrowIcon } from '../../constants/icons.constants'
 
 const ConfigView: React.FC = () => {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
   const {
     appearanceMode,
     setAppearanceMode,
@@ -18,7 +19,7 @@ const ConfigView: React.FC = () => {
     handleRemoveTag,
     handleSaveSettings
   } = useConfigView();
-  const [newTag, setNewTag] = useState('');
+  const [newTag, setNewTag] = useState('')
 
   return (
     <styles.Container>
@@ -31,7 +32,7 @@ const ConfigView: React.FC = () => {
         <Header.Spacer />
       </Header.HeaderContainer>
       
-      <div style={{ maxWidth: 800, margin: '0 auto', padding: '0 16px' }}>
+      <div style={{ maxWidth: 600, margin: '0 auto', padding: '0 16px' }}>
         {/* Appearance Mode Section */}
         <styles.Section>
           <styles.SectionHeader>Apariencia</styles.SectionHeader>
@@ -127,7 +128,7 @@ const ConfigView: React.FC = () => {
                     backgroundColor: !newTag.trim() ? '#e0e0e0' : '#007aff',
                     color: !newTag.trim() ? '#666' : 'white',
                     border: 'none',
-                    borderRadius: '12px',
+                    borderRadius: '34px',
                     fontSize: '15px',
                     fontWeight: '600',
                     cursor: !newTag.trim() ? 'not-allowed' : 'pointer',
@@ -143,21 +144,19 @@ const ConfigView: React.FC = () => {
                   {tags.map((tag, index) => (
                     <styles.TagItem
                       key={index}
-                      $isRemovable={tag !== 'All' && tag !== 'Favorites'}
+                      $isRemovable={true}
                     >
                       <span>{tag}</span>
-                      {tag !== 'All' && tag !== 'Favorites' && (
-                        <button
-                          type="button"
-                          onClick={() => handleRemoveTag(tag)}
-                          style={{
-                            padding: '0',
-                            marginLeft: '4px'
-                          }}
-                        >
-                          ×
-                        </button>
-                      )}
+                      <button
+                        type="button"
+                        onClick={() => handleRemoveTag(tag)}
+                        style={{
+                          padding: '0',
+                          marginLeft: '4px'
+                        }}
+                      >
+                        ×
+                      </button>
                     </styles.TagItem>
                   ))}
                 </styles.TagsList>
@@ -168,14 +167,21 @@ const ConfigView: React.FC = () => {
         
         {/* About Section */}
         <styles.AboutSection>
-          <styles.AboutTitle>Acerca de LinkIO</styles.AboutTitle>
+          <styles.AboutTitle>
+            <styles.AppIcon src="/Linkio-icon.png" alt="LinkIO" />
+            Acerca de LinkIO
+          </styles.AboutTitle>
           <styles.AboutText>
             LinkIO es tu gestor personal de enlaces organizado y visual. 
             Guarda, categoriza y accede rápidamente a todos tus enlaces favoritos 
             con una interfaz limpia y moderna inspirada en el diseño de Apple.
           </styles.AboutText>
           <styles.VersionInfo>
-            Versión 1.0.0 • Desarrollado con ❤️
+            Versión {APP_VERSION} • Desarrollado por{' '}
+            <a href="https://github.com/ismaelmarot" target="_blank" rel="noopener noreferrer">
+              Ismael Marot
+            </a>
+            {' '}• Todos los derechos reservados
           </styles.VersionInfo>
         </styles.AboutSection>
         

@@ -32,8 +32,7 @@ const EditLinkView: React.FC = () => {
     handleTagToggle,
     addNewTag,
     fetchLinkPreview,
-    handleSubmit,
-    setIconUrl
+    handleSubmit
   } = useEditLinkView();
 
   const handleBack = () => {
@@ -108,6 +107,20 @@ const EditLinkView: React.FC = () => {
             </styles.Section>
             
             <styles.Section>
+              <styles.Label>Icono</styles.Label>
+              {iconUrl ? (
+                <styles.IconRow>
+                  <img src={iconUrl} alt="Icono" />
+                </styles.IconRow>
+              ) : (
+                <styles.IconPlaceholder>
+                  <GlobeIcon size={32} />
+                  <p>Se obtendrá de la URL</p>
+                </styles.IconPlaceholder>
+              )}
+            </styles.Section>
+            
+            <styles.Section>
               <styles.Label>Título</styles.Label>
               <styles.Input
                 type="text"
@@ -150,7 +163,7 @@ const EditLinkView: React.FC = () => {
             <styles.Section>
               <styles.Label>Imagen</styles.Label>
               {imageUrl ? (
-                <styles.ImagePreview>
+                <styles.ImagePreview onClick={() => document.getElementById('imageUpload')?.click()}>
                   <img src={imageUrl} alt="Vista previa" />
                 </styles.ImagePreview>
               ) : (
@@ -171,23 +184,6 @@ const EditLinkView: React.FC = () => {
                 style={{ display: 'none' }}
                 onChange={handleImageChange}
               />
-            </styles.Section>
-            
-            <styles.Section>
-              <styles.Label>Icono</styles.Label>
-              {iconUrl ? (
-                <styles.IconRow>
-                  <img src={iconUrl} alt="Icono" />
-                  <styles.RemoveButton onClick={() => setIconUrl(null)}>
-                    Eliminar
-                  </styles.RemoveButton>
-                </styles.IconRow>
-              ) : (
-                <styles.IconPlaceholder>
-                  <GlobeIcon size={32} />
-                  <p>Se obtendrá de la URL</p>
-                </styles.IconPlaceholder>
-              )}
             </styles.Section>
             
             <styles.Section>
@@ -214,14 +210,6 @@ const EditLinkView: React.FC = () => {
                 </styles.AddTagButton>
               </styles.TagsContainer>
             </styles.Section>
-            
-            <styles.PreviewButton
-              type="button"
-              onClick={fetchLinkPreview}
-              disabled={isFetchingPreview || !url.trim()}
-            >
-              {isFetchingPreview ? 'Cargando...' : 'Obtener vista previa'}
-            </styles.PreviewButton>
           </styles.FormContent>
           
           <styles.ActionRow>

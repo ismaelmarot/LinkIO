@@ -4,14 +4,30 @@ export const Container = styled.div`
   min-height: 100vh;
   background-color: var(--color-background);
   padding: 0 var(--space-md) 100px;
+`
+
+export const TitleRow = styled.div`
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
+  padding: var(--space-lg) 0;
+`
+
+export const Title = styled.h1`
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--color-text-primary);
+  letter-spacing: -1px;
+  margin: 0;
 `
 
 export const Content = styled.main`
   width: 100%;
   max-width: 600px;
+  margin: 0 auto;
 `
 
 export const SectionHeader = styled.div`

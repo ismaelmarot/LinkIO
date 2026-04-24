@@ -92,7 +92,11 @@ export const useEditLinkView = () => {
   const validateUrl = () => {
     if (!url.trim()) return 'La URL es obligatoria';
     try {
-      new URL(url);
+      let urlToCheck = url;
+      if (!url.startsWith('http://') && !url.startsWith('https://')) {
+        urlToCheck = 'https://' + url;
+      }
+      new URL(urlToCheck);
       return '';
     } catch {
       return 'Por favor ingresa una URL válida';

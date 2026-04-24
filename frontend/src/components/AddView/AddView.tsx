@@ -14,7 +14,7 @@ const AddView: React.FC = () => {
     handleUrlChange, handleTitleChange, handleSubtitleChange,
     handleDescriptionChange, handleNoteChange, handleImageChange,
     handleTagToggle, addNewTag, fetchLinkPreview,
-    handleSubmit, setIconUrl
+    handleSubmit
   } = useAddView()
 
   return (
@@ -39,6 +39,17 @@ const AddView: React.FC = () => {
               className={errors.url ? 'error' : ''}
             />
             {errors.url && <styles.ErrorMessage>{errors.url}</styles.ErrorMessage>}
+          </styles.FieldGroup>
+          
+          <styles.FieldGroup>
+            <styles.Label>Icono</styles.Label>
+            {iconUrl ? (
+              <styles.IconDisplay>
+                <img src={iconUrl} alt="" />
+              </styles.IconDisplay>
+            ) : (
+              <styles.HelperText>Se obtendrá de la URL</styles.HelperText>
+            )}
           </styles.FieldGroup>
           
           <styles.FieldGroup>
@@ -82,8 +93,8 @@ const AddView: React.FC = () => {
           <styles.FieldGroup>
             <styles.Label>Imagen</styles.Label>
             {imageUrl ? (
-              <styles.ImagePreview>
-                <img src={imageUrl} alt='' />
+              <styles.ImagePreview onClick={() => document.getElementById('imageUpload')?.click()}>
+                <img src={imageUrl} alt="" />
               </styles.ImagePreview>
             ) : (
               <styles.UploadArea onClick={() => document.getElementById('imageUpload')?.click()}>
@@ -92,26 +103,12 @@ const AddView: React.FC = () => {
               </styles.UploadArea>
             )}
             <input
-              id='imageUpload'
-              type='file'
-              accept='image/*'
+              id="imageUpload"
+              type="file"
+              accept="image/*"
               style={{ display: 'none' }}
               onChange={handleImageChange}
             />
-          </styles.FieldGroup>
-          
-          <styles.FieldGroup>
-            <styles.Label>Icono</styles.Label>
-            {iconUrl ? (
-              <styles.IconRow>
-                <img src={iconUrl} alt='' />
-                <styles.RemoveButton onClick={() => setIconUrl(null)}>
-                  Eliminar
-                </styles.RemoveButton>
-              </styles.IconRow>
-            ) : (
-              <styles.HelperText>Se obtendrá de la URL</styles.HelperText>
-            )}
           </styles.FieldGroup>
           
           <styles.FieldGroup>
@@ -120,7 +117,7 @@ const AddView: React.FC = () => {
               {availableTags.map(tag => (
                 <styles.TagChip
                   key={tag}
-                  type='button'
+                  type="button"
                   $selected={selectedTags.includes(tag)}
                   onClick={() => handleTagToggle(tag)}
                 >
@@ -128,7 +125,7 @@ const AddView: React.FC = () => {
                 </styles.TagChip>
               ))}
               <styles.AddTagButton
-                type='button'
+                type="button"
                 onClick={() => {
                   const newTag = prompt('Nueva etiqueta:');
                   if (newTag?.trim()) addNewTag(newTag.trim());
@@ -138,21 +135,13 @@ const AddView: React.FC = () => {
               </styles.AddTagButton>
             </styles.TagsContainer>
           </styles.FieldGroup>
-          
-          <styles.PreviewButton
-            type='button'
-            onClick={fetchLinkPreview}
-            disabled={isFetchingPreview || !url.trim()}
-          >
-            {isFetchingPreview ? 'Cargando...' : 'Obtener vista previa'}
-          </styles.PreviewButton>
         </styles.FormContent>
         
         <styles.ActionRow>
-          <styles.CancelButton type='button' onClick={() => navigate('/')}>
+          <styles.CancelButton type="button" onClick={() => navigate('/')}>
             Cancelar
           </styles.CancelButton>
-          <styles.SubmitButton type='submit' disabled={Object.keys(errors).length > 0}>
+          <styles.SubmitButton type="submit" disabled={Object.keys(errors).length > 0}>
             Guardar
           </styles.SubmitButton>
         </styles.ActionRow>

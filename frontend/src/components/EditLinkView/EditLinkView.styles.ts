@@ -156,18 +156,17 @@ export const UploadArea = styled.button`
 export const IconRow = styled.div`
   display: flex;
   align-items: center;
-  gap: var(--space-md);
-  padding: var(--space-md);
-  background: var(--color-background);
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  background: var(--surface-secondary);
   border-radius: var(--radius-lg);
-  border: 1px solid var(--color-border);
   
   img {
-    width: 44px;
-    height: 44px;
-    border-radius: var(--radius-md);
-    background: white;
+    width: 40px;
+    height: 40px;
     object-fit: contain;
+    border-radius: var(--radius-sm);
   }
 `;
 
@@ -274,14 +273,14 @@ export const ActionRow = styled.div`
   display: flex;
   gap: var(--space-sm);
   padding: var(--space-lg);
-  background: var(--color-background);
+  background: var(--color-card-bg);
   border-top: 1px solid var(--color-border);
 `;
 
 export const CancelButton = styled.button`
   flex: 1;
   padding: 14px var(--space-md);
-  background: var(--color-background);
+  background: var(--surface-secondary);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
   font-size: var(--font-size-base);

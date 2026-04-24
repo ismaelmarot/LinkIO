@@ -1,23 +1,8 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import * as styles from './LinkCard.styles';
-import { useLinkCard } from './useLinkCard';
-import { WebsiteIcon, ArrowIcon } from '../../constants/icons.constants';
-
-interface Tag {
-  name?: string;
-  background?: string;
-  color?: string;
-}
-
-interface LinkCardProps {
-  imageUrl?: string;
-  title: string;
-  url: string;
-  iconUrl?: string;
-  tags: Tag[] | string[];
-  id: number;
-}
+import { useNavigate } from 'react-router-dom'
+import { WebsiteIcon, ArrowIcon } from '../../constants/icons.constants'
+import type { LinkCardProps, Tag } from '../../interface'
+import { useLinkCard } from './useLinkCard'
+import * as styles from './LinkCard.styles'
 
 const LinkCard: React.FC<LinkCardProps> = ({
   imageUrl,
@@ -27,23 +12,22 @@ const LinkCard: React.FC<LinkCardProps> = ({
   tags,
   id,
 }) => {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
   const {
-    isHovered,
     handleMouseEnter,
     handleMouseLeave,
-  } = useLinkCard();
+  } = useLinkCard()
 
   const handleClick = () => {
-    navigate(`/link/${id}`);
-  };
+    navigate(`/link/${id}`)
+  }
 
   const getTagStyle = (tag: Tag | string) => {
     if (typeof tag === 'string') {
-      return { name: tag, background: '#e3f2fd', color: '#1976d2' };
+      return { name: tag, background: '#e3f2fd', color: '#1976d2' }
     }
-    return { name: tag.name || '', background: tag.background || '#e3f2fd', color: tag.color || '#1976d2' };
-  };
+    return { name: tag.name || '', background: tag.background || '#e3f2fd', color: tag.color || '#1976d2' }
+  }
 
   return (
     <styles.Container
@@ -93,7 +77,7 @@ const LinkCard: React.FC<LinkCardProps> = ({
         </styles.Arrow>
       </styles.Content>
     </styles.Container>
-  );
-};
+  )
+}
 
-export default LinkCard;
+export default LinkCard

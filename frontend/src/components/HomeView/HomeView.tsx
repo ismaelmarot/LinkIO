@@ -26,13 +26,13 @@ const HomeView: React.FC = () => {
 
   return (
     <styles.Container>
-      <Header.HeaderContainer>
-        <Header.Title>LinkIO</Header.Title>
+      <styles.TitleRow>
+        <styles.Title>LinkIO</styles.Title>
         <Header.ActionButton onClick={() => navigate('/add')}>
           <AddIcon size={18} color='white' />
           Agregar
         </Header.ActionButton>
-      </Header.HeaderContainer>
+      </styles.TitleRow>
       
       <styles.Content>
         <SearchBar />
