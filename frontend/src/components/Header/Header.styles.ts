@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const HeaderContainer = styled.header`
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   width: 100%;
   max-width: 600px;
@@ -46,8 +46,10 @@ export const Title = styled.h1`
   color: var(--color-text-primary);
   letter-spacing: -1px;
   text-align: center;
-  flex: 1;
   margin: 0;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
 `
 
 export const ActionButton = styled.button<{ $variant?: 'primary' | 'secondary' }>`
@@ -67,7 +69,7 @@ export const ActionButton = styled.button<{ $variant?: 'primary' | 'secondary' }
   
   &:hover {
     background-color: ${({ $variant }) => $variant === 'secondary' ? 'var(--color-border)' : 'var(--color-primary-dark)'};
-    transform: ${({ $variant }) => $variant === 'secondary' ? 'none' : 'translateY(-1px)'};
+    transform: translateY(-1px);
     box-shadow: ${({ $variant }) => $variant === 'secondary' ? 'none' : 'var(--shadow-md)'};
   }
   
