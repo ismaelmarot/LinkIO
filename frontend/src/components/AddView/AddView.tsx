@@ -1,12 +1,12 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import * as styles from './AddView.styles';
-import { useAddView } from './useAddView';
-import * as Header from '../Header';
-import { BackArrowIcon, UploadIcon, WebsiteIcon } from '../../constants/icons.constants';
+import React from 'react'
+import { useNavigate } from 'react-router-dom'
+import * as styles from './AddView.styles'
+import { useAddView } from './useAddView'
+import * as Header from '../Header'
+import { BackArrowIcon, UploadIcon } from '../../constants/icons.constants'
 
 const AddView: React.FC = () => {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
   const {
     url, title, subtitle, description, note,
     selectedTags, availableTags,
@@ -15,7 +15,7 @@ const AddView: React.FC = () => {
     handleDescriptionChange, handleNoteChange, handleImageChange,
     handleTagToggle, addNewTag, fetchLinkPreview,
     handleSubmit, setIconUrl
-  } = useAddView();
+  } = useAddView()
 
   return (
     <styles.Container>
@@ -83,7 +83,7 @@ const AddView: React.FC = () => {
             <styles.Label>Imagen</styles.Label>
             {imageUrl ? (
               <styles.ImagePreview>
-                <img src={imageUrl} alt="" />
+                <img src={imageUrl} alt='' />
               </styles.ImagePreview>
             ) : (
               <styles.UploadArea onClick={() => document.getElementById('imageUpload')?.click()}>
@@ -92,9 +92,9 @@ const AddView: React.FC = () => {
               </styles.UploadArea>
             )}
             <input
-              id="imageUpload"
-              type="file"
-              accept="image/*"
+              id='imageUpload'
+              type='file'
+              accept='image/*'
               style={{ display: 'none' }}
               onChange={handleImageChange}
             />
@@ -104,7 +104,7 @@ const AddView: React.FC = () => {
             <styles.Label>Icono</styles.Label>
             {iconUrl ? (
               <styles.IconRow>
-                <img src={iconUrl} alt="" />
+                <img src={iconUrl} alt='' />
                 <styles.RemoveButton onClick={() => setIconUrl(null)}>
                   Eliminar
                 </styles.RemoveButton>
@@ -120,7 +120,7 @@ const AddView: React.FC = () => {
               {availableTags.map(tag => (
                 <styles.TagChip
                   key={tag}
-                  type="button"
+                  type='button'
                   $selected={selectedTags.includes(tag)}
                   onClick={() => handleTagToggle(tag)}
                 >
@@ -128,7 +128,7 @@ const AddView: React.FC = () => {
                 </styles.TagChip>
               ))}
               <styles.AddTagButton
-                type="button"
+                type='button'
                 onClick={() => {
                   const newTag = prompt('Nueva etiqueta:');
                   if (newTag?.trim()) addNewTag(newTag.trim());
@@ -140,7 +140,7 @@ const AddView: React.FC = () => {
           </styles.FieldGroup>
           
           <styles.PreviewButton
-            type="button"
+            type='button'
             onClick={fetchLinkPreview}
             disabled={isFetchingPreview || !url.trim()}
           >
@@ -149,14 +149,16 @@ const AddView: React.FC = () => {
         </styles.FormContent>
         
         <styles.ActionRow>
-          <styles.CancelButton type="button" onClick={() => navigate('/')}>Cancelar</styles.CancelButton>
-          <styles.SubmitButton type="submit" disabled={Object.keys(errors).length > 0}>
+          <styles.CancelButton type='button' onClick={() => navigate('/')}>
+            Cancelar
+          </styles.CancelButton>
+          <styles.SubmitButton type='submit' disabled={Object.keys(errors).length > 0}>
             Guardar
           </styles.SubmitButton>
         </styles.ActionRow>
       </styles.Form>
     </styles.Container>
-  );
-};
+  )
+}
 
-export default AddView;
+export default AddView

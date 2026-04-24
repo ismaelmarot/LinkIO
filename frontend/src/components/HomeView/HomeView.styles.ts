@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export const Container = styled.div`
   min-height: 100vh;
@@ -7,16 +7,16 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-`;
+`
 
 export const Content = styled.main`
   width: 100%;
   max-width: 600px;
-`;
+`
 
 export const SectionHeader = styled.div`
   margin-bottom: var(--space-lg);
-`;
+`
 
 export const SectionTitle = styled.h2`
   font-size: var(--font-size-sm);
@@ -25,20 +25,20 @@ export const SectionTitle = styled.h2`
   text-transform: uppercase;
   letter-spacing: 0.8px;
   margin: var(--space-xl) 0 var(--space-md);
-`;
+`
 
 export const Divider = styled.div`
   height: 1px;
   background: linear-gradient(90deg, transparent, var(--color-border), transparent);
   margin-bottom: var(--space-xl);
-`;
+`
 
 export const LinksGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: var(--space-xl);
   width: 100%;
-`;
+`
 
 export const EmptyState = styled.div`
   text-align: center;
@@ -67,7 +67,7 @@ export const EmptyState = styled.div`
     color: var(--color-text-secondary);
     margin: 0;
   }
-`;
+`
 
 export const StatsRow = styled.div`
   display: flex;
@@ -75,7 +75,7 @@ export const StatsRow = styled.div`
   gap: var(--space-2xl);
   padding: var(--space-lg) 0;
   margin-bottom: var(--space-xl);
-`;
+`
 
 export const StatItem = styled.div`
   text-align: center;
@@ -91,4 +91,4 @@ export const StatItem = styled.div`
     font-size: var(--font-size-sm);
     color: var(--color-text-secondary);
   }
-`;
+`

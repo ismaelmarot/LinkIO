@@ -33,7 +33,7 @@ export const useAddView = () => {
         
         if (!title) setTitle(hostname.replace('www.', ''));
         if (!iconUrl) setIconUrl(`https://www.google.com/s2/favicons?domain=${hostname}&sz=64`);
-        if (!imageUrl) setImageUrl(`https://image.thum.io/get/${urlToParse}`);
+        if (!imageUrl) setImageUrl(`${API_URL}/screenshot?url=${encodeURIComponent(urlToParse)}`);
       } catch (err) {
         // Ignore invalid URLs
       }

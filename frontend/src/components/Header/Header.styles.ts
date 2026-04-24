@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export const HeaderContainer = styled.header`
   display: flex;
@@ -8,7 +8,7 @@ export const HeaderContainer = styled.header`
   max-width: 600px;
   margin-bottom: var(--space-xl);
   padding: 0 var(--space-xs);
-`;
+`
 
 export const BackButton = styled.button`
   display: flex;
@@ -35,7 +35,7 @@ export const BackButton = styled.button`
     width: 20px;
     height: 20px;
   }
-`;
+`
 
 export const Title = styled.h1`
   font-size: var(--font-size-3xl);
@@ -44,14 +44,14 @@ export const Title = styled.h1`
   letter-spacing: -0.5px;
   text-align: center;
   flex: 1;
-`;
+`
 
 export const ActionButton = styled.button<{ $variant?: 'primary' | 'secondary' }>`
   padding: var(--space-sm) var(--space-lg);
   background-color: ${({ $variant }) => $variant === 'secondary' ? 'var(--color-background)' : 'var(--color-primary)'};
   color: ${({ $variant }) => $variant === 'secondary' ? 'var(--color-text-primary)' : 'white'};
   border: ${({ $variant }) => $variant === 'secondary' ? '1px solid var(--color-border)' : 'none'};
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-xxl);
   font-size: var(--font-size-base);
   font-weight: 600;
   cursor: pointer;
@@ -75,8 +75,8 @@ export const ActionButton = styled.button<{ $variant?: 'primary' | 'secondary' }
     opacity: 0.5;
     cursor: not-allowed;
   }
-`;
+`
 
 export const Spacer = styled.div`
   width: 80px;
-`;
+`

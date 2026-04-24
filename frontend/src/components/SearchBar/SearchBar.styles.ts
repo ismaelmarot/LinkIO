@@ -1,15 +1,15 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export const Container = styled.div`
   width: 100%;
   max-width: 600px;
   margin: 0 auto var(--space-xl);
-`;
+`
 
 export const SearchWrapper = styled.div`
   position: relative;
   margin-bottom: var(--space-md);
-`;
+`
 
 export const SearchIcon = styled.div`
   position: absolute;
@@ -23,13 +23,14 @@ export const SearchIcon = styled.div`
     width: 20px;
     height: 20px;
   }
-`;
+`
 
 export const SearchInput = styled.input`
   width: 100%;
+  box-sizing: border-box;
   padding: var(--space-md) var(--space-md) var(--space-md) 48px;
   border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-xxl);
   font-size: var(--font-size-base);
   background-color: var(--color-card-bg);
   transition: all 0.2s ease;
@@ -48,13 +49,13 @@ export const SearchInput = styled.input`
   &:hover:not(:focus) {
     border-color: var(--color-text-tertiary);
   }
-`;
+`
 
 export const TagFilters = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-xs);
-`;
+`
 
 export const TagButton = styled.button<{ $active: boolean }>`
   padding: var(--space-xs) var(--space-md);
@@ -81,7 +82,7 @@ export const TagButton = styled.button<{ $active: boolean }>`
     opacity: 0.6;
     cursor: not-allowed;
   }
-`;
+`
 
 export const ClearButton = styled.button`
   padding: var(--space-xs) var(--space-sm);
@@ -97,4 +98,4 @@ export const ClearButton = styled.button`
   &:hover {
     color: var(--color-text-secondary);
   }
-`;
+`

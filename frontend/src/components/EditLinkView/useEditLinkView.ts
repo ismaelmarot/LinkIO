@@ -65,18 +65,22 @@ export const useEditLinkView = () => {
   }, [id]);
 
   useEffect(() => {
-    if (!url || !url.startsWith('http')) return;
+    if (!url || url.length < 8) return;
     
     const timer = setTimeout(() => {
+      let urlToParse = url;
+      if (!url.startsWith('http://') && !url.startsWith('https://')) {
+        urlToParse = 'https://' + url;
+      }
+      
       try {
-        const parsedUrl = new URL(url);
+        const parsedUrl = new URL(urlToParse);
         const hostname = parsedUrl.hostname;
         const autoIconUrl = `https://www.google.com/s2/favicons?domain=${hostname}&sz=64`;
-        const autoImageUrl = `https://image.thum.io/get/${url}`;
         
         if (!title) setTitle(hostname.replace('www.', ''));
         if (!iconUrl) setIconUrl(autoIconUrl);
-        if (!imageUrl) setImageUrl(autoImageUrl);
+        if (!imageUrl) setImageUrl(`${API_URL}/screenshot?url=${encodeURIComponent(urlToParse)}`);
       } catch (err) {
         // Ignore invalid URLs
       }

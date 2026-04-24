@@ -1,7 +1,7 @@
-import React from 'react';
-import * as styles from './SearchBar.styles';
-import { useSearchBar } from './useSearchBar';
-import { SearchIcon as SearchIconComponent } from '../../constants/icons.constants';
+import React from 'react'
+import * as styles from './SearchBar.styles'
+import { useSearchBar } from './useSearchBar'
+import { SearchIcon as SearchIconComponent } from '../../constants/icons.constants'
 
 const SearchBar: React.FC = () => {
   const {
@@ -10,7 +10,7 @@ const SearchBar: React.FC = () => {
     activeTag,
     setActiveTag,
     tags,
-  } = useSearchBar();
+  } = useSearchBar()
 
   return (
     <styles.Container>
@@ -37,7 +37,7 @@ const SearchBar: React.FC = () => {
         ))}
       </styles.TagFilters>
     </styles.Container>
-  );
-};
+  )
+}
 
-export default SearchBar;
+export default SearchBar

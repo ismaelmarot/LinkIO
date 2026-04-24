@@ -1,20 +1,5 @@
 [
   {
-    "id": 1777064463439,
-    "url": "https://www.youtube.com/",
-    "title": "youtube.com",
-    "subtitle": "subtítulo",
-    "description": "Descripción",
-    "imageUrl": "https://image.thum.io/get/https://www.youtube.com/",
-    "iconUrl": "https://www.google.com/s2/favicons?domain=www.youtube.com&sz=64",
-    "note": "Nota",
-    "tags": [
-      "Personal",
-      "Work"
-    ],
-    "createdAt": "2026-04-24T21:01:03.439Z"
-  },
-  {
     "id": 1776973827948,
     "url": "https://www.cta.gallery/",
     "title": "CTA",

@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export const Container = styled.div`
   min-height: 100vh;
@@ -8,7 +8,7 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   box-sizing: border-box;
-`;
+`
 
 export const Form = styled.form`
   width: 100%;
@@ -18,7 +18,7 @@ export const Form = styled.form`
   box-shadow: var(--shadow-card);
   overflow: hidden;
   box-sizing: border-box;
-`;
+`
 
 export const FormContent = styled.div`
   padding: var(--space-lg);
@@ -26,13 +26,13 @@ export const FormContent = styled.div`
   flex-direction: column;
   gap: var(--space-lg);
   box-sizing: border-box;
-`;
+`
 
 export const FieldGroup = styled.div`
   display: flex;
   flex-direction: column;
   gap: var(--space-xs);
-`;
+`
 
 export const Label = styled.label`
   font-size: var(--font-size-sm);
@@ -41,14 +41,14 @@ export const Label = styled.label`
   padding-left: 4px;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-`;
+`
 
 export const Input = styled.input`
   width: 100%;
   padding: var(--space-md) var(--space-md);
   background: var(--color-background);
   border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-xxl);
   font-size: var(--font-size-lg);
   color: var(--color-text-primary);
   outline: none;
@@ -68,7 +68,7 @@ export const Input = styled.input`
     border-color: var(--color-danger);
     box-shadow: 0 0 0 4px rgba(255, 59, 48, 0.15);
   }
-`;
+`
 
 export const TextArea = styled.textarea`
   width: 100%;
@@ -93,7 +93,7 @@ export const TextArea = styled.textarea`
     border-color: var(--color-primary);
     box-shadow: 0 0 0 4px rgba(0, 122, 255, 0.15);
   }
-`;
+`
 
 export const ImagePreview = styled.div`
   width: 100%;
@@ -111,7 +111,7 @@ export const ImagePreview = styled.div`
     height: 100%;
     object-fit: cover;
   }
-`;
+`
 
 export const UploadArea = styled.button`
   width: 100%;
@@ -142,7 +142,7 @@ export const UploadArea = styled.button`
     border-color: var(--color-primary);
     background: var(--color-primary-light);
   }
-`;
+`
 
 export const IconRow = styled.div`
   display: flex;
@@ -160,7 +160,7 @@ export const IconRow = styled.div`
     background: white;
     object-fit: contain;
   }
-`;
+`
 
 export const RemoveButton = styled.button`
   padding: var(--space-sm) var(--space-md);
@@ -175,13 +175,13 @@ export const RemoveButton = styled.button`
   &:hover {
     background: rgba(255, 59, 48, 0.1);
   }
-`;
+`
 
 export const TagsContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-sm);
-`;
+`
 
 export const TagChip = styled.button<{ $selected?: boolean }>`
   padding: var(--space-sm) var(--space-md);
@@ -198,7 +198,7 @@ export const TagChip = styled.button<{ $selected?: boolean }>`
     border-color: var(--color-primary);
     color: ${props => props.$selected ? 'white' : 'var(--color-primary)'};
   }
-`;
+`
 
 export const AddTagButton = styled.button`
   padding: var(--space-sm) var(--space-md);
@@ -214,13 +214,13 @@ export const AddTagButton = styled.button`
     background: var(--color-primary);
     color: white;
   }
-`;
+`
 
 export const PreviewButton = styled.button`
   padding: var(--space-md) var(--space-lg);
   background: var(--color-background);
   border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-xxl);
   font-size: var(--font-size-base);
   font-weight: 500;
   color: var(--color-text-primary);
@@ -236,24 +236,24 @@ export const PreviewButton = styled.button`
     border-color: var(--color-primary);
     color: var(--color-primary);
   }
-`;
+`
 
 export const ActionRow = styled.div`
   display: flex;
   justify-content: space-between;
   padding: var(--space-lg);
-  background: var(--color-background);
+  background: var(--color-card-bg);
   border-top: 1px solid var(--color-border);
   gap: var(--space-sm);
-`;
+`
 
 export const CancelButton = styled.button`
   flex: 1;
   padding: var(--space-md);
-  background: var(--color-background);
+  background: var(--surface-secondary);
   border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  font-size: var(--font-size-lg);
+  border-radius: var(--radius-xxl);
+  font-size: var(--font-size-base);
   font-weight: 500;
   color: var(--color-text-primary);
   cursor: pointer;
@@ -261,15 +261,15 @@ export const CancelButton = styled.button`
   &:hover {
     background: var(--color-border);
   }
-`;
+`
 
 export const SubmitButton = styled.button`
   flex: 1;
   padding: var(--space-md);
   background: var(--color-primary);
   border: none;
-  border-radius: var(--radius-md);
-  font-size: var(--font-size-lg);
+  border-radius: var(--radius-xxl);
+  font-size: var(--font-size-base);
   font-weight: 600;
   color: white;
   cursor: pointer;
@@ -283,17 +283,17 @@ export const SubmitButton = styled.button`
     opacity: 0.5;
     cursor: not-allowed;
   }
-`;
+`
 
 export const ErrorMessage = styled.span`
   font-size: var(--font-size-sm);
   color: var(--color-danger);
   padding-left: 4px;
-`;
+`
 
 export const HelperText = styled.p`
   font-size: var(--font-size-sm);
   color: var(--color-text-tertiary);
   padding-left: 4px;
   margin: 0;
-`;
+`

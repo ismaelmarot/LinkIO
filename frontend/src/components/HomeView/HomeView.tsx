@@ -1,39 +1,35 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import * as styles from './HomeView.styles';
-import { useHomeView } from './useHomeView';
-import * as Header from '../Header';
-import SearchBar from '../SearchBar';
-import LinkCard from '../LinkCard';
-import { AddIcon, LinkIcon } from '../../constants/icons.constants';
+import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import * as styles from './HomeView.styles'
+import { useHomeView } from './useHomeView'
+import * as Header from '../Header'
+import SearchBar from '../SearchBar'
+import LinkCard from '../LinkCard'
+import { AddIcon, LinkIcon } from '../../constants/icons.constants'
 
 const HomeView: React.FC = () => {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
   const {
     filteredLinks,
     links,
-    searchQuery,
-    setSearchQuery,
-    activeTag,
-    setActiveTag,
     deleteLink
-  } = useHomeView();
+  } = useHomeView()
   
-  const [deleteConfirm, setDeleteConfirm] = useState<{ id: number; title: string } | null>(null);
+  const [deleteConfirm, setDeleteConfirm] = useState<{ id: number; title: string } | null>(null)
 
   const handleDeleteConfirmYes = async () => {
     if (deleteConfirm) {
-      await deleteLink(deleteConfirm.id);
-      setDeleteConfirm(null);
+      await deleteLink(deleteConfirm.id)
+      setDeleteConfirm(null)
     }
-  };
+  }
 
   return (
     <styles.Container>
       <Header.HeaderContainer>
         <Header.Title>LinkIO</Header.Title>
         <Header.ActionButton onClick={() => navigate('/add')}>
-          <AddIcon size={18} color="white" />
+          <AddIcon size={18} color='white' />
           Agregar
         </Header.ActionButton>
       </Header.HeaderContainer>
@@ -158,7 +154,7 @@ const HomeView: React.FC = () => {
         </div>
       )}
     </styles.Container>
-  );
-};
+  )
+}
 
-export default HomeView;
+export default HomeView
