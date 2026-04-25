@@ -68,11 +68,13 @@ The app enables you to categorize links with tags, add descriptions and notes, s
 6. [Project Structure](#project-structure)
 7. [API Endpoints](#api-endpoints)
 8. [Desktop App](#desktop-app)
-9. [License](#license)
-10. [Contact](#contact)
+9. [Screenshots](#screenshots)
+10. [License](#license)
+11. [Contact](#contact)
 
 ---
 
+<a id="higlights"></a>
 ## 🌟 HIGHLIGHTS
 
 - Cross-platform desktop application with Electron
@@ -87,6 +89,7 @@ The app enables you to categorize links with tags, add descriptions and notes, s
 
 ---
 
+<a id="core-features"></a>
 ## ✨ CORE FEATURES
 
 | Feature | Description |
@@ -103,6 +106,7 @@ The app enables you to categorize links with tags, add descriptions and notes, s
 
 ---
 
+<a id="technologies-stack"></a>
 ## 🛠️ TECHNOLOGIES STACK
 
 | Category | Library / Tool | Version |
@@ -120,6 +124,7 @@ The app enables you to categorize links with tags, add descriptions and notes, s
 
 ---
 
+<a id="installation"></a>
 ## 🚀 INSTALLATION
 
 ### Prerequisites
@@ -169,6 +174,7 @@ npm run dist:win
 
 ---
 
+<a id="usage"></a>
 ## ⚙️ USAGE
 
 ### Getting Started
@@ -189,6 +195,7 @@ npm run dist:win
 
 ---
 
+<a id="project-structure"></a>
 ## 📂 PROJECT STRUCTURE
 
 ```
@@ -236,6 +243,7 @@ LINKIO
 
 ---
 
+<a id="api-endpoints"></a>
 ## 🔌 API ENDPOINTS
 
 ### Links
@@ -251,6 +259,7 @@ LINKIO
 
 ---
 
+<a id="database-schema"></a>
 ## 💾 DATABASE SCHEMA
 
 ### Link
@@ -273,6 +282,7 @@ LINKIO
 
 ---
 
+<a id="desktop-app"></a>
 ## 🖥️ DESKTOP APP
 
 ### Downloads
@@ -302,12 +312,19 @@ The built installers will be located in the `dist/` directory.
 
 ---
 
+<a id="screenshots"></a>
+9. [Screenshots](#screenshots)
+
+---
+
+<a id="license"></a>
 ## 📄 LICENSE
 
 This project is licensed under the MIT License - see the [LICENSE](/ismaelmarot/LinkIO/blob/main/LICENSE) file for details.
 
 ---
 
+<a id="contact"></a>
 ## 📬 CONTACT
 
 Open to collaboration, feedback, and new opportunities.
