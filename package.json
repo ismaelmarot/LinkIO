@@ -46,7 +46,14 @@
     },
     "files": [
       "frontend/build/**/*",
+      "backend/**/*",
       "electron/**/*"
+    ],
+    "extraResources": [
+      {
+        "from": "frontend/public/Linkio-icon.png",
+        "to": "Linkio-icon.png"
+      }
     ],
     "win": {
       "target": [

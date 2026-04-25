@@ -1,14 +1,16 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useI18n } from '../../app/i18n'
 import * as styles from './AddView.styles'
 import { useAddView } from './useAddView'
 import * as Header from '../Header'
 import { BackArrowIcon, UploadIcon } from '../../constants/icons.constants'
+import AddTagModal from '../AddTagModal/AddTagModal'
 
 const AddView: React.FC = () => {
   const navigate = useNavigate()
   const { t } = useI18n()
+  const [showTagModal, setShowTagModal] = useState(false)
   const {
     url, title, subtitle, description, note,
     selectedTags, availableTags,
@@ -135,10 +137,7 @@ const AddView: React.FC = () => {
               ))}
               <styles.AddTagButton
                 type="button"
-                onClick={() => {
-                  const newTag = prompt(t('add.new_tag_prompt'));
-                  if (newTag?.trim()) addNewTag(newTag.trim());
-                }}
+                onClick={() => setShowTagModal(true)}
               >
                 +
               </styles.AddTagButton>
@@ -155,6 +154,16 @@ const AddView: React.FC = () => {
           </styles.SubmitButton>
         </styles.ActionRow>
       </styles.Form>
+
+      <AddTagModal
+        isOpen={showTagModal}
+        onClose={() => setShowTagModal(false)}
+        onAdd={(tag) => addNewTag(tag)}
+        title={t('add.new_tag')}
+        placeholder={t('add.new_tag_placeholder')}
+        addButtonText={t('add.add')}
+        cancelButtonText={t('add.cancel')}
+      />
     </styles.Container>
   )
 }

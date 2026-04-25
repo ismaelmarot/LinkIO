@@ -1,5 +1,17 @@
 [
   {
+    "id": 1777082711773,
+    "url": "https://chatgpt.com/",
+    "title": "chatgpt.com",
+    "subtitle": "Subtitulo de chatgpt",
+    "description": "App de Chat GPT",
+    "imageUrl": "http://localhost:3001/api/links/screenshot?url=https%3A%2F%2Fchatgpt.com%2F",
+    "iconUrl": "https://www.google.com/s2/favicons?domain=chatgpt.com&sz=64",
+    "note": "la nota de ChatGPT",
+    "tags": [],
+    "createdAt": "2026-04-25T02:05:11.773Z"
+  },
+  {
     "id": 1777067477389,
     "url": "youtube.com",
     "title": "youtube.com",

@@ -231,18 +231,22 @@ export const TagChip = styled.button<{ $selected?: boolean }>`
 `;
 
 export const AddTagButton = styled.button`
-  padding: 8px var(--space-md);
-  background: rgba(253, 122, 45, 0.1);
-  border: 1px solid #fd7a2d;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  background: linear-gradient(135deg, rgb(253,122,45) 0%, rgb(245,28,81) 100%);
+  border: none;
   border-radius: var(--radius-full);
-  font-size: var(--font-size-sm);
-  font-weight: 500;
-  color: #fd7a2d;
+  font-size: 18px;
+  font-weight: 600;
+  color: white;
   cursor: pointer;
   
   &:hover {
     background: linear-gradient(135deg, rgb(200,95,35) 0%, rgb(180,20,60) 100%);
-    color: white;
   }
 `;
 

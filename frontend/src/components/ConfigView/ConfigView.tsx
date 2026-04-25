@@ -169,7 +169,7 @@ const ConfigView: React.FC = () => {
         {/* About Section */}
         <styles.AboutSection>
           <styles.AboutTitle>
-            <styles.AppIcon src="/Linkio-icon.png" alt="LinkIO" />
+            <styles.AppIcon src="./Linkio-icon.png" alt="LinkIO" />
             {t('config.about')}
           </styles.AboutTitle>
           <styles.AboutText>

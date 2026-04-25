@@ -1,15 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import * as styles from './EditLinkView.styles';
 import { useEditLinkView } from './useEditLinkView';
 import * as Header from '../Header';
 import { useI18n } from '../../app/i18n';
 import { BackArrowIcon, UploadIcon, GlobeIcon } from '../../constants/icons.constants';
+import AddTagModal from '../AddTagModal/AddTagModal';
 
 const EditLinkView: React.FC = () => {
   const navigate = useNavigate();
   const { id } = useParams<{ id: string }>();
   const { t } = useI18n();
+  const [showTagModal, setShowTagModal] = useState(false);
   const {
     url,
     title,
@@ -210,10 +212,7 @@ const EditLinkView: React.FC = () => {
                 ))}
                 <styles.AddTagButton
                   type="button"
-                  onClick={() => {
-                    const newTag = prompt('Nueva etiqueta:');
-                    if (newTag?.trim()) addNewTag(newTag.trim());
-                  }}
+                  onClick={() => setShowTagModal(true)}
                 >
                   +
                 </styles.AddTagButton>
@@ -231,6 +230,16 @@ const EditLinkView: React.FC = () => {
           </styles.ActionRow>
         </styles.FormCard>
       </styles.Content>
+
+      <AddTagModal
+        isOpen={showTagModal}
+        onClose={() => setShowTagModal(false)}
+        onAdd={(tag) => addNewTag(tag)}
+        title={t('add.new_tag')}
+        placeholder={t('add.new_tag_placeholder')}
+        addButtonText={t('add.add')}
+        cancelButtonText={t('add.cancel')}
+      />
     </styles.Container>
   );
 };

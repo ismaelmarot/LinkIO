@@ -41,6 +41,9 @@ const translations: Record<string, Translations> = {
     'add.upload_image': 'Subir imagen',
     'add.get_from_url': 'Se obtendrá de la URL',
     'add.new_tag_prompt': 'Nueva etiqueta:',
+    'add.new_tag': 'Nueva Etiqueta',
+    'add.new_tag_placeholder': 'Nombre de la etiqueta',
+    'add.add': 'Agregar',
     
     'edit.title': 'Editar',
     'edit.cancel': 'Cancelar',
@@ -134,6 +137,9 @@ const translations: Record<string, Translations> = {
     'add.upload_image': 'Upload image',
     'add.get_from_url': 'Will be obtained from URL',
     'add.new_tag_prompt': 'New tag:',
+    'add.new_tag': 'New Tag',
+    'add.new_tag_placeholder': 'Tag name',
+    'add.add': 'Add',
     
     'edit.title': 'Edit',
     'edit.cancel': 'Cancel',
