@@ -33,6 +33,7 @@ The app enables you to categorize links with tags, add descriptions and notes, s
 ## **Download**
 
 [![Download for macOS](https://img.shields.io/badge/Download-macOS-black?style=for-the-badge&logo=apple)](https://github.com/ismaelmarot/LinkIO/releases/download/v1.0.0/LinkIO-1.0.0.dmg)
+
 [![Download for Windows](https://img.shields.io/badge/Download-Windows-0078D4?style=for-the-badge&logo=windows)](https://github.com/ismaelmarot/LinkIO/archive/refs/tags/v1.0.0.zip)
 
 <br>
