@@ -294,6 +294,7 @@ export const AppIcon = styled.img`
   width: 48px;
   height: 48px;
   border-radius: var(--radius-lg);
+  object-fit: cover;
 `
 
 export const AboutText = styled.p`

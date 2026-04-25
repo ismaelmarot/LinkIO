@@ -447,7 +447,7 @@ export const ModalButtons = styled.div`
 export const ModalCancelBtn = styled.button`
   flex: 1;
   height: 48px;
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-xxl);
   font-size: var(--font-size-base);
   font-weight: 500;
   background: var(--surface-secondary);
@@ -464,7 +464,7 @@ export const ModalCancelBtn = styled.button`
 export const ModalDeleteBtn = styled.button`
   flex: 1;
   height: 48px;
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-xxl);
   font-size: var(--font-size-base);
   font-weight: 600;
   background: var(--color-danger);
