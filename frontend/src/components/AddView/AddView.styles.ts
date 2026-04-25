@@ -60,8 +60,8 @@ export const Input = styled.input`
   }
   
   &:focus {
-    border-color: var(--color-primary);
-    box-shadow: 0 0 0 4px rgba(0, 122, 255, 0.15);
+    border-color: #fd7a2d;
+    box-shadow: 0 0 0 4px rgba(253, 122, 45, 0.15);
   }
   
   &.error {
@@ -90,8 +90,8 @@ export const TextArea = styled.textarea`
   }
   
   &:focus {
-    border-color: var(--color-primary);
-    box-shadow: 0 0 0 4px rgba(0, 122, 255, 0.15);
+    border-color: #fd7a2d;
+    box-shadow: 0 0 0 4px rgba(253, 122, 45, 0.15);
   }
 `
 
@@ -127,7 +127,7 @@ export const UploadArea = styled.button`
   transition: all 0.2s ease;
   
   svg {
-    color: var(--color-primary);
+    color: #fd7a2d;
     opacity: 0.6;
     margin-bottom: var(--space-xs);
   }
@@ -139,8 +139,8 @@ export const UploadArea = styled.button`
   }
   
   &:hover {
-    border-color: var(--color-primary);
-    background: var(--color-primary-light);
+    border-color: #fd7a2d;
+    background: rgba(253, 122, 45, 0.1);
   }
 `
 
@@ -202,8 +202,8 @@ export const TagsContainer = styled.div`
 
 export const TagChip = styled.button<{ $selected?: boolean }>`
   padding: var(--space-sm) var(--space-md);
-  background: ${props => props.$selected ? 'var(--color-primary)' : 'var(--color-background)'};
-  border: 1px solid ${props => props.$selected ? 'var(--color-primary)' : 'var(--color-border)'};
+  background: ${props => props.$selected ? 'linear-gradient(135deg, rgb(253,122,45) 0%, rgb(245,28,81) 100%)' : 'var(--color-background)'};
+  border: 1px solid ${props => props.$selected ? 'linear-gradient(135deg, rgb(253,122,45) 0%, rgb(245,28,81) 100%)' : 'var(--color-border)'};
   border-radius: var(--radius-full);
   font-size: var(--font-size-base);
   font-weight: 500;
@@ -212,23 +212,23 @@ export const TagChip = styled.button<{ $selected?: boolean }>`
   transition: all 0.2s ease;
   
   &:hover {
-    border-color: var(--color-primary);
-    color: ${props => props.$selected ? 'white' : 'var(--color-primary)'};
+    border-color: #fd7a2d;
+    color: ${props => props.$selected ? 'white' : '#fd7a2d'};
   }
 `
 
 export const AddTagButton = styled.button`
   padding: var(--space-sm) var(--space-md);
-  background: var(--color-primary-light);
-  border: 1px solid var(--color-primary);
+  background: rgba(253, 122, 45, 0.1);
+  border: 1px solid #fd7a2d;
   border-radius: var(--radius-full);
   font-size: var(--font-size-base);
   font-weight: 500;
-  color: var(--color-primary);
+  color: #fd7a2d;
   cursor: pointer;
   
   &:hover {
-    background: var(--color-primary);
+    background: linear-gradient(135deg, rgb(200,95,35) 0%, rgb(180,20,60) 100%);
     color: white;
   }
 `
@@ -250,8 +250,8 @@ export const PreviewButton = styled.button`
   }
   
   &:not(:disabled):hover {
-    border-color: var(--color-primary);
-    color: var(--color-primary);
+    border-color: #fd7a2d;
+    color: #fd7a2d;
   }
 `
 
@@ -283,7 +283,7 @@ export const CancelButton = styled.button`
 export const SubmitButton = styled.button`
   flex: 1;
   padding: var(--space-md);
-  background: var(--color-primary);
+  background: linear-gradient(135deg, rgb(253,122,45) 0%, rgb(245,28,81) 100%);
   border: none;
   border-radius: var(--radius-xxl);
   font-size: var(--font-size-base);
@@ -293,7 +293,7 @@ export const SubmitButton = styled.button`
   transition: all 0.2s ease;
   
   &:hover:not(:disabled) {
-    background: var(--color-primary-dark);
+    background: linear-gradient(135deg, rgb(200,95,35) 0%, rgb(180,20,60) 100%);
   }
   
   &:disabled {

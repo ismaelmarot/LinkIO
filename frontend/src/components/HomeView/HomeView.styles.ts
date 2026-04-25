@@ -33,7 +33,7 @@ export const ActionButton = styled.button`
   align-items: center;
   gap: var(--space-xs);
   padding: var(--space-sm) var(--space-lg);
-  background-color: var(--color-primary);
+  background: linear-gradient(135deg, rgb(253,122,45) 0%, rgb(245,28,81) 100%);
   color: white;
   border: none;
   border-radius: var(--radius-xxl);
@@ -44,7 +44,7 @@ export const ActionButton = styled.button`
   box-shadow: var(--shadow-sm);
 
   &:hover {
-    background-color: var(--color-primary-dark);
+    background: linear-gradient(135deg, rgb(200,95,35) 0%, rgb(180,20,60) 100%);
     transform: translateY(-1px);
     box-shadow: var(--shadow-md);
   }

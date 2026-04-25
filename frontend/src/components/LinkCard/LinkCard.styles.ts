@@ -29,10 +29,10 @@ export const Container = styled.div`
   &:hover {
     transform: translateY(-4px);
     box-shadow: var(--shadow-card-hover);
-    border-color: var(--color-primary);
+    border-color: #fd7a2d;
     
     &::before {
-      border-color: var(--color-primary);
+      border-color: #fd7a2d;
     }
     
     img {
@@ -40,11 +40,11 @@ export const Container = styled.div`
     }
     
     .card-arrow span {
-      color: var(--color-primary);
+      color: #fd7a2d;
     }
     .card-arrow svg {
       transform: translateX(4px);
-      color: var(--color-primary);
+      color: #fd7a2d;
     }
   }
   
@@ -98,7 +98,7 @@ export const Icon = styled.div<{ $hasIcon?: boolean }>`
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  border: 1px solid ${({ $hasIcon }) => ($hasIcon ? 'var(--color-primary)' : 'var(--color-border)')};
+  border: 1px solid ${({ $hasIcon }) => ($hasIcon ? '#fd7a2d' : 'var(--color-border)')};
   transition: all 0.3s ease;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
   
@@ -170,7 +170,7 @@ export const Arrow = styled.div`
   
   span {
     font-size: var(--font-size-sm);
-    color: var(--color-primary);
+    color: #fd7a2d;
     font-weight: 500;
     letter-spacing: -0.2px;
     transition: color 0.3s ease;
@@ -179,7 +179,7 @@ export const Arrow = styled.div`
   svg {
     width: 16px;
     height: 16px;
-    color: var(--color-primary);
+    color: #fd7a2d;
     transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), color 0.3s ease;
   }
 `

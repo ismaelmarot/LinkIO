@@ -18,7 +18,7 @@ export const BackButton = styled.button`
   padding: var(--space-xs) var(--space-sm);
   background: transparent;
   border: none;
-  color: var(--color-primary);
+  color: #fd7a2d;
   font-size: var(--font-size-lg);
   font-weight: 400;
   cursor: pointer;
@@ -54,7 +54,7 @@ export const Title = styled.h1`
 
 export const ActionButton = styled.button<{ $variant?: 'primary' | 'secondary' }>`
   padding: var(--space-sm) var(--space-lg);
-  background-color: ${({ $variant }) => $variant === 'secondary' ? 'var(--color-background)' : 'var(--color-primary)'};
+  background: ${({ $variant }) => $variant === 'secondary' ? 'var(--color-background)' : 'linear-gradient(135deg, rgb(253,122,45) 0%, rgb(245,28,81) 100%)'};
   color: ${({ $variant }) => $variant === 'secondary' ? 'var(--color-text-primary)' : 'white'};
   border: ${({ $variant }) => $variant === 'secondary' ? '1px solid var(--color-border)' : 'none'};
   border-radius: var(--radius-xxl);
@@ -68,7 +68,7 @@ export const ActionButton = styled.button<{ $variant?: 'primary' | 'secondary' }
   box-shadow: ${({ $variant }) => $variant === 'secondary' ? 'none' : 'var(--shadow-sm)'};
   
   &:hover {
-    background-color: ${({ $variant }) => $variant === 'secondary' ? 'var(--color-border)' : 'var(--color-primary-dark)'};
+    background: ${({ $variant }) => $variant === 'secondary' ? 'var(--color-border)' : 'linear-gradient(135deg, rgb(200,95,35) 0%, rgb(180,20,60) 100%)'};
     transform: translateY(-1px);
     box-shadow: ${({ $variant }) => $variant === 'secondary' ? 'none' : 'var(--shadow-md)'};
   }

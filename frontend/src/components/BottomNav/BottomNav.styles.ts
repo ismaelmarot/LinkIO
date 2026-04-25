@@ -25,7 +25,7 @@ export const TabButton = styled.button<{ $active?: boolean }>`
   padding: var(--space-xs) var(--space-2xl);
   background: transparent;
   border: none;
-  color: ${props => props.$active ? 'var(--color-primary)' : 'var(--color-text-secondary)'};
+  color: ${props => props.$active ? '#fd7a2d' : 'var(--color-text-secondary)'};
   font-size: var(--font-size-sm);
   font-weight: ${props => props.$active ? '600' : '500'};
   cursor: pointer;
@@ -44,5 +44,5 @@ export const TabButton = styled.button<{ $active?: boolean }>`
 export const Label = styled.span<{ $active?: boolean }>`
   font-size: 10px;
   font-weight: ${props => props.$active ? '600' : '500'};
-  color: ${props => props.$active ? 'var(--color-primary)' : 'var(--color-text-secondary)'};
+  color: ${props => props.$active ? '#fd7a2d' : 'var(--color-text-secondary)'};
 `;

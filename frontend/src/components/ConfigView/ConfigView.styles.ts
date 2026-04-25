@@ -129,7 +129,7 @@ export const ToggleSlider = styled.span`
   }
   
   ${ToggleInput}:checked + & {
-    background-color: var(--color-primary);
+    background: linear-gradient(135deg, rgb(253,122,45) 0%, rgb(245,28,81) 100%);
     
     &:before {
       transform: translateX(20px);
@@ -155,8 +155,8 @@ export const Select = styled.select`
   
   &:focus {
     outline: none;
-    border-color: var(--color-primary);
-    box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.15);
+    border-color: #fd7a2d;
+    box-shadow: 0 0 0 3px rgba(253, 122, 45, 0.15);
   }
   
   &:hover:not(:focus) {
@@ -213,8 +213,8 @@ export const TagInput = styled.input`
   
   &:focus {
     outline: none;
-    border-color: var(--color-primary);
-    box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.15);
+    border-color: #fd7a2d;
+    box-shadow: 0 0 0 3px rgba(253, 122, 45, 0.15);
   }
   
   &:hover:not(:focus) {
@@ -224,7 +224,7 @@ export const TagInput = styled.input`
 
 export const AddTagButton = styled.button`
   padding: var(--space-sm) var(--space-md);
-  background-color: var(--color-primary);
+  background: linear-gradient(135deg, rgb(253,122,45) 0%, rgb(245,28,81) 100%);
   color: white;
   border: none;
   border-radius: var(--radius-md);
@@ -234,7 +234,7 @@ export const AddTagButton = styled.button`
   transition: all 0.2s ease;
   
   &:hover {
-    background-color: var(--color-primary-dark);
+    background: linear-gradient(135deg, rgb(200,95,35) 0%, rgb(180,20,60) 100%);
     transform: translateY(-1px);
   }
   
@@ -254,15 +254,15 @@ export const TagItem = styled.div<{ $isRemovable?: boolean }>`
   align-items: center;
   gap: 4px;
   padding: 6px var(--space-sm);
-  background-color: var(--color-primary-light);
+  background-color: rgba(253, 122, 45, 0.1);
   border-radius: var(--radius-full);
   font-size: var(--font-size-sm);
-  color: var(--color-primary);
+  color: #fd7a2d;
   
   button {
     background: none;
     border: none;
-    color: var(--color-primary);
+    color: #fd7a2d;
     font-size: var(--font-size-sm);
     cursor: pointer;
     padding: 0;

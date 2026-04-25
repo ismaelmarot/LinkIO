@@ -126,7 +126,7 @@ const ConfigView: React.FC = () => {
                   disabled={!newTag.trim()}
                   style={{
                     padding: '12px 20px',
-                    backgroundColor: !newTag.trim() ? '#e0e0e0' : '#007aff',
+                    backgroundColor: !newTag.trim() ? '#e0e0e0' : 'linear-gradient(135deg, rgb(253,122,45) 0%, rgb(245,28,81) 100%)',
                     color: !newTag.trim() ? '#666' : 'white',
                     border: 'none',
                     borderRadius: '34px',
@@ -192,10 +192,10 @@ const ConfigView: React.FC = () => {
             disabled={isSaving}
             style={{
               padding: '14px 32px',
-              backgroundColor: isSaving ? '#e0e0e0' : '#007aff',
+              background: isSaving ? '#e0e0e0' : 'linear-gradient(135deg, rgb(253,122,45) 0%, rgb(245,28,81) 100%)',
               color: isSaving ? '#666' : 'white',
               border: 'none',
-              borderRadius: '12px',
+              borderRadius: '35px',
               fontSize: '16px',
               fontWeight: '600',
               cursor: isSaving ? 'not-allowed' : 'pointer',

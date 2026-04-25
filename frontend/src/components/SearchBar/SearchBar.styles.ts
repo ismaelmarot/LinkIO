@@ -42,8 +42,8 @@ export const SearchInput = styled.input`
   
   &:focus {
     outline: none;
-    border-color: var(--color-primary);
-    box-shadow: 0 0 0 4px rgba(0, 122, 255, 0.1);
+    border-color: #fd7a2d;
+    box-shadow: 0 0 0 4px rgba(253, 122, 45, 0.1);
   }
   
   &:hover:not(:focus) {
@@ -62,15 +62,15 @@ export const TagButton = styled.button<{ $active: boolean }>`
   border-radius: var(--radius-full);
   font-size: var(--font-size-sm);
   font-weight: 500;
-  border: 1px solid ${({ $active }) => ($active ? 'var(--color-primary)' : 'var(--color-border)')};
-  background-color: ${({ $active }) => ($active ? 'var(--color-primary)' : 'var(--color-card-bg)')};
+  border: 1px solid ${({ $active }) => ($active ? 'linear-gradient(135deg, rgb(253,122,45) 0%, rgb(245,28,81) 100%)' : 'var(--color-border)')};
+  background-color: ${({ $active }) => ($active ? 'linear-gradient(135deg, rgb(253,122,45) 0%, rgb(245,28,81) 100%)' : 'var(--color-card-bg)')};
   color: ${({ $active }) => ($active ? 'white' : 'var(--color-text-secondary)')};
   cursor: pointer;
   transition: all 0.2s ease;
   
   &:hover:not(:disabled) {
-    border-color: var(--color-primary);
-    color: ${({ $active }) => ($active ? 'white' : 'var(--color-primary)')};
+    border-color: #fd7a2d;
+    color: ${({ $active }) => ($active ? 'white' : '#fd7a2d')};
     transform: translateY(-1px);
   }
   

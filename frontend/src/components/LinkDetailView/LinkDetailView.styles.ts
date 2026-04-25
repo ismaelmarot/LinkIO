@@ -109,7 +109,7 @@ export const URLWrapper = styled.div`
 
 export const URL = styled.a`
   font-size: var(--font-size-sm);
-  color: var(--color-primary);
+  color: #fd7a2d;
   text-decoration: none;
   flex: 1;
   overflow: hidden;
@@ -233,10 +233,10 @@ export const ActionBtn = styled.button<{ $variant?: 'primary' | 'danger' }>`
       `
     }
     return `
-      background: var(--color-primary);
+      background: linear-gradient(135deg, rgb(253,122,45) 0%, rgb(245,28,81) 100%);
       color: white;
       
-      &:hover { background: var(--color-primary-dark); }
+      &:hover { background: linear-gradient(135deg, rgb(200,95,35) 0%, rgb(180,20,60) 100%); }
       &:active { opacity: 0.9; }
     `
   }}
@@ -331,11 +331,11 @@ export const LoadingWrapper = styled.div`
   justify-content: center;
   gap: var(--space-md);
   
-  .spinner {
+.spinner {
     width: 32px;
     height: 32px;
     border: 3px solid var(--color-border);
-    border-top-color: var(--color-primary);
+    border-top-color: #fd7a2d;
     border-radius: 50%;
     animation: spin 1s linear infinite;
   }
@@ -376,7 +376,7 @@ export const ErrorWrapper = styled.div`
 
 export const BackBtn = styled.button`
   padding: 14px 28px;
-  background: var(--color-primary);
+  background: linear-gradient(135deg, rgb(253,122,45) 0%, rgb(245,28,81) 100%);
   color: white;
   border: none;
   border-radius: var(--radius-md);
@@ -385,7 +385,7 @@ export const BackBtn = styled.button`
   cursor: pointer;
   
   &:hover {
-    background: var(--color-primary-dark);
+    background: linear-gradient(135deg, rgb(200,95,35) 0%, rgb(180,20,60) 100%);
   }
 `
 

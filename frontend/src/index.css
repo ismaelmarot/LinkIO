@@ -1,9 +1,10 @@
 /* Apple-inspired global styles - Modern Minimalist Design */
 :root {
   /* Color Palette - Light Mode (Default) */
-  --color-primary: #007aff;
-  --color-primary-dark: #0051d5;
-  --color-primary-light: #e8f4fd;
+  --color-primary: #fd7a2d;
+  --color-primary-dark: #f51c51;
+  --color-primary-light: #fef0e8;
+  --color-primary-gradient: linear-gradient(135deg, rgb(253,122,45) 0%, rgb(245,28,81) 100%);
   --color-danger: #ff3b30;
   --color-success: #34c759;
   --color-warning: #ff9500;
@@ -58,11 +59,20 @@
   --surface-tertiary: #e5e5ea;
 }
 
+/* Gradient classes */
+.gradient-primary {
+  background: linear-gradient(135deg, rgb(253,122,45) 0%, rgb(245,28,81) 100%);
+}
+
+.gradient-primary-dark {
+  background: linear-gradient(135deg, rgb(200,95,35) 0%, rgb(180,20,60) 100%);
+}
+
 /* Dark Mode */
 [data-theme="dark"] {
-  --color-primary: #0a84ff;
-  --color-primary-dark: #0066cc;
-  --color-primary-light: #1c3a4f;
+  --color-primary: #ff8040;
+  --color-primary-dark: #ff4070;
+  --color-primary-light: #3d2525;
   --color-danger: #ff453a;
   --color-success: #30d158;
   --color-warning: #ff9f0a;
@@ -86,9 +96,9 @@
 /* Auto dark mode based on system preference */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --color-primary: #0a84ff;
-    --color-primary-dark: #0066cc;
-    --color-primary-light: #1c3a4f;
+    --color-primary: #ff8040;
+    --color-primary-dark: #ff4070;
+    --color-primary-light: #3d2525;
     --color-danger: #ff453a;
     --color-success: #30d158;
     --color-warning: #ff9f0a;

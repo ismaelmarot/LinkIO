@@ -5,11 +5,10 @@ let mainWindow;
 
 function createWindow() {
   mainWindow = new BrowserWindow({
-    width: 1200,
-    height: 800,
-    minWidth: 800,
-    minHeight: 600,
+    width: 430,
+    height: 932,
     title: 'LinkIO',
+    resizable: false,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
       contextIsolation: true,
@@ -17,11 +16,14 @@ function createWindow() {
     },
   });
 
-  if (process.env.NODE_ENV === 'development') {
+  const isDev = !app.isPackaged;
+
+  if (isDev) {
     mainWindow.loadURL('http://localhost:3000');
     mainWindow.webContents.openDevTools();
   } else {
-    mainWindow.loadFile(path.join(__dirname, '../frontend/build/index.html'));
+    const indexPath = path.join(__dirname, '../frontend/build/index.html');
+    mainWindow.loadFile(indexPath);
   }
 
   const menuTemplate = [
