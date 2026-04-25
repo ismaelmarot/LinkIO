@@ -313,7 +313,15 @@ The built installers will be located in the `dist/` directory.
 ---
 
 <a id="screenshots"></a>
-9. [Screenshots](#screenshots)
+## 📸 [Screenshots](#screenshots)
+
+>### 🖥️ Mobile
+
+<p align="center">
+  <img src="assets/captures/capture_01.png" width="280"/>
+  <img src="assets/captures/capture_02.png" width="280"/>
+  <img src="assets/captures/capture_03.png" width="280"/>
+</p>
 
 ---
 
