@@ -1,6 +1,6 @@
 # LINKIO
 
-![LinkIO Icon](/frontend/public/Linkio-icon.png)
+<img src="/assets/icons/linkio-app-icon.png" alt="Icon Cap" width="150">
 
 ***LinkIO is a desktop link manager application that helps you organize, save and quickly access all your favorite links with a clean and modern interface inspired by Apple design.***
 
