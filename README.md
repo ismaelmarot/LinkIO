@@ -26,14 +26,18 @@ The app enables you to categorize links with tags, add descriptions and notes, s
 
 ![Electron](https://img.shields.io/badge/Electron-41-47848F?style=for-the-badge&logo=electron&logoColor=white)
 
----
+<br>
+
+----------------------------------
 
 ## **Download**
 
-[![Download for macOS](https://img.shields.io/badge/Download-macOS-black?style=for-the-badge&logo=apple)](https://github.com/ismaelmarot/LinkIO/releases)
-[![Download for Windows](https://img.shields.io/badge/Download-Windows-0078D4?style=for-the-badge&logo=windows)](https://github.com/ismaelmarot/LinkIO/releases)
+[![Download for macOS](https://img.shields.io/badge/Download-macOS-black?style=for-the-badge&logo=apple)](https://github.com/ismaelmarot/LinkIO/releases/download/v1.0.0/LinkIO-1.0.0.dmg)
+[![Download for Windows](https://img.shields.io/badge/Download-Windows-0078D4?style=for-the-badge&logo=windows)](https://github.com/ismaelmarot/LinkIO/archive/refs/tags/v1.0.0.zip)
 
----
+<br>
+
+----------------------------------
 
 ## What It Does?
 
@@ -45,7 +49,9 @@ The app enables you to categorize links with tags, add descriptions and notes, s
 - **Dark/Light Mode**: System-aware theme with manual override options
 - **Cross-Platform**: Works on macOS and Windows as a native desktop app
 
----
+<br>
+
+----------------------------------
 
 ## 🛠️ INFRASTRUCTURE & SERVICES
 
@@ -56,7 +62,9 @@ The app enables you to categorize links with tags, add descriptions and notes, s
 | **Backend** | ![Node.js](https://img.shields.io/badge/Node.js-22-339933?style=flat) | Express.js backend API |
 | **Styling** | ![Styled](https://img.shields.io/badge/styled--components-DB7093?style=flat) | CSS-in-JS styling with styled-components |
 
----
+<br>
+
+----------------------------------
 
 ## 📑 TABLE OF CONTENT
 
@@ -72,7 +80,9 @@ The app enables you to categorize links with tags, add descriptions and notes, s
 10. [License](#license)
 11. [Contact](#contact)
 
----
+<br>
+
+----------------------------------
 
 <a id="higlights"></a>
 ## 🌟 HIGHLIGHTS
@@ -87,7 +97,9 @@ The app enables you to categorize links with tags, add descriptions and notes, s
 - Local backend API for data persistence
 - No external database dependencies
 
----
+<br>
+
+----------------------------------
 
 <a id="core-features"></a>
 ## ✨ CORE FEATURES
@@ -104,7 +116,9 @@ The app enables you to categorize links with tags, add descriptions and notes, s
 | Language Support | Toggle between English and Spanish |
 | Import/Export | Data persists via local backend API |
 
----
+<br>
+
+----------------------------------
 
 <a id="technologies-stack"></a>
 ## 🛠️ TECHNOLOGIES STACK
@@ -122,7 +136,9 @@ The app enables you to categorize links with tags, add descriptions and notes, s
 | Backend Language | Node.js | ^22.0.0 |
 | Desktop Builder | electron-builder | ^24.0.0 |
 
----
+<br>
+
+----------------------------------
 
 <a id="installation"></a>
 ## 🚀 INSTALLATION
@@ -172,7 +188,9 @@ npm run dist:mac
 npm run dist:win
 ```
 
----
+<br>
+
+----------------------------------
 
 <a id="usage"></a>
 ## ⚙️ USAGE
@@ -193,7 +211,9 @@ npm run dist:win
 - **Link Detail**: View full link information with edit/delete options
 - **Settings**: Configure appearance (light/dark/system) and language
 
----
+<br>
+
+----------------------------------
 
 <a id="project-structure"></a>
 ## 📂 PROJECT STRUCTURE
@@ -241,7 +261,9 @@ LINKIO
 └── package.json
 ```
 
----
+<br>
+
+----------------------------------
 
 <a id="api-endpoints"></a>
 ## 🔌 API ENDPOINTS
@@ -257,7 +279,9 @@ LINKIO
 | DELETE | /api/links/:id | Delete link |
 | GET | /api/links/screenshot | Get screenshot for URL |
 
----
+<br>
+
+----------------------------------
 
 <a id="database-schema"></a>
 ## 💾 DATABASE SCHEMA
@@ -310,7 +334,9 @@ npm run dist
 
 The built installers will be located in the `dist/` directory.
 
----
+<br>
+
+----------------------------------
 
 <a id="screenshots"></a>
 ## 📸 [Screenshots](#screenshots)
@@ -323,14 +349,18 @@ The built installers will be located in the `dist/` directory.
   <img src="assets/captures/capture_03.png" width="280"/>
 </p>
 
----
+<br>
+
+----------------------------------
 
 <a id="license"></a>
 ## 📄 LICENSE
 
 This project is licensed under the MIT License - see the [LICENSE](/ismaelmarot/LinkIO/blob/main/LICENSE) file for details.
 
----
+<br>
+
+----------------------------------
 
 <a id="contact"></a>
 ## 📬 CONTACT
