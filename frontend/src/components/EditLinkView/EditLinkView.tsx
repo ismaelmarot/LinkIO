@@ -1,17 +1,17 @@
-import React, { useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
-import * as styles from './EditLinkView.styles';
-import { useEditLinkView } from './useEditLinkView';
-import * as Header from '../Header';
-import { useI18n } from '../../app/i18n';
-import { BackArrowIcon, UploadIcon, GlobeIcon } from '../../constants/icons.constants';
-import AddTagModal from '../AddTagModal/AddTagModal';
+import React, { useState } from 'react'
+import { useNavigate, useParams } from 'react-router-dom'
+import * as styles from './EditLinkView.styles'
+import { useEditLinkView } from './useEditLinkView'
+import * as Header from '../Header'
+import { useI18n } from '../../app/i18n'
+import { BackArrowIcon, UploadIcon, GlobeIcon } from '../../constants'
+import AddTagModal from '../AddTagModal/AddTagModal'
 
 const EditLinkView: React.FC = () => {
-  const navigate = useNavigate();
-  const { id } = useParams<{ id: string }>();
-  const { t } = useI18n();
-  const [showTagModal, setShowTagModal] = useState(false);
+  const navigate = useNavigate()
+  const { id } = useParams<{ id: string }>()
+  const { t } = useI18n()
+  const [showTagModal, setShowTagModal] = useState(false)
   const {
     url,
     title,
@@ -37,7 +37,7 @@ const EditLinkView: React.FC = () => {
     addNewTag,
     fetchLinkPreview,
     handleSubmit
-  } = useEditLinkView();
+  } = useEditLinkView()
 
   const translateTag = (tag: string): string => {
     if (tag === 'Favorites') return t('home.tag_favorites')
@@ -47,8 +47,8 @@ const EditLinkView: React.FC = () => {
   }
 
   const handleBack = () => {
-    navigate(`/link/${id}`);
-  };
+    navigate(`/link/${id}`)
+  }
 
   if (loading) {
     return (
@@ -66,7 +66,7 @@ const EditLinkView: React.FC = () => {
           <p>Cargando...</p>
         </styles.LoadingContainer>
       </styles.Container>
-    );
+    )
   }
 
   if (error) {
@@ -88,7 +88,7 @@ const EditLinkView: React.FC = () => {
           </styles.ErrorButton>
         </styles.ErrorContainer>
       </styles.Container>
-    );
+    )
   }
 
   return (
@@ -241,7 +241,7 @@ const EditLinkView: React.FC = () => {
         cancelButtonText={t('add.cancel')}
       />
     </styles.Container>
-  );
-};
+  )
+}
 
-export default EditLinkView;
+export default EditLinkView

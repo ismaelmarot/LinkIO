@@ -1,9 +1,9 @@
 import { useNavigate } from 'react-router-dom'
-import { WebsiteIcon, ArrowIcon } from '../../constants/icons.constants'
+import { useI18n } from '../../app/i18n'
 import type { LinkCardProps, Tag } from '../../interface'
+import { WebsiteIcon, ArrowIcon } from '../../constants'
 import { useLinkCard } from './useLinkCard'
 import * as styles from './LinkCard.styles'
-import { useI18n } from '../../app/i18n'
 
 const LinkCard: React.FC<LinkCardProps> = ({
   imageUrl,

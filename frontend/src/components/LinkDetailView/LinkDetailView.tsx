@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react'
+import { useI18n } from '../../app/i18n'
 import { useNavigate, useParams } from 'react-router-dom'
 import * as styles from './LinkDetailView.styles'
 import * as Header from '../Header'
-import { BackArrowIcon, EditIcon, TrashIcon, GlobeIcon, ExternalLinkIcon, CopyIcon, ChevronDownIcon } from '../../constants/icons.constants'
-import { useI18n } from '../../app/i18n'
-
-const API_URL = 'http://localhost:3001/api/links'
+import { API_URL } from '../../constants'
+import { BackArrowIcon, EditIcon, TrashIcon, GlobeIcon, ExternalLinkIcon, CopyIcon, ChevronDownIcon } from '../../constants'
 
 const LinkDetailView: React.FC = () => {
   const navigate = useNavigate()

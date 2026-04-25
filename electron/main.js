@@ -1,35 +1,7 @@
-const { app, BrowserWindow, Menu, ipcMain } = require('electron');
+const { app, BrowserWindow, Menu } = require('electron');
 const path = require('path');
-const { spawn } = require('child_process');
 
 let mainWindow;
-let backendProcess;
-
-function startBackend() {
-  const isWindows = process.platform === 'win32';
-  const isMac = process.platform === 'darwin';
-  
-  const backendPath = path.join(__dirname, '../backend/src');
-  
-  backendProcess = spawn(isWindows ? 'node.cmd' : 'node', ['index.js'], {
-    cwd: backendPath,
-    env: { ...process.env, PORT: '3001' },
-    stdio: 'pipe',
-    shell: isMac ? '/bin/bash' : true
-  });
-
-  backendProcess.stdout.on('data', (data) => {
-    console.log(`Backend: ${data}`);
-  });
-
-  backendProcess.stderr.on('data', (data) => {
-    console.error(`Backend error: ${data}`);
-  });
-
-  backendProcess.on('error', (error) => {
-    console.error('Failed to start backend:', error);
-  });
-}
 
 function createWindow() {
   mainWindow = new BrowserWindow({
@@ -37,9 +9,6 @@ function createWindow() {
     height: 932,
     title: 'LinkIO',
     resizable: false,
-    maximizable: false,
-    minimizable: true,
-    fullscreenable: false,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
       contextIsolation: true,
@@ -51,26 +20,67 @@ function createWindow() {
 
   if (isDev) {
     mainWindow.loadURL('http://localhost:3000');
+    mainWindow.webContents.openDevTools();
   } else {
     const indexPath = path.join(__dirname, '../frontend/build/index.html');
     mainWindow.loadFile(indexPath);
   }
 
+  const menuTemplate = [
+    {
+      label: app.name,
+      submenu: [
+        { role: 'about' },
+        { type: 'separator' },
+        { role: 'quit' }
+      ]
+    },
+    {
+      label: 'Edit',
+      submenu: [
+        { role: 'undo' },
+        { role: 'redo' },
+        { type: 'separator' },
+        { role: 'cut' },
+        { role: 'copy' },
+        { role: 'paste' },
+        { role: 'selectall' }
+      ]
+    },
+    {
+      label: 'View',
+      submenu: [
+        { role: 'reload' },
+        { role: 'forceReload' },
+        { role: 'toggleDevTools' },
+        { type: 'separator' },
+        { role: 'resetZoom' },
+        { role: 'zoomIn' },
+        { role: 'zoomOut' },
+        { type: 'separator' },
+        { role: 'togglefullscreen' }
+      ]
+    },
+    {
+      label: 'Window',
+      submenu: [
+        { role: 'minimize' },
+        { role: 'zoom' },
+        { role: 'close' }
+      ]
+    }
+  ];
+
+  const menu = Menu.buildFromTemplate(menuTemplate);
+  Menu.setApplicationMenu(menu);
+
   mainWindow.on('closed', () => {
     mainWindow = null;
   });
-
-  if (isDev) {
-    mainWindow.webContents.openDevTools();
-  }
 }
 
 app.whenReady().then(() => {
-  startBackend();
-  
-  setTimeout(() => {
-    createWindow();
-  }, 2000);
+  createWindow();
 
   app.on('activate', () => {
     if (BrowserWindow.getAllWindows().length === 0) {
@@ -80,16 +90,7 @@ app.whenReady().then(() => {
 });
 
 app.on('window-all-closed', () => {
-  if (backendProcess) {
-    backendProcess.kill();
-  }
   if (process.platform !== 'darwin') {
     app.quit();
-  }
-});
-
-app.on('before-quit', () => {
-  if (backendProcess) {
-    backendProcess.kill();
   }
 });

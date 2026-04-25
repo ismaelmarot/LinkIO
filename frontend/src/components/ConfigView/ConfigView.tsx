@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
-const APP_VERSION = '1.0.0';
 import { useNavigate } from 'react-router-dom'
-import * as styles from './ConfigView.styles'
-import { useConfigView } from './useConfigView'
+import { BackArrowIcon, AddIcon, APP_VERSION } from '../../constants'
 import * as Header from '../Header'
-import { BackArrowIcon, ArrowIcon } from '../../constants/icons.constants'
+import { useConfigView } from './useConfigView'
+import * as styles from './ConfigView.styles'
+import { TagInputRow } from './ConfigView.styles'
 
 const ConfigView: React.FC = () => {
   const navigate = useNavigate()
@@ -38,69 +38,55 @@ const ConfigView: React.FC = () => {
         <styles.Section>
           <styles.SectionHeader>{t('config.appearance')}</styles.SectionHeader>
           <styles.SectionContent>
-            <styles.SettingRow>
-              <styles.SettingLabel>
-                <span>{t('config.mode')}</span>
-                <span>{t('config.mode_desc')}</span>
-              </styles.SettingLabel>
-              <div style={{ display: 'flex', gap: '12px' }}>
-                <label style={{ display: 'flex', alignItems: 'center', cursor: 'pointer' }}>
-                  <input
-                    type="radio"
-                    name="appearance"
-                    value="light"
-                    checked={appearanceMode === 'light'}
-                    onChange={(e) => setAppearanceMode(e.target.value as 'light')}
-                  />
-                  <span style={{ marginLeft: '8px' }}>{t('config.light')}</span>
-                </label>
-                <label style={{ display: 'flex', alignItems: 'center', cursor: 'pointer' }}>
-                  <input
-                    type="radio"
-                    name="appearance"
-                    value="dark"
-                    checked={appearanceMode === 'dark'}
-                    onChange={(e) => setAppearanceMode(e.target.value as 'dark')}
-                  />
-                  <span style={{ marginLeft: '8px' }}>{t('config.dark')}</span>
-                </label>
-                <label style={{ display: 'flex', alignItems: 'center', cursor: 'pointer' }}>
-                  <input
-                    type="radio"
-                    name="appearance"
-                    value="auto"
-                    checked={appearanceMode === 'auto'}
-                    onChange={(e) => setAppearanceMode(e.target.value as 'auto')}
-                  />
-                  <span style={{ marginLeft: '8px' }}>{t('config.system')}</span>
-                </label>
-              </div>
-            </styles.SettingRow>
+            <styles.SettingLabel>
+              <span>{t('config.mode')}</span>
+              <span style={{ fontSize: '12px', color: 'var(--color-text-tertiary)', marginBottom: '.5rem' }}>{t('config.mode_desc')}</span>
+            </styles.SettingLabel>
+            <styles.SegmentedControl>
+              <styles.SegmentButton 
+                $active={appearanceMode === 'light'}
+                onClick={() => setAppearanceMode('light')}
+              >
+                {t('config.light')}
+              </styles.SegmentButton>
+              <styles.SegmentButton 
+                $active={appearanceMode === 'dark'}
+                onClick={() => setAppearanceMode('dark')}
+              >
+                {t('config.dark')}
+              </styles.SegmentButton>
+              <styles.SegmentButton 
+                $active={appearanceMode === 'auto'}
+                onClick={() => setAppearanceMode('auto')}
+              >
+                {t('config.system')}
+              </styles.SegmentButton>
+            </styles.SegmentedControl>
           </styles.SectionContent>
         </styles.Section>
         
         {/* Language Section */}
         <styles.Section>
-          <styles.SectionHeader>Idioma</styles.SectionHeader>
+          <styles.SectionHeader>{t('config.language')}</styles.SectionHeader>
           <styles.SectionContent>
-            <styles.SettingRow>
-              <styles.SettingLabel>
-                <span>{t('config.language')}</span>
-                <span>{t('config.language_desc')}</span>
-              </styles.SettingLabel>
-              <styles.SelectContainer>
-                <styles.Select
-                  value={language}
-                  onChange={(e) => setLanguage(e.target.value)}
-                >
-                  <option value="es">Español</option>
-                  <option value="en">English</option>
-                </styles.Select>
-                 <styles.SelectArrow>
-                   <ArrowIcon size={24} color="currentColor" />
-                 </styles.SelectArrow>
-              </styles.SelectContainer>
-            </styles.SettingRow>
+            <styles.SettingLabel>
+              <span>{t('config.language')}</span>
+              <span style={{ fontSize: '12px', color: 'var(--color-text-tertiary)', marginBottom: '.5rem' }}>{t('config.language_desc')}</span>
+            </styles.SettingLabel>
+            <styles.LanguageSelector>
+              <styles.LanguageButton 
+                $active={language === 'es'}
+                onClick={() => setLanguage('es')}
+              >
+                Español
+              </styles.LanguageButton>
+              <styles.LanguageButton 
+                $active={language === 'en'}
+                onClick={() => setLanguage('en')}
+              >
+                English
+              </styles.LanguageButton>
+            </styles.LanguageSelector>
           </styles.SectionContent>
         </styles.Section>
         
@@ -108,61 +94,37 @@ const ConfigView: React.FC = () => {
         <styles.Section>
           <styles.SectionHeader>{t('config.tags')}</styles.SectionHeader>
           <styles.SectionContent>
-            <styles.TagsSection>
-              <styles.TagInputContainer>
-                <styles.TagInput
-                  placeholder={t('config.new_tag')}
-                  value={newTag}
-                  onChange={(e) => setNewTag(e.target.value)}
-                  onKeyPress={(e) => {
-                    if (e.key === 'Enter') {
-                      handleAddTag();
-                    }
-                  }}
-                />
-                <button
-                  type="button"
-                  onClick={handleAddTag}
-                  disabled={!newTag.trim()}
-                  style={{
-                    padding: '12px 20px',
-                    backgroundColor: !newTag.trim() ? '#e0e0e0' : 'linear-gradient(135deg, rgb(253,122,45) 0%, rgb(245,28,81) 100%)',
-                    color: !newTag.trim() ? '#666' : 'white',
-                    border: 'none',
-                    borderRadius: '34px',
-                    fontSize: '15px',
-                    fontWeight: '600',
-                    cursor: !newTag.trim() ? 'not-allowed' : 'pointer',
-                    transition: 'all 0.2s ease'
-                  }}
-                >
-                  {t('config.add_tag')}
-                </button>
-              </styles.TagInputContainer>
-              
-              {tags.length > 0 && (
-                <styles.TagsList>
-                  {tags.map((tag, index) => (
-                    <styles.TagItem
-                      key={index}
-                      $isRemovable={true}
-                    >
-                      <span>{tag}</span>
-                      <button
-                        type="button"
-                        onClick={() => handleRemoveTag(tag)}
-                        style={{
-                          padding: '0',
-                          marginLeft: '4px'
-                        }}
-                      >
-                        ×
-                      </button>
-                    </styles.TagItem>
-                  ))}
-                </styles.TagsList>
-              )}
-            </styles.TagsSection>
+            <TagInputRow>
+              <styles.TagInputStyled
+                placeholder={t('config.new_tag')}
+                value={newTag}
+                onChange={(e) => setNewTag(e.target.value)}
+                onKeyPress={(e) => {
+                  if (e.key === 'Enter') {
+                    handleAddTag(newTag, setNewTag);
+                  }
+                }}
+              />
+              <styles.AddButton 
+                onClick={() => handleAddTag(newTag, setNewTag)}
+                disabled={!newTag.trim()}
+              >
+                <AddIcon size={20} />
+              </styles.AddButton>
+            </TagInputRow>
+            
+            {tags.length > 0 && (
+              <styles.TagList>
+                {tags.map((tag, index) => (
+                  <styles.TagChip key={index}>
+                    <span>{tag}</span>
+                    <styles.RemoveButton onClick={() => handleRemoveTag(tag)}>
+                      ×
+                    </styles.RemoveButton>
+                  </styles.TagChip>
+                ))}
+              </styles.TagList>
+            )}
           </styles.SectionContent>
         </styles.Section>
         
@@ -185,13 +147,14 @@ const ConfigView: React.FC = () => {
         </styles.AboutSection>
         
         {/* Save Button */}
-        <div style={{ textAlign: 'center', marginTop: '32px' }}>
+        <div style={{ textAlign: 'center', marginTop: '32px', marginBottom: '40px' }}>
           <button
             type="button"
             onClick={handleSaveSettings}
             disabled={isSaving}
             style={{
-              padding: '14px 32px',
+              width: '100%',
+              padding: '16px 32px',
               background: isSaving ? '#e0e0e0' : 'linear-gradient(135deg, rgb(253,122,45) 0%, rgb(245,28,81) 100%)',
               color: isSaving ? '#666' : 'white',
               border: 'none',
@@ -199,8 +162,7 @@ const ConfigView: React.FC = () => {
               fontSize: '16px',
               fontWeight: '600',
               cursor: isSaving ? 'not-allowed' : 'pointer',
-              transition: 'all 0.2s ease',
-              transform: isSaving ? 'scale(0.98)' : 'translateY(0)'
+              transition: 'all 0.2s ease'
             }}
           >
             {isSaving ? t('config.saving') : t('config.save')}
@@ -208,7 +170,7 @@ const ConfigView: React.FC = () => {
         </div>
       </div>
     </styles.Container>
-  );
-};
+  )
+}
 
-export default ConfigView;
+export default ConfigView

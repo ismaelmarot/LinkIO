@@ -4,7 +4,7 @@ import { useI18n } from '../../app/i18n'
 import * as styles from './AddView.styles'
 import { useAddView } from './useAddView'
 import * as Header from '../Header'
-import { BackArrowIcon, UploadIcon } from '../../constants/icons.constants'
+import { BackArrowIcon, UploadIcon } from '../../constants'
 import AddTagModal from '../AddTagModal/AddTagModal'
 
 const AddView: React.FC = () => {

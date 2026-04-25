@@ -31,10 +31,10 @@ export const useConfigView = () => {
     setNewTag(e.target.value);
   };
 
-  const handleAddTag = () => {
-    const tag = newTag.trim();
-    if (tag && !tags.includes(tag)) {
-      setTags(prev => [...prev, tag]);
+  const handleAddTag = (tag: string, setNewTag: (value: string) => void) => {
+    const trimmedTag = tag.trim();
+    if (trimmedTag && !tags.includes(trimmedTag)) {
+      setTags(prev => [...prev, trimmedTag]);
       setNewTag('');
     }
   };

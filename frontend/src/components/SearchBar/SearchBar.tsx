@@ -1,8 +1,8 @@
 import React from 'react'
-import * as styles from './SearchBar.styles'
-import { useSearchBar } from './useSearchBar'
-import { SearchIcon as SearchIconComponent } from '../../constants/icons.constants'
 import { useI18n } from '../../app/i18n'
+import { SearchIcon as SearchIconComponent } from '../../constants'
+import { useSearchBar } from './useSearchBar'
+import * as styles from './SearchBar.styles'
 
 const SearchBar: React.FC = () => {
   const {
@@ -27,7 +27,7 @@ const SearchBar: React.FC = () => {
           <SearchIconComponent size={20} />
         </styles.SearchIcon>
         <styles.SearchInput
-          type="text"
+          type='text'
           placeholder={t('home.search')}
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}

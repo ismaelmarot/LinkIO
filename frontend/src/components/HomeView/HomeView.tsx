@@ -5,7 +5,7 @@ import * as styles from './HomeView.styles'
 import { useHomeView } from './useHomeView'
 import SearchBar from '../SearchBar'
 import LinkCard from '../LinkCard'
-import { AddIcon, LinkIcon } from '../../constants/icons.constants'
+import { AddIcon, LinkIcon } from '../../constants'
 
 const HomeView: React.FC = () => {
   const navigate = useNavigate()

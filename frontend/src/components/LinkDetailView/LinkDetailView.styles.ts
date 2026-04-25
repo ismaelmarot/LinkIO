@@ -175,7 +175,7 @@ export const Text = styled.p`
 export const NoteBox = styled.div`
   background: var(--surface-secondary);
   padding: var(--space-md);
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-xxl);
   
   p {
     font-size: var(--font-size-sm);
@@ -210,7 +210,7 @@ export const ActionsWrapper = styled.div`
 export const ActionBtn = styled.button<{ $variant?: 'primary' | 'danger' }>`
   width: 100%;
   height: 52px;
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-xxl);
   font-size: 16px;
   font-weight: 600;
   font-family: inherit;
@@ -288,7 +288,7 @@ export const MoreToggle = styled.button`
 
 export const SecondaryBtn = styled.button`
   height: 48px;
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-xxl);
   font-size: var(--font-size-base);
   font-weight: 500;
   font-family: inherit;

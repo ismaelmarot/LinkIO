@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export const Container = styled.div`
   min-height: 100vh;
@@ -6,7 +6,7 @@ export const Container = styled.div`
   padding: var(--space-xl) var(--space-md) 90px;
   max-width: 600px;
   margin: 0 auto;
-`;
+`
 
 export const Header = styled.header`
   display: flex;
@@ -14,13 +14,13 @@ export const Header = styled.header`
   align-items: center;
   margin-bottom: var(--space-xl);
   padding: 0 var(--space-xs);
-`;
+`
 
 export const Title = styled.h1`
   font-size: var(--font-size-3xl);
   font-weight: 700;
   color: var(--color-text-primary);
-`;
+`
 
 export const BackButton = styled.button`
   display: flex;
@@ -42,7 +42,7 @@ export const BackButton = styled.button`
     width: 20px;
     height: 20px;
   }
-`;
+`
 
 export const Section = styled.div`
   background-color: var(--color-card-bg);
@@ -50,7 +50,7 @@ export const Section = styled.div`
   box-shadow: var(--shadow-card);
   margin-bottom: var(--space-xl);
   overflow: hidden;
-`;
+`
 
 export const SectionHeader = styled.h2`
   font-size: var(--font-size-xl);
@@ -59,11 +59,11 @@ export const SectionHeader = styled.h2`
   padding: var(--space-lg) var(--space-xl);
   margin: 0;
   border-bottom: 1px solid var(--color-border);
-`;
+`
 
 export const SectionContent = styled.div`
   padding: var(--space-lg);
-`;
+`
 
 export const SettingRow = styled.div`
   display: flex;
@@ -75,7 +75,7 @@ export const SettingRow = styled.div`
   &:last-child {
     border-bottom: none;
   }
-`;
+`
 
 export const SettingLabel = styled.div`
   display: flex;
@@ -91,20 +91,20 @@ export const SettingLabel = styled.div`
     font-size: var(--font-size-sm);
     color: var(--color-text-secondary);
   }
-`;
+`
 
 export const ToggleContainer = styled.label`
   display: inline-flex;
   align-items: center;
   cursor: pointer;
   user-select: none;
-`;
+`
 
 export const ToggleInput = styled.input`
   width: 0;
   height: 0;
   opacity: 0;
-`;
+`
 
 export const ToggleSlider = styled.span`
   position: relative;
@@ -135,12 +135,12 @@ export const ToggleSlider = styled.span`
       transform: translateX(20px);
     }
   }
-`;
+`
 
 export const SelectContainer = styled.div`
   position: relative;
   width: 160px;
-`;
+`
 
 export const Select = styled.select`
   width: 100%;
@@ -167,7 +167,7 @@ export const Select = styled.select`
     background-color: var(--color-card-bg);
     color: var(--color-text-primary);
   }
-`;
+`
 
 export const SelectArrow = styled.div`
   position: absolute;
@@ -186,17 +186,17 @@ export const SelectArrow = styled.div`
     height: 18px;
     color: var(--color-text-secondary);
   }
-`;
+`
 
 export const TagsSection = styled.div`
   margin-top: var(--space-md);
-`;
+`
 
 export const TagInputContainer = styled.div`
   display: flex;
   gap: var(--space-xs);
   margin-bottom: var(--space-md);
-`;
+`
 
 export const TagInput = styled.input`
   flex: 1;
@@ -220,7 +220,7 @@ export const TagInput = styled.input`
   &:hover:not(:focus) {
     border-color: var(--color-text-tertiary);
   }
-`;
+`
 
 export const AddTagButton = styled.button`
   padding: var(--space-sm) var(--space-md);
@@ -241,13 +241,13 @@ export const AddTagButton = styled.button`
   &:active {
     transform: translateY(0);
   }
-`;
+`
 
 export const TagsList = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-xs);
-`;
+`
 
 export const TagItem = styled.div<{ $isRemovable?: boolean }>`
   display: flex;
@@ -272,13 +272,13 @@ export const TagItem = styled.div<{ $isRemovable?: boolean }>`
       opacity: 0.8;
     }
   }
-`;
+`
 
 export const AboutSection = styled.div`
   background-color: var(--color-background);
   border-radius: var(--radius-lg);
   padding: var(--space-lg);
-`;
+`
 
 export const AboutTitle = styled.h3`
   font-size: var(--font-size-lg);
@@ -288,20 +288,20 @@ export const AboutTitle = styled.h3`
   display: flex;
   align-items: center;
   gap: var(--space-md);
-`;
+`
 
 export const AppIcon = styled.img`
   width: 48px;
   height: 48px;
   border-radius: var(--radius-lg);
-`;
+`
 
 export const AboutText = styled.p`
   color: var(--color-text-secondary);
   line-height: 1.6;
   margin-bottom: var(--space-lg);
   font-size: var(--font-size-base);
-`;
+`
 
 export const VersionInfo = styled.p`
   font-size: var(--font-size-sm);
@@ -319,4 +319,142 @@ export const VersionInfo = styled.p`
       text-decoration: underline;
     }
   }
-`;
+`
+
+export const TagInputRow = styled.div`
+  display: flex;
+  gap: 8px;
+  align-items: center;
+`
+
+export const TagInputStyled = styled.input`
+  flex: 1;
+  padding: 12px 16px;
+  border: 1px solid var(--color-border);
+  border-radius: 35px;
+  font-size: 14px;
+  background: var(--color-background);
+  color: var(--color-text-primary);
+  outline: none;
+  
+  &:focus {
+    border-color: #fd7a2d;
+  }
+  
+  &::placeholder {
+    color: var(--color-text-tertiary);
+  }
+`
+
+export const AddButton = styled.button`
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgb(253,122,45) 0%, rgb(245,28,81) 100%);
+  border: none;
+  border-radius: 35px;
+  color: white;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  
+  &:hover {
+    transform: scale(1.05);
+  }
+  
+  &:disabled {
+    background: var(--color-border);
+    cursor: not-allowed;
+    transform: none;
+  }
+`
+
+export const TagList = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+`
+
+export const TagChip = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  background: var(--color-card-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 20px;
+  font-size: 13px;
+  color: var(--color-text-primary);
+`
+
+export const RemoveButton = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  background: var(--color-text-tertiary);
+  border: none;
+  border-radius: 50%;
+  color: white;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  
+  &:hover {
+    background: var(--color-danger);
+  }
+`
+
+export const SegmentedControl = styled.div`
+  display: flex;
+  background: var(--color-background);
+  border-radius: 35px;
+  padding: 4px;
+  border: 1px solid var(--color-border);
+`
+
+export const SegmentButton = styled.button<{ $active: boolean }>`
+  flex: 1;
+  padding: 10px 8px;
+  border: none;
+  border-radius:35px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: ${({ $active }) => $active 
+    ? 'linear-gradient(135deg, rgb(253,122,45) 0%, rgb(245,28,81) 100%)' 
+    : 'transparent'};
+  color: ${({ $active }) => $active ? 'white' : 'var(--color-text-secondary)'};
+  
+  &:hover {
+    color: ${({ $active }) => $active ? 'white' : 'var(--color-text-primary)'};
+  }
+`
+
+export const LanguageSelector = styled.div`
+  display: flex;
+  gap: 8px;
+`
+
+export const LanguageButton = styled.button<{ $active: boolean }>`
+  flex: 1;
+  padding: 12px 16px;
+  border: 2px solid ${({ $active }) => $active ? 'transparent' : 'var(--color-border)'};
+  border-radius: 35px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: ${({ $active }) => $active 
+    ? 'linear-gradient(135deg, rgb(253,122,45) 0%, rgb(245,28,81) 100%)' 
+    : 'var(--color-card-bg)'};
+  color: ${({ $active }) => $active ? 'white' : 'var(--color-text-primary)'};
+  
+  &:hover {
+    border-color: ${({ $active }) => $active ? 'transparent' : '#fd7a2d'};
+  }
+`
