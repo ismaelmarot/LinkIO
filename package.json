@@ -1,24 +1,30 @@
 {
   "name": "linkio",
   "version": "1.0.0",
-  "description": "",
+  "description": "Your personal link manager",
   "main": "electron/main.js",
-  "directories": {
-    "doc": "docs"
-  },
   "scripts": {
     "start": "electron .",
     "dev": "concurrently \"npm run start:frontend\" \"npm run start:electron\"",
     "start:frontend": "cd frontend && npm start",
     "start:electron": "electron .",
+    "build": "cd frontend && npm run build",
+    "dist": "npm run build && electron-builder",
+    "dist:win": "npm run build && electron-builder --win",
+    "dist:mac": "npm run build && electron-builder --mac",
+    "dist:linux": "npm run build && electron-builder --linux",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ismaelmarot/LinkIO.git"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "links",
+    "manager",
+    "bookmarks"
+  ],
+  "author": "Ismael Marot",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/ismaelmarot/LinkIO/issues"
@@ -28,6 +34,62 @@
     "@vitejs/plugin-react": "^6.0.1",
     "concurrently": "^8.2.2",
     "electron": "^41.2.2",
+    "electron-builder": "^24.13.3",
     "vite": "^8.0.10"
+  },
+  "build": {
+    "appId": "com.linkio.app",
+    "productName": "LinkIO",
+    "directories": {
+      "output": "dist",
+      "buildResources": "build"
+    },
+    "files": [
+      "frontend/build/**/*",
+      "electron/**/*"
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "frontend/public/Linkio-icon.png"
+    },
+    "mac": {
+      "target": [
+        {
+          "target": "dmg",
+          "arch": [
+            "x64",
+            "arm64"
+          ]
+        }
+      ],
+      "icon": "frontend/public/Linkio-icon.png",
+      "category": "public.app-category.productivity"
+    },
+    "linux": {
+      "target": [
+        {
+          "target": "AppImage",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "frontend/public/Linkio-icon.png",
+      "category": "Utility"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    }
   }
 }
