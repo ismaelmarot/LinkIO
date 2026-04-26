@@ -47,8 +47,10 @@
     "files": [
       "frontend/build/**/*",
       "backend/**/*",
-      "electron/**/*"
+      "electron/**/*",
+      "node_modules/sql.js/**/*"
     ],
+    "asar": false,
     "extraResources": [
       {
         "from": "frontend/public/Linkio-icon.png",
@@ -98,5 +100,8 @@
       "createDesktopShortcut": true,
       "createStartMenuShortcut": true
     }
+  },
+  "dependencies": {
+    "sql.js": "^1.12.0"
   }
 }

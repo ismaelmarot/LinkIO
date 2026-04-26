@@ -1,7 +1,22 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const API_URL = 'http://localhost:3001/api/links';
+declare global {
+  interface Window {
+    electronAPI: {
+      platform: string;
+      links: {
+        getAll: () => Promise<any[]>;
+        get: (id: number) => Promise<any>;
+        create: (data: any) => Promise<any>;
+        update: (id: number, data: any) => Promise<any>;
+        delete: (id: number) => Promise<boolean>;
+      };
+    };
+  }
+}
+
+const api = () => window.electronAPI?.links;
 
 export const useAddView = () => {
   const navigate = useNavigate();
@@ -29,12 +44,11 @@ export const useAddView = () => {
       
       const parsedUrl = new URL(urlToParse);
       const hostname = parsedUrl.hostname;
-      const screenshotUrl = `${API_URL}/screenshot?url=${encodeURIComponent(urlToParse)}`;
       
       if (!title) setTitle(hostname.replace('www.', ''));
       if (!iconUrl) setIconUrl(`https://www.google.com/s2/favicons?domain=${hostname}&sz=64`);
       if (!imageUrl) {
-        setImageUrl(screenshotUrl);
+        setImageUrl(`https://image.thum.io/get/${urlToParse}`);
       }
     }, 1000);
     
@@ -168,15 +182,8 @@ export const useAddView = () => {
           iconUrl
         };
         
-        const response = await fetch(API_URL, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(newLinkData)
-        });
-        
-        if (response.ok) {
-          navigate('/');
-        }
+        await api()?.create(newLinkData);
+        navigate('/');
       } catch (error) {
         console.error('Error saving link:', error);
       } finally {

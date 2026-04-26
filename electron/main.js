@@ -1,5 +1,6 @@
-const { app, BrowserWindow, Menu } = require('electron');
+const { app, BrowserWindow, Menu, ipcMain } = require('electron');
 const path = require('path');
+const database = require('../backend/src/db/database');
 
 let mainWindow;
 
@@ -79,7 +80,56 @@ function createWindow() {
   });
 }
 
-app.whenReady().then(() => {
+function setupIpcHandlers() {
+  ipcMain.handle('links:getAll', async () => {
+    try {
+      return database.getAllLinks();
+    } catch (error) {
+      console.error('Error getting all links:', error);
+      return [];
+    }
+  });
+
+  ipcMain.handle('links:get', async (_, id) => {
+    try {
+      return database.getLinkById(id);
+    } catch (error) {
+      console.error('Error getting link:', error);
+      return null;
+    }
+  });
+
+  ipcMain.handle('links:create', async (_, linkData) => {
+    try {
+      return database.createLink(linkData);
+    } catch (error) {
+      console.error('Error creating link:', error);
+      throw error;
+    }
+  });
+
+  ipcMain.handle('links:update', async (_, id, updates) => {
+    try {
+      return database.updateLink(id, updates);
+    } catch (error) {
+      console.error('Error updating link:', error);
+      throw error;
+    }
+  });
+
+  ipcMain.handle('links:delete', async (_, id) => {
+    try {
+      return database.deleteLink(id);
+    } catch (error) {
+      console.error('Error deleting link:', error);
+      throw error;
+    }
+  });
+}
+
+app.whenReady().then(async () => {
+  await database.initDatabase();
+  setupIpcHandlers();
   createWindow();
 
   app.on('activate', () => {
@@ -93,4 +143,8 @@ app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
     app.quit();
   }
+});
+
+app.on('quit', () => {
+  database.closeDatabase();
 });

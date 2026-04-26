@@ -1,25 +1,49 @@
 import { useState, useEffect } from 'react';
 
-const API_URL = 'http://localhost:3001/api/links';
+declare global {
+  interface Window {
+    electronAPI: {
+      platform: string;
+      links: {
+        getAll: () => Promise<any[]>;
+        get: (id: number) => Promise<any>;
+        create: (data: any) => Promise<any>;
+        update: (id: number, data: any) => Promise<any>;
+        delete: (id: number) => Promise<boolean>;
+      };
+    };
+  }
+}
+
+const api = () => window.electronAPI?.links;
 
 export const useSearchBar = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [activeTag, setActiveTag] = useState('All');
-  const [tags, setTags] = useState<string[]>(['Todos']);
+  const [tags, setTags] = useState<string[]>(['All']);
 
   useEffect(() => {
     const fetchTags = async () => {
       try {
-        const response = await fetch(API_URL);
-        const links = await response.json();
+        const links = await api()?.getAll() || [];
         
-        const allTags = new Set<string>(['Todos']);
+        const allTags = new Set<string>(['All']);
         links.forEach((link: any) => {
-          if (link.tags && Array.isArray(link.tags)) {
-            link.tags.forEach((tag: any) => {
-              const tagName = typeof tag === 'string' ? tag : tag.name;
-              if (tagName) allTags.add(tagName);
-            });
+          if (link.tags) {
+            let tagArray = link.tags;
+            if (typeof tagArray === 'string') {
+              try {
+                tagArray = JSON.parse(tagArray);
+              } catch {
+                tagArray = [];
+              }
+            }
+            if (Array.isArray(tagArray)) {
+              tagArray.forEach((tag: any) => {
+                const tagName = typeof tag === 'string' ? tag : tag.name;
+                if (tagName) allTags.add(tagName);
+              });
+            }
           }
         });
         

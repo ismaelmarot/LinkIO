@@ -3,8 +3,24 @@ import { useI18n } from '../../app/i18n'
 import { useNavigate, useParams } from 'react-router-dom'
 import * as styles from './LinkDetailView.styles'
 import * as Header from '../Header'
-import { API_URL } from '../../constants'
 import { BackArrowIcon, EditIcon, TrashIcon, GlobeIcon, ExternalLinkIcon, CopyIcon, ChevronDownIcon } from '../../constants'
+
+declare global {
+  interface Window {
+    electronAPI: {
+      platform: string;
+      links: {
+        getAll: () => Promise<any[]>;
+        get: (id: number) => Promise<any>;
+        create: (data: any) => Promise<any>;
+        update: (id: number, data: any) => Promise<any>;
+        delete: (id: number) => Promise<boolean>;
+      };
+    };
+  }
+}
+
+const api = () => window.electronAPI?.links;
 
 const LinkDetailView: React.FC = () => {
   const navigate = useNavigate()
@@ -27,12 +43,11 @@ const LinkDetailView: React.FC = () => {
       }
       
       try {
-        const response = await fetch(`${API_URL}/${id}`)
-        if (!response.ok) {
+        const data = await api()?.get(parseInt(id));
+        if (!data) {
           setError(t('detail.not_found'))
           return
         }
-        const data = await response.json()
         setLink(data)
       } catch (err) {
         setError(t('detail.error'))
@@ -69,7 +84,7 @@ const LinkDetailView: React.FC = () => {
   const handleDelete = async () => {
     setIsDeleting(true)
     try {
-      await fetch(`${API_URL}/${id}`, { method: 'DELETE' })
+      await api()?.delete(parseInt(id!))
       navigate('/')
     } catch (err) {
       console.error('Error:', err)

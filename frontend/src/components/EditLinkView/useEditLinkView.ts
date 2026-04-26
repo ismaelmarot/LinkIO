@@ -1,7 +1,22 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 
-const API_URL = 'http://localhost:3001/api/links';
+declare global {
+  interface Window {
+    electronAPI: {
+      platform: string;
+      links: {
+        getAll: () => Promise<any[]>;
+        get: (id: number) => Promise<any>;
+        create: (data: any) => Promise<any>;
+        update: (id: number, data: any) => Promise<any>;
+        delete: (id: number) => Promise<boolean>;
+      };
+    };
+  }
+}
+
+const api = () => window.electronAPI?.links;
 
 export const useEditLinkView = () => {
   const { id } = useParams<{ id: string }>();
@@ -33,12 +48,11 @@ export const useEditLinkView = () => {
       }
       
       try {
-        const response = await fetch(`${API_URL}/${id}`);
-        if (!response.ok) {
+        const link = await api()?.get(parseInt(id));
+        if (!link) {
           setError('Enlace no encontrado');
           return;
         }
-        const link = await response.json();
         
         setUrl(link.url);
         setTitle(link.title);
@@ -80,7 +94,7 @@ export const useEditLinkView = () => {
         
         if (!title) setTitle(hostname.replace('www.', ''));
         if (!iconUrl) setIconUrl(autoIconUrl);
-        if (!imageUrl) setImageUrl(`${API_URL}/screenshot?url=${encodeURIComponent(urlToParse)}`);
+        if (!imageUrl) setImageUrl(`https://image.thum.io/get/${urlToParse}`);
       } catch (err) {
         // Ignore invalid URLs
       }
@@ -199,12 +213,7 @@ export const useEditLinkView = () => {
           iconUrl
         };
         
-        await fetch(`${API_URL}/${id}`, {
-          method: 'PUT',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(updatedLinkData)
-        });
-        
+        await api()?.update(parseInt(id), updatedLinkData);
         navigate(`/link/${id}`);
       } catch (error) {
         console.error('Error updating link:', error);
@@ -218,7 +227,7 @@ export const useEditLinkView = () => {
     if (!id) return;
     setIsDeleting(true);
     try {
-      await fetch(`${API_URL}/${id}`, { method: 'DELETE' });
+      await api()?.delete(parseInt(id));
       navigate('/');
     } catch (error) {
       console.error('Error deleting link:', error);

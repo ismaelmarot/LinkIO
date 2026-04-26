@@ -1,6 +1,34 @@
 import { useState, useEffect } from 'react';
 
-const API_URL = 'http://localhost:3001/api/links';
+declare global {
+  interface Window {
+    electronAPI: {
+      platform: string;
+      links: {
+        getAll: () => Promise<any[]>;
+        get: (id: number) => Promise<any>;
+        create: (data: any) => Promise<any>;
+        update: (id: number, data: any) => Promise<any>;
+        delete: (id: number) => Promise<boolean>;
+      };
+    };
+  }
+}
+
+const api = () => window.electronAPI?.links;
+
+function normalizeLink(link: any) {
+  let tags = link.tags;
+  if (typeof tags === 'string') {
+    try {
+      tags = JSON.parse(tags);
+    } catch {
+      tags = [];
+    }
+  }
+  if (!Array.isArray(tags)) tags = [];
+  return { ...link, tags };
+}
 
 export const useHomeView = () => {
   const [links, setLinks] = useState<any[]>([]);
@@ -15,7 +43,7 @@ export const useHomeView = () => {
 
   useEffect(() => {
     const filtered = links.filter(link => {
-      const tagNames = link.tags?.map((t: any) => typeof t === 'string' ? t : t.name) || [];
+      const tagNames = link.tags.map((t: any) => typeof t === 'string' ? t : t.name);
       const tagMatch = activeTag === 'All' || tagNames.includes(activeTag);
       
       const searchMatch = searchQuery === '' ||
@@ -30,9 +58,8 @@ export const useHomeView = () => {
 
   const fetchLinks = async () => {
     try {
-      const response = await fetch(API_URL);
-      const data = await response.json();
-      setLinks(data);
+      const data = await api()?.getAll();
+      setLinks((data || []).map(normalizeLink));
     } catch (error) {
       console.error('Error fetching links:', error);
     } finally {
@@ -42,13 +69,8 @@ export const useHomeView = () => {
 
   const addLink = async (newLink: any) => {
     try {
-      const response = await fetch(API_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(newLink)
-      });
-      const createdLink = await response.json();
-      setLinks(prev => [createdLink, ...prev]);
+      const createdLink = await api()?.create(newLink);
+      setLinks(prev => [normalizeLink(createdLink), ...prev]);
       return createdLink;
     } catch (error) {
       console.error('Error adding link:', error);
@@ -58,7 +80,7 @@ export const useHomeView = () => {
 
   const deleteLink = async (id: number) => {
     try {
-      await fetch(`${API_URL}/${id}`, { method: 'DELETE' });
+      await api()?.delete(id);
       setLinks(prev => prev.filter(link => link.id !== id));
     } catch (error) {
       console.error('Error deleting link:', error);

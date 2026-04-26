@@ -133,7 +133,7 @@ const ConfigView: React.FC = () => {
         <styles.AboutSection>
           <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
             <img 
-              src="./Linkio-icon.png"
+              src="/Linkio-icon.png"
               alt="LinkIO"
               style={{ 
                 width: 48, 
