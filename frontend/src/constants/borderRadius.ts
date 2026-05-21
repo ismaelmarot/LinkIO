@@ -1,0 +1,6 @@
+export const borderRadius = {
+  sm: "6px",
+  md: "10px",
+  lg: "16px",
+  full: "9999px",
+};
