@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import api from "../../../../services/api";
+import { db } from "../../../../lib/db";
 
 interface Activity {
   id: string;
@@ -9,22 +10,32 @@ interface Activity {
   date: string;
 }
 
+const mapActivity = (a: any): Activity => ({
+  id: a.id,
+  name: a.sportType || a.name || "Salida",
+  distance: a.distance ? `${Number(a.distance).toFixed(2)} km` : "0 km",
+  duration: a.duration ? `${Math.floor(Number(a.duration) / 60)} min` : "0 min",
+  date: new Date(a.startTime || a.timestamp).toLocaleDateString("es-AR", {
+    day: "numeric",
+    month: "short",
+    year: "numeric",
+  }),
+});
+
 export const useActivities = () => {
   const { data: activities = [] } = useQuery<Activity[]>({
     queryKey: ["activities"],
     queryFn: async () => {
-      const { data } = await api.get("/activities");
-      return data.map((a: any) => ({
-        id: a.id,
-        name: a.sportType || "Salida",
-        distance: a.distance ? `${a.distance.toFixed(2)} km` : "0 km",
-        duration: a.duration ? `${Math.floor(a.duration / 60)} min` : "0 min",
-        date: new Date(a.startTime).toLocaleDateString("es-AR", {
-          day: "numeric",
-          month: "short",
-          year: "numeric",
-        }),
-      }));
+      try {
+        const { data } = await api.get("/activities");
+        return data.map(mapActivity);
+      } catch (err: any) {
+        if (err.isNetworkError) {
+          const local = await db.getAllActivities();
+          return local.map(mapActivity);
+        }
+        throw err;
+      }
     },
   });
 

@@ -44,8 +44,9 @@ router.post("/", async (req: AuthRequest, res: Response) => {
 });
 
 router.get("/:id", async (req: AuthRequest, res: Response) => {
+  const id = req.params.id as string;
   const event = await prisma.event.findFirst({
-    where: { id: req.params.id },
+    where: { id },
     include: { route: true, participants: { include: { user: true } } },
   });
   if (!event) return res.status(404).json({ error: "Event not found" });
