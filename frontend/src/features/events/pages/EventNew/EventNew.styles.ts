@@ -166,3 +166,42 @@ export const SubmitButton = styled.button`
     opacity: 0.9;
   }
 `;
+
+export const DrawingControls = styled.div`
+  display: flex;
+  gap: ${({ theme }) => theme.spacing.xs};
+  margin-top: ${({ theme }) => theme.spacing.sm};
+`;
+
+export const DrawingButton = styled.button<{ $active: boolean }>`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: ${({ theme }) => theme.spacing.xs};
+  padding: ${({ theme }) => theme.spacing.sm} ${({ theme }) => theme.spacing.md};
+  background: ${({ theme, $active }) =>
+    $active ? theme.colors.primary : theme.colors.surface};
+  border: 1px solid
+    ${({ theme, $active }) =>
+      $active ? theme.colors.primary : theme.colors.border};
+  border-radius: ${({ theme }) => theme.borderRadius.sm};
+  color: ${({ theme, $active }) =>
+    $active ? theme.colors.textInverse : theme.colors.textPrimary};
+  font-size: ${({ theme }) => theme.fontSize.sm};
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+
+  &:hover {
+    background: ${({ theme, $active }) =>
+      $active
+        ? theme.colors.primaryDark
+        : theme.colors.surfaceElevated};
+    border-color: ${({ theme, $active }) =>
+      $active ? theme.colors.primaryDark : theme.colors.primary};
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+`;

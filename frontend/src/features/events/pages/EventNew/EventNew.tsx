@@ -17,6 +17,8 @@ import {
   ToggleLabel,
   ToggleSwitch,
   SubmitButton,
+  DrawingControls,
+  DrawingButton,
 } from "./EventNew.styles";
 
 export const EventNew = () => {
@@ -29,6 +31,7 @@ export const EventNew = () => {
     handlePhotoChange,
     handleSubmit,
     saving,
+    toggleDrawingMode,
   } = useEventNew();
 
   return (
@@ -93,6 +96,14 @@ export const EventNew = () => {
           <MapWrapper>
             <div id="event-map" style={{ width: "100%", height: "100%" }} />
           </MapWrapper>
+          <DrawingControls>
+            <DrawingButton
+              onClick={toggleDrawingMode}
+              active={form.isDrawing}
+            >
+              {form.isDrawing ? "Terminar recorrido" : "Dibujar recorrido"}
+            </DrawingButton>
+          </DrawingControls>
           {form.latitude && form.longitude && (
             <span style={{ fontSize: 12, color: "#A0A0A0" }}>
               {form.latitude.toFixed(5)}, {form.longitude.toFixed(5)}
