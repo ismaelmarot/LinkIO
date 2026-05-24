@@ -7,6 +7,7 @@ import { useGeolocation } from "../../../../shared/hooks/useGeolocation";
 import api from "../../../../services/api";
 import { db } from "../../../../lib/db";
 import { sync } from "../../../../lib/sync";
+import { useQueryClient } from "@tanstack/react-query";
 
 const TILES = {
   light:
@@ -150,59 +151,63 @@ export const useTrack = () => {
     resumeTracking(position.latitude, position.longitude, position.altitude);
   }, [position, resumeTracking]);
 
-  const handleStop = useCallback(async () => {
-    const state = useTrackingStore.getState();
-    const activity = {
-      sportType: "running",
-      startTime: new Date(state.startTime!).toISOString(),
-      endTime: new Date().toISOString(),
-      duration: Math.round(state.metrics.duration),
-      distance: state.metrics.distance,
-      avgSpeed: state.metrics.avgSpeed,
-      maxSpeed: state.metrics.maxSpeed,
-      points: state.path.map((p) => ({
-        latitude: p.latitude,
-        longitude: p.longitude,
-        altitude: p.altitude,
-        speed: p.speed,
-        timestamp: new Date(p.timestamp).toISOString(),
-      })),
-    };
+   const handleStop = useCallback(async () => {
+     const state = useTrackingStore.getState();
+     const activity = {
+       sportType: "running",
+       startTime: new Date(state.startTime!).toISOString(),
+       endTime: new Date().toISOString(),
+       duration: Math.round(state.metrics.duration),
+       distance: state.metrics.distance,
+       avgSpeed: state.metrics.avgSpeed,
+       maxSpeed: state.metrics.maxSpeed,
+       points: state.path.map((p) => ({
+         latitude: p.latitude,
+         longitude: p.longitude,
+         altitude: p.altitude,
+         speed: p.speed,
+         timestamp: new Date(p.timestamp).toISOString(),
+       })),
+     };
 
-    stopTracking();
+     stopTracking();
 
-    if (navigator.onLine) {
-      try {
-        await api.post("/activities", activity);
-      } catch {
-        await db.saveActivity({
-          ...activity,
-          id: crypto.randomUUID(),
-          status: "pending",
-        });
-        await sync.enqueue("/activities", "POST", activity);
-      }
-    } else {
-      await db.saveActivity({
-        ...activity,
-        id: crypto.randomUUID(),
-        status: "pending",
-      });
-      await sync.enqueue("/activities", "POST", activity);
-    }
+     try {
+       if (navigator.onLine) {
+         await api.post("/activities", activity);
+       } else {
+         throw new Error("Offline");
+       }
+       
+       // Invalidate activity queries to refetch data
+       queryClient.invalidateQueries({ queryKey: ["activities"] });
+       queryClient.invalidateQueries({ queryKey: ["profile-stats"] });
+       queryClient.invalidateQueries({ queryKey: ["last-activity"] });
+       queryClient.invalidateQueries({ queryKey: ["dashboard"] });
+     } catch (error) {
+       await db.saveActivity({
+         ...activity,
+         id: crypto.randomUUID(),
+         status: "pending",
+       });
+       await sync.enqueue("/activities", "POST", activity);
+       
+       // Even when offline, we might want to update optimistically
+       // But since we're saving to local DB, the sync will handle it later
+     }
 
-    if (polylineRef.current) {
-      polylineRef.current.remove();
-      polylineRef.current = null;
-    }
-    if (markerRef.current) {
-      markerRef.current.remove();
-      markerRef.current = null;
-    }
-    if (mapRef.current) {
-      mapRef.current.setView(DEFAULT_CENTER, 13);
-    }
-  }, [stopTracking]);
+     if (polylineRef.current) {
+       polylineRef.current.remove();
+       polylineRef.current = null;
+     }
+     if (markerRef.current) {
+       markerRef.current.remove();
+       markerRef.current = null;
+     }
+     if (mapRef.current) {
+       mapRef.current.setView(DEFAULT_CENTER, 13);
+     }
+   }, [stopTracking, queryClient]);
 
   const gpsQuality = (): "good" | "weak" | "lost" | "searching" => {
     if (error) return "lost";
