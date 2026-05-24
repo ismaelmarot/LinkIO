@@ -10,36 +10,28 @@ interface AuthState {
   user: User | null;
   token: string | null;
   isLoading: boolean;
-  login: (email: string, password: string) => Promise<void>;
-  register: (email: string, password: string, name?: string) => Promise<void>;
+  isSignedIn: boolean;
+  syncFromClerk: (user: User | null, token: string | null) => void;
+  login: () => void;
+  register: () => void;
   logout: () => void;
   checkAuth: () => Promise<void>;
 }
 
-const mockUser: User = {
-  id: "mock-1",
-  email: "demo@gotrack.app",
-  name: "Ismael Marot",
-};
-
 export const useAuthStore = create<AuthState>((set) => ({
-  user: mockUser,
-  token: "mock-token",
-  isLoading: false,
+  user: null,
+  token: null,
+  isLoading: true,
+  isSignedIn: false,
 
-  login: async () => {
-    set({ user: mockUser, token: "mock-token" });
-  },
+  syncFromClerk: (user, token) =>
+    set({ user, token, isLoading: !user, isSignedIn: !!user }),
 
-  register: async () => {
-    set({ user: mockUser, token: "mock-token" });
-  },
-
-  logout: () => {
-    set({ user: null, token: null });
-  },
+  login: async () => {},
+  register: async () => {},
+  logout: () => set({ user: null, token: null, isSignedIn: false }),
 
   checkAuth: async () => {
-    set({ user: mockUser, isLoading: false });
+    set({ isLoading: false });
   },
 }));

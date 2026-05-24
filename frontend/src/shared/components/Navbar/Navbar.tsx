@@ -1,4 +1,5 @@
 import { useLocation, useNavigate } from "react-router-dom";
+import { useUser } from "@clerk/clerk-react";
 import { FiGrid, FiUser, FiCalendar, FiMapPin, FiSettings } from "react-icons/fi";
 import { Container, NavItem, Icon, Label } from "./Navbar.styles";
 
@@ -13,6 +14,9 @@ const items = [
 export const Navbar = () => {
   const location = useLocation();
   const navigate = useNavigate();
+  const { isSignedIn } = useUser();
+
+  if (!isSignedIn) return null;
 
   return (
     <Container>
