@@ -42,18 +42,20 @@ export const Track = () => {
       <MapWrapper>
         <div id="track-map" style={{ width: "100%", height: "100%" }} />
 
-        <GpsIndicator $quality={quality}>
-          <GpsDot $quality={quality} />
-          <GpsText>
-            {quality === "searching"
-              ? "Buscando GPS..."
-              : quality === "good"
-              ? "GPS buena"
-              : quality === "weak"
-              ? "GPS débil"
-              : "GPS perdida"}
-          </GpsText>
-        </GpsIndicator>
+       <GpsIndicator $quality={quality}>
+         <GpsDot $quality={quality} />
+         <GpsText>
+           {quality === "searching"
+             ? "Buscando GPS..."
+             : quality === "good"
+               ? "GPS buena"
+               : quality === "weak"
+                 ? "GPS débil"
+                 : error
+                   ? "Error GPS"
+                   : "GPS perdida"}
+         </GpsText>
+       </GpsIndicator>
 
         {status !== "idle" && (
           <MetricsOverlay>
@@ -91,18 +93,25 @@ export const Track = () => {
 
       <BottomBar>
         {status === "idle" && (
-          <ButtonGroup>
-            <TrackButton
-              $variant="start"
-              onClick={handleStart}
-              disabled={!position || !!error}
-            >
-              TRACK
-            </TrackButton>
-            {!position && !error && (
-              <IdleHint>Esperando GPS...</IdleHint>
-            )}
-          </ButtonGroup>
+       <ButtonGroup>
+             <TrackButton
+               $variant="start"
+               onClick={handleStart}
+               disabled={!position || !!error}
+             >
+               TRACK
+             </TrackButton>
+             {!position && !error && (
+               <IdleHint>Esperando GPS...</IdleHint>
+             )}
+             {error && (
+               <ButtonGroup>
+                 <TrackButton $variant="start" onClick={handleStart} disabled={!position}>
+                   REINTENTAR GPS
+                 </TrackButton>
+               </ButtonGroup>
+             )}
+           </ButtonGroup>
         )}
 
         {status === "tracking" && (

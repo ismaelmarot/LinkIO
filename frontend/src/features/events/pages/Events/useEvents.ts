@@ -1,4 +1,4 @@
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import api from "../../../../services/api";
 import { useAuthStore } from "../../../../store/authStore";
 
@@ -60,6 +60,7 @@ const mapActivity = (a: any): ActivityItem => ({
 
 export const useEvents = () => {
   const userId = useAuthStore((s) => s.user?.id);
+  const queryClient = useQueryClient();
 
   const { data: rawEvents = [], isLoading: eventsLoading, error: eventsError } = useQuery<RawEvent[]>({
     queryKey: ["events"],
@@ -77,6 +78,16 @@ export const useEvents = () => {
       return data;
     },
     enabled: !!userId,
+  });
+
+  const deleteEventMutation = useMutation({
+    mutationFn: async (eventId: string) => {
+      await api.delete(`/events/${eventId}`);
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["events"] });
+      queryClient.invalidateQueries({ queryKey: ["activities"] });
+    },
   });
 
   const isLoading = eventsLoading || activitiesLoading;
@@ -98,5 +109,6 @@ export const useEvents = () => {
     trackedActivities,
     isLoading,
     error,
+    deleteEventMutation,
   };
 };

@@ -100,17 +100,17 @@ export const useEventNew = () => {
       if (form.isDrawing) {
         // Add point to route when in drawing mode
         const newPoint = { latitude: lat, longitude: lng };
+        const updatedRoute = [...(form.route || []), newPoint];
         setForm((prev) => ({
           ...prev,
-          route: [...(prev.route || []), newPoint]
+          route: updatedRoute
         }));
 
         // Update polyline to show the route
         if (polylineRef.current && mapRef.current) {
           polylineRef.current.remove();
         }
-        const routePoints = form.route ? [...form.route, newPoint] : [newPoint];
-        const latLngs = routePoints.map(point => [point.latitude, point.longitude] as [number, number]);
+        const latLngs = updatedRoute.map(point => [point.latitude, point.longitude] as [number, number]);
         if (mapRef.current) {
           polylineRef.current = L.polyline(latLngs, { color: '#FFDE21' }).addTo(mapRef.current);
         }

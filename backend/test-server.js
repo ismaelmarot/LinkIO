@@ -1,25 +1,9 @@
-const express = require('express');
-const app = express();
-
-// Add some debugging
-app.use((req, res, next) => {
-  console.log('Request received:', req.method, req.url);
-  next();
+const http = require('http');
+const server = http.createServer((req, res) => {
+  res.writeHead(200, {'Content-Type': 'text/plain'});
+  res.end('Test server is working\n');
 });
 
-// Import and use our middleware
-const authMiddleware = require('./dist/middleware/auth');
-app.use(authMiddleware.authMiddleware);
-
-app.get('/health', (_req, res) => {
-  console.log('/health endpoint hit');
-  res.json({ status: 'ok' });
-});
-
-const port = process.env.PORT || 3000;
-console.log('Attempting to listen on port', port);
-const server = app.listen(port, () => {
-  console.log('Server is listening on port', port);
-}).on('error', (err) => {
-  console.error('Server error:', err);
+server.listen(3001, '0.0.0.0', () => {
+  console.log('Test server running on port 3001');
 });

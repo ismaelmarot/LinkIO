@@ -116,13 +116,26 @@ router.post("/:id/duplicate", async (req: AuthRequest, res: Response) => {
 });
 
 router.get("/:id", async (req: AuthRequest, res: Response) => {
-  const id = req.params.id as string;
-  const event = await prisma.event.findFirst({
-    where: { id },
-    include: { route: true, participants: { include: { user: true } } },
-  });
-  if (!event) return res.status(404).json({ error: "Event not found" });
-  res.json(event);
-});
+   const id = req.params.id as string;
+   const event = await prisma.event.findFirst({
+     where: { id },
+     include: { route: true, participants: { include: { user: true } } },
+   });
+   if (!event) return res.status(404).json({ error: "Event not found" });
+   res.json(event);
+ });
+
+router.delete("/:id", async (req: AuthRequest, res: Response) => {
+   const id = req.params.id as string;
+   const event = await prisma.event.findFirst({
+     where: { id, userId: req.userId },
+   });
+   if (!event) return res.status(404).json({ error: "Event not found" });
+
+   await prisma.event.delete({
+     where: { id },
+   });
+   res.status(204).send();
+ });
 
 export default router;

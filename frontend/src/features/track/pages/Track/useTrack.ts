@@ -116,10 +116,25 @@ export const useTrack = () => {
     }
   }, [position, status, mapReady]);
 
-  useEffect(() => {
-    startWatching();
-    return () => stopWatching();
-  }, [startWatching, stopWatching]);
+    useEffect(() => {
+      startWatching();
+      return () => stopWatching();
+    }, [startWatching, stopWatching]);
+
+    // Auto-retry geolocation if we get a persistent error
+    useEffect(() => {
+      if (error && status === "idle") {
+        // If we have an error and are idle, try to restart watching after a delay
+        const timer = setTimeout(() => {
+          // Clear current watch
+          stopWatching();
+          // Start watching again
+          startWatching();
+        }, 10000); // Retry after 10 seconds
+        
+        return () => clearTimeout(timer);
+      }
+    }, [error, status, startWatching, stopWatching]);
 
   useEffect(() => {
     if (status !== "tracking" || !position) return;

@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { FiPlus, FiStar, FiMapPin, FiCalendar } from "react-icons/fi";
+import { FiPlus, FiStar, FiMapPin, FiCalendar, FiTrash2 } from "react-icons/fi";
 import { useEvents } from "./useEvents";
 import {
   Container,
@@ -20,6 +20,7 @@ import {
   TabContainer,
   TabButton,
   TabIndicator,
+  DeleteButton,
 } from "./Events.styles";
 
 export const Events = () => {
@@ -30,6 +31,7 @@ export const Events = () => {
     trackedActivities,
     isLoading,
     error,
+    deleteEventMutation,
   } = useEvents();
 
   const [activeTab, setActiveTab] = useState<'created' | 'participated' | 'tracked'>('created');
@@ -170,7 +172,24 @@ export const Events = () => {
                   </EventMeta>
                 </EventInfo>
               </CardTop>
-            </EventCard>
+             {item.type === 'event' && (
+               <DeleteButton
+                 onClick={(e) => {
+                   e.stopPropagation();
+                   if (window.confirm('¿Estás seguro de que quieres eliminar este evento?')) {
+                     deleteEventMutation.mutate(item.id);
+                   }
+                 }}
+                  disabled={deleteEventMutation.isPending}
+                >
+                  {deleteEventMutation.isPending ? (
+                    <FiPlus size={16} />
+                  ) : (
+                    <FiTrash2 size={16} />
+                  )}
+               </DeleteButton>
+             )}
+             </EventCard>
           ))}
         </List>
       )}

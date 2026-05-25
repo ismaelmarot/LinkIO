@@ -42,7 +42,7 @@ export const List = styled.div`
   gap: ${({ theme }) => theme.spacing.md};
 `;
 
-export const EventCard = styled.button`
+export const EventCard = styled.div`
   display: flex;
   flex-direction: column;
   gap: ${({ theme }) => theme.spacing.sm};
@@ -51,6 +51,7 @@ export const EventCard = styled.button`
   border-radius: ${({ theme }) => theme.borderRadius.md};
   text-align: left;
   transition: background 0.2s;
+  cursor: pointer;
 
   &:hover {
     background: ${({ theme }) => theme.colors.surfaceHover};
@@ -147,4 +148,33 @@ export const TabIndicator = styled.div<{ $activeTab: string }>`
   height: 2px;
   background: ${({ theme }) => theme.colors.primary};
   transition: left 0.3s ease;
+`;
+
+export const DeleteButton = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: ${({ theme }) => theme.colors.error};
+  color: ${({ theme }) => theme.colors.textInverse};
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-left: ${({ theme }) => theme.spacing.md};
+
+   &:hover {
+     background: ${({ theme }) => theme.colors.primaryDark};
+     transform: scale(1.05);
+   }
+
+  &:active {
+    transform: scale(0.95);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
 `;
