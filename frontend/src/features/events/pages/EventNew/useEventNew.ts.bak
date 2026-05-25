@@ -58,27 +58,6 @@ export const useEventNew = () => {
     setForm((f) => ({ ...f, latitude: lat, longitude: lng }));
   };
 
-  const toggleDrawingMode = () => {
-    setForm((prev) => ({ ...prev, isDrawing: !prev.isDrawing }));
-    if (!form.isDrawing) {
-      // Enable drawing mode - clear existing route and prepare for new one
-      setForm((prev) => ({ ...prev, route: [] }));
-      if (polylineRef.current && mapRef.current) {
-        polylineRef.current.remove();
-        polylineRef.current = null;
-      }
-    } else {
-      // Disable drawing mode - finalize the route
-      if (polylineRef.current && mapRef.current && form.route) {
-        if (polylineRef.current) {
-          polylineRef.current.remove();
-        }
-        const latLngs = form.route.map(point => [point.latitude, point.longitude] as [number, number]);
-        polylineRef.current = L.polyline(latLngs, { color: '#FFDE21' }).addTo(mapRef.current);
-      }
-    }
-  };
-
   useEffect(() => {
     if (mapRef.current) return;
 
@@ -109,11 +88,7 @@ export const useEventNew = () => {
         if (polylineRef.current && mapRef.current) {
           polylineRef.current.remove();
         }
-        const routePoints = form.route ? [...form.route, newPoint] : [newPoint];
-        const latLngs = routePoints.map(point => [point.latitude, point.longitude] as [number, number]);
-        if (mapRef.current) {
-          polylineRef.current = L.polyline(latLngs, { color: '#FFDE21' }).addTo(mapRef.current);
-        }
+        polylineRef.current = L.polyline(form.route ? [...form.route, newPoint] : [newPoint], { color: '#FFDE21' }).addTo(mapRef.current);
       } else {
         // Normal marker placement mode
         if (markerRef.current) {
@@ -142,7 +117,88 @@ export const useEventNew = () => {
       map.remove();
       mapRef.current = null;
     };
-  }, [form.isDrawing]);
+  }, [form.isDrawing, form.route]);
+
+  const handleLocationChange = (value: string) => {
+    setForm((f) => ({ ...f, location: value }));
+
+    if (searchTimer.current) clearTimeout(searchTimer.current);
+
+    if (!value.trim()) return;
+
+    searchTimer.current = setTimeout(async () => {
+      setSearching(true);
+      try {
+        const res = await fetch(
+          `${NOMINATIM}?q=${encodeURIComponent(value)}&format=json&limit=1&countrycodes=ar`
+        );
+        const data = await res.json();
+        if (data.length > 0) {
+          goToLocation(Number(data[0].lat), Number(data[0].lon));
+        }
+      } catch {
+        // geocode fallback
+      } finally {
+        setSearching(false);
+      }
+    }, 600);
+  };
+
+  const handlePhotoChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) {
+      setPhotoPreview(null);
+      return;
+    }
+    const reader = new FileReader();
+    reader.onload = () => {
+      const url = reader.result as string;
+      setPhotoPreview(url);
+      setForm((f) => ({ ...f, photoUrl: url }));
+    };
+    reader.readAsDataURL(file);
+  };
+
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+    if (!form.title || !form.date || !form.time) return;
+
+    setSaving(true);
+    try {
+      const dateTime = new Date(`${form.date}T${form.time}`);
+
+      await api.post("/events", {
+        title: form.title,
+        description: form.description,
+        date: dateTime.toISOString(),
+        location: form.location,
+        latitude: form.latitude,
+        longitude: form.longitude,
+        photoUrl: form.photoUrl || undefined,
+        isTemplate: form.isTemplate,
+        privacy: "public",
+      });
+
+      navigate("/events");
+    } catch {
+      // fallback
+    } finally {
+      setSaving(false);
+    }
+  };
+
+  return {
+    form,
+    setForm,
+    handleLocationChange,
+    searching,
+    photoPreview,
+    handlePhotoChange,
+    handleSubmit,
+    saving,
+    toggleDrawingMode,
+  };
+};
 
   const handleLocationChange = (value: string) => {
     setForm((f) => ({ ...f, location: value }));

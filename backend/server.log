@@ -1,0 +1,13 @@
+[22:26:52.047] [32mINFO[39m (10318): [36mGoTrack server running on port 3000[39m
+[Auth Middleware] Headers: {
+  "host": "localhost:3000",
+  "user-agent": "curl/8.7.1",
+  "accept": "*/*"
+}
+[Auth Middleware] Authorization header: undefined
+[Auth Middleware] Auth object from clerkMiddleware: Present
+[Auth Middleware] Auth object details: undefined
+[Auth Middleware] userId from clerk: undefined
+[Auth Middleware] sessionClaims from clerk: undefined
+[Auth Middleware] Final userId: undefined
+[Auth Middleware] No userId available, returning 401

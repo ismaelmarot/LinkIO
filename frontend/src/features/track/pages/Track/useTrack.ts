@@ -27,6 +27,7 @@ export const useTrack = () => {
   const markerRef = useRef<L.CircleMarker | null>(null);
   const [mapReady, setMapReady] = useState(false);
   const mode = useThemeMode((s) => s.mode);
+  const queryClient = useQueryClient();
 
   const status = useTrackingStore((s) => s.status);
   const path = useTrackingStore((s) => s.path);
@@ -207,7 +208,7 @@ export const useTrack = () => {
      if (mapRef.current) {
        mapRef.current.setView(DEFAULT_CENTER, 13);
      }
-   }, [stopTracking, queryClient]);
+    }, [stopTracking]);
 
   const gpsQuality = (): "good" | "weak" | "lost" | "searching" => {
     if (error) return "lost";

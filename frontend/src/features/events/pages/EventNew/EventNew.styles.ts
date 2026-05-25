@@ -7,6 +7,11 @@ export const Container = styled.div`
   padding: ${({ theme }) => theme.spacing.lg};
   max-width: 500px;
   margin: 0 auto;
+  padding-bottom: ${({ theme }) => theme.spacing.lg};
+
+  @media (max-width: 768px) {
+    padding-bottom: calc(${({ theme }) => theme.spacing.lg} * 3);
+  }
 `;
 
 export const Header = styled.div`
@@ -73,14 +78,28 @@ export const Row = styled.div`
 `;
 
 export const MapWrapper = styled.div`
+  position: relative;
   height: 200px;
   border-radius: ${({ theme }) => theme.borderRadius.sm};
   overflow: hidden;
   border: 1px solid ${({ theme }) => theme.colors.border};
+  margin-bottom: ${({ theme }) => theme.spacing.md};
 
   .leaflet-container {
     width: 100%;
     height: 100%;
+    position: relative;
+    z-index: 0; /* Ensure map is below navbar */
+  }
+
+  @media (max-width: 768px) {
+    height: 180px;
+    margin-bottom: ${({ theme }) => theme.spacing.sm};
+  }
+  
+  /* Ensure proper stacking context on mobile */
+  @media (max-width: 480px) {
+    height: 160px;
   }
 `;
 
