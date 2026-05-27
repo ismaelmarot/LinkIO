@@ -78,3 +78,34 @@ export const EmptyState = styled.p`
   color: ${({ theme }) => theme.colors.textMuted};
   padding: ${({ theme }) => theme.spacing.xxl};
 `;
+
+export const DeleteButton = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: ${({ theme }) => theme.colors.error};
+  color: ${({ theme }) => theme.colors.textInverse};
+  border: none;
+  cursor: pointer;
+  font-size: 12px;
+  padding: 0;
+  transition: all 0.2s;
+
+  &:hover {
+    background: ${({ theme }) => theme.colors.error};
+    opacity: 0.9;
+    transform: scale(1.05);
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+`;

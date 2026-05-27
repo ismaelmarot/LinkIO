@@ -92,4 +92,20 @@ router.post("/", async (req: AuthRequest, res: Response) => {
   res.status(201).json(activity);
 });
 
+router.delete("/:id", async (req: AuthRequest, res: Response) => {
+  const id = req.params.id as string;
+  
+  // First, delete associated GPS points
+  await prisma.gPSPoint.deleteMany({
+    where: { activityId: id }
+  });
+  
+  // Then delete the activity
+  const activity = await prisma.activity.delete({
+    where: { id, userId: req.userId }
+  });
+  
+  res.json(activity);
+});
+
 export default router;

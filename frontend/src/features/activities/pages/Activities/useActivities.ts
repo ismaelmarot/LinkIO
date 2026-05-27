@@ -1,4 +1,4 @@
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import api from "../../../../services/api";
 import { db } from "../../../../lib/db";
 
@@ -10,7 +10,7 @@ interface Activity {
   date: string;
 }
 
-const mapActivity = (a: any): Activity => ({
+export const mapActivity = (a: any): Activity => ({
   id: a.id,
   name: a.sportType || a.name || "Salida",
   distance: a.distance ? `${Number(a.distance).toFixed(2)} km` : "0 km",
@@ -23,6 +23,8 @@ const mapActivity = (a: any): Activity => ({
 });
 
 export const useActivities = () => {
+  const queryClient = useQueryClient();
+  
   const { data: activities = [] } = useQuery<Activity[]>({
     queryKey: ["activities"],
     queryFn: async () => {
@@ -39,5 +41,19 @@ export const useActivities = () => {
     },
   });
 
-  return { activities };
+  const deleteActivityMutation = useMutation({
+    mutationFn: async (activityId: string) => {
+      await api.delete(`/activities/${activityId}`);
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["activities"] });
+      queryClient.invalidateQueries({ queryKey: ["dashboard"] });
+      queryClient.invalidateQueries({ queryKey: ["profile-stats"] });
+    },
+  });
+
+  return { 
+    activities,
+    deleteActivityMutation
+  };
 };

@@ -50,14 +50,14 @@ export const Dashboard = () => {
             No activities yet. Start your first tracking session!
           </EmptyState>
         ) : (
-          recentActivities.map((activity) => (
-            <ActivityItem key={activity.id}>
-              <ActivityName>{activity.sportType}</ActivityName>
-              <ActivityMeta>
-                {activity.distance} &middot; {activity.duration}
-              </ActivityMeta>
-            </ActivityItem>
-          ))
+           recentActivities.map((activity) => (
+             <ActivityItem key={activity.id}>
+               <ActivityName>{activity.name}</ActivityName>
+               <ActivityMeta>
+                 {activity.distance} &middot; {activity.duration}
+               </ActivityMeta>
+             </ActivityItem>
+           ))
         )}
       </Section>
     </Container>
