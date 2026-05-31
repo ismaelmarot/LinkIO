@@ -1,36 +1,12 @@
 import { useEffect } from 'react'
 import { Outlet, useNavigate, useLocation } from 'react-router-dom'
 import { useUser, useAuth } from '@clerk/clerk-react'
-import styled from 'styled-components'
 import { Navbar } from '../shared/components/Navbar'
 import { OfflineBanner } from '../shared/components/OfflineBanner'
 import { useNetworkStatus } from '../shared/hooks/useNetworkStatus'
 import { useAuthStore } from '../store/authStore'
 import { sync } from '../lib/sync'
-
-const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-`
-
-const Main = styled.main`
-  flex: 1;
-  padding-bottom: 72px;
-
-  @media (min-width: 768px) {
-    padding-bottom: 0;
-    padding-left: 80px;
-  }
-`
-
-const Loading = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-  color: ${({ theme }) => theme.colors.textMuted};
-`
+import { Loading, Main, Wrapper } from './App.styles'
 
 const publicRoutes = ["/login", "/register"]
 

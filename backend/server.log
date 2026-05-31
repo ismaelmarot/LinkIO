@@ -6299,3 +6299,803 @@ Error: listen EAD[Auth Middleware] Headers: {
 [Auth Middleware] sessionClaims from clerk: undefined
 [Auth Middleware] Final userId: undefined
 [Auth Middleware] No userId available, returning 401
+[Auth Middleware] Headers: {
+  "host": "localhost:3000",
+  "connection": "keep-alive",
+  "sec-ch-ua-platform": "\"macOS\"",
+  "authorization": "Bearer eyJhbGciOiJSUzI1NiIsImNhdCI6ImNsX0I3ZDRQRDExMUFBQSIsImtpZCI6Imluc18zRThmeEtpSGk4d2xiUlRRbDVRaGNxQzBETnMiLCJvaWF0IjoxNzc5OTI2NDEwLCJ0eXAiOiJKV1QifQ.eyJhenAiOiJodHRwOi8vbG9jYWxob3N0OjUxNzMiLCJleHAiOjE3Nzk5MjY0NzAsImZ2YSI6WzU4NTgsLTFdLCJpYXQiOjE3Nzk5MjY0MTAsImlzcyI6Imh0dHBzOi8vZmVhc2libGUtaG9uZXliZWUtNDMuY2xlcmsuYWNjb3VudHMuZGV2IiwibmJmIjoxNzc5OTI2NDAwLCJzaWQiOiJzZXNzXzNFOHpJWExMMzBaaWpFam5hZEVhMUpwNmtJViIsInN0cyI6ImFjdGl2ZSIsInN1YiI6InVzZXJfM0U4eklUcVp3MlJZbW9wQ0ptRndkZnFsamU2IiwidiI6Mn0.jOA7_NBkTYmpcvFmeWhN-cCwDGzhe1u7J711titTA42hoPxOrQ_HX_sjQiEmlJ7oSt5u2WY2IzhYZIA36vjGiyrzE_ChjqhKFFpxphAlL-bJjTBiSoKI1U_w6ISQP4byPAJPaW1w59KYzBUv659dmjM4GtuNdzSonDVfhVqx5N4gK1JJvHKfQsBhxi9BAu3KDC7UWwmuiBlnyAY8mwN62ZvkoBR_DWAKVP-RRdDyZ-nerxiKaWmoKpN3UA-DoR9WlxRsBqTmq0kC_RKU7Lk9zRBCOVuqzF9w2_kkjvJDb_rl6-tf8_fVeghIJOnCxpOCRtdf_gc6RmkeJlm6aemwOA",
+  "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+  "accept": "application/json, text/plain, */*",
+  "sec-ch-ua": "\"Chromium\";v=\"148\", \"Google Chrome\";v=\"148\", \"Not/A)Brand\";v=\"99\"",
+  "sec-ch-ua-mobile": "?0",
+  "origin": "http://localhost:5173",
+  "sec-fetch-site": "same-site",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-dest": "empty",
+  "referer": "http://localhost:5173/",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "en-GB,en-US;q=0.9,en;q=0.8,es;q=0.7",
+  "if-none-match": "W/\"179-jkiuKUQLWrag+Buma977QmU7qoQ\""
+}
+[Auth Middleware] Authorization header: Bearer eyJhbGciOiJSUzI1NiIsImNhdCI6ImNsX0I3ZDRQRDExMUFBQSIsImtpZCI6Imluc18zRThmeEtpSGk4d2xiUlRRbDVRaGNxQzBETnMiLCJvaWF0IjoxNzc5OTI2NDEwLCJ0eXAiOiJKV1QifQ.eyJhenAiOiJodHRwOi8vbG9jYWxob3N0OjUxNzMiLCJleHAiOjE3Nzk5MjY0NzAsImZ2YSI6WzU4NTgsLTFdLCJpYXQiOjE3Nzk5MjY0MTAsImlzcyI6Imh0dHBzOi8vZmVhc2libGUtaG9uZXliZWUtNDMuY2xlcmsuYWNjb3VudHMuZGV2IiwibmJmIjoxNzc5OTI2NDAwLCJzaWQiOiJzZXNzXzNFOHpJWExMMzBaaWpFam5hZEVhMUpwNmtJViIsInN0cyI6ImFjdGl2ZSIsInN1YiI6InVzZXJfM0U4eklUcVp3MlJZbW9wQ0ptRndkZnFsamU2IiwidiI6Mn0.jOA7_NBkTYmpcvFmeWhN-cCwDGzhe1u7J711titTA42hoPxOrQ_HX_sjQiEmlJ7oSt5u2WY2IzhYZIA36vjGiyrzE_ChjqhKFFpxphAlL-bJjTBiSoKI1U_w6ISQP4byPAJPaW1w59KYzBUv659dmjM4GtuNdzSonDVfhVqx5N4gK1JJvHKfQsBhxi9BAu3KDC7UWwmuiBlnyAY8mwN62ZvkoBR_DWAKVP-RRdDyZ-nerxiKaWmoKpN3UA-DoR9WlxRsBqTmq0kC_RKU7Lk9zRBCOVuqzF9w2_kkjvJDb_rl6-tf8_fVeghIJOnCxpOCRtdf_gc6RmkeJlm6aemwOA
+[Auth Middleware] Auth object from clerkMiddleware: Present
+[Auth Middleware] Auth object details: undefined
+[Auth Middleware] userId from clerk: undefined
+[Auth Middleware] sessionClaims from clerk: undefined
+[Auth Middleware] No userId from clerkMiddleware, trying Authorization header
+[Auth Middleware] Found token in Authorization header (first 10 chars): eyJhbGciOi... attempting to verify...
+[Auth Middleware] Decoded token payload: {
+  "azp": "http://localhost:5173",
+  "exp": 1779926470,
+  "fva": [
+    5858,
+    -1
+  ],
+  "iat": 1779926410,
+  "iss": "https://feasible-honeybee-43.clerk.accounts.dev",
+  "nbf": 1779926400,
+  "sid": "sess_3E8zIXLL30ZijEjnadEa1Jp6kIV",
+  "sts": "active",
+  "sub": "user_3E8zITqZw2RYmopCJmFwdfqlje6",
+  "v": 2
+}
+[Auth Middleware] Extracted userId from token payload: user_3E8zITqZw2RYmopCJmFwdfqlje6
+[Auth Middleware] Final userId: user_3E8zITqZw2RYmopCJmFwdfqlje6
+[Auth Middleware] Headers: {
+  "host": "localhost:3000",
+  "connection": "keep-alive",
+  "sec-ch-ua-platform": "\"macOS\"",
+  "authorization": "Bearer eyJhbGciOiJSUzI1NiIsImNhdCI6ImNsX0I3ZDRQRDExMUFBQSIsImtpZCI6Imluc18zRThmeEtpSGk4d2xiUlRRbDVRaGNxQzBETnMiLCJvaWF0IjoxNzc5OTI2NDEwLCJ0eXAiOiJKV1QifQ.eyJhenAiOiJodHRwOi8vbG9jYWxob3N0OjUxNzMiLCJleHAiOjE3Nzk5MjY0NzAsImZ2YSI6WzU4NTgsLTFdLCJpYXQiOjE3Nzk5MjY0MTAsImlzcyI6Imh0dHBzOi8vZmVhc2libGUtaG9uZXliZWUtNDMuY2xlcmsuYWNjb3VudHMuZGV2IiwibmJmIjoxNzc5OTI2NDAwLCJzaWQiOiJzZXNzXzNFOHpJWExMMzBaaWpFam5hZEVhMUpwNmtJViIsInN0cyI6ImFjdGl2ZSIsInN1YiI6InVzZXJfM0U4eklUcVp3MlJZbW9wQ0ptRndkZnFsamU2IiwidiI6Mn0.jOA7_NBkTYmpcvFmeWhN-cCwDGzhe1u7J711titTA42hoPxOrQ_HX_sjQiEmlJ7oSt5u2WY2IzhYZIA36vjGiyrzE_ChjqhKFFpxphAlL-bJjTBiSoKI1U_w6ISQP4byPAJPaW1w59KYzBUv659dmjM4GtuNdzSonDVfhVqx5N4gK1JJvHKfQsBhxi9BAu3KDC7UWwmuiBlnyAY8mwN62ZvkoBR_DWAKVP-RRdDyZ-nerxiKaWmoKpN3UA-DoR9WlxRsBqTmq0kC_RKU7Lk9zRBCOVuqzF9w2_kkjvJDb_rl6-tf8_fVeghIJOnCxpOCRtdf_gc6RmkeJlm6aemwOA",
+  "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+  "accept": "application/json, text/plain, */*",
+  "sec-ch-ua": "\"Chromium\";v=\"148\", \"Google Chrome\";v=\"148\", \"Not/A)Brand\";v=\"99\"",
+  "sec-ch-ua-mobile": "?0",
+  "origin": "http://localhost:5173",
+  "sec-fetch-site": "same-site",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-dest": "empty",
+  "referer": "http://localhost:5173/",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "en-GB,en-US;q=0.9,en;q=0.8,es;q=0.7",
+  "if-none-match": "W/\"3c-lryfOn8cXqqwrJ5cJfQzfwhnCZ4\""
+}
+[Auth Middleware] Authorization header: Bearer eyJhbGciOiJSUzI1NiIsImNhdCI6ImNsX0I3ZDRQRDExMUFBQSIsImtpZCI6Imluc18zRThmeEtpSGk4d2xiUlRRbDVRaGNxQzBETnMiLCJvaWF0IjoxNzc5OTI2NDEwLCJ0eXAiOiJKV1QifQ.eyJhenAiOiJodHRwOi8vbG9jYWxob3N0OjUxNzMiLCJleHAiOjE3Nzk5MjY0NzAsImZ2YSI6WzU4NTgsLTFdLCJpYXQiOjE3Nzk5MjY0MTAsImlzcyI6Imh0dHBzOi8vZmVhc2libGUtaG9uZXliZWUtNDMuY2xlcmsuYWNjb3VudHMuZGV2IiwibmJmIjoxNzc5OTI2NDAwLCJzaWQiOiJzZXNzXzNFOHpJWExMMzBaaWpFam5hZEVhMUpwNmtJViIsInN0cyI6ImFjdGl2ZSIsInN1YiI6InVzZXJfM0U4eklUcVp3MlJZbW9wQ0ptRndkZnFsamU2IiwidiI6Mn0.jOA7_NBkTYmpcvFmeWhN-cCwDGzhe1u7J711titTA42hoPxOrQ_HX_sjQiEmlJ7oSt5u2WY2IzhYZIA36vjGiyrzE_ChjqhKFFpxphAlL-bJjTBiSoKI1U_w6ISQP4byPAJPaW1w59KYzBUv659dmjM4GtuNdzSonDVfhVqx5N4gK1JJvHKfQsBhxi9BAu3KDC7UWwmuiBlnyAY8mwN62ZvkoBR_DWAKVP-RRdDyZ-nerxiKaWmoKpN3UA-DoR9WlxRsBqTmq0kC_RKU7Lk9zRBCOVuqzF9w2_kkjvJDb_rl6-tf8_fVeghIJOnCxpOCRtdf_gc6RmkeJlm6aemwOA
+[Auth Middleware] Auth object from clerkMiddleware: Present
+[Auth Middleware] Auth object details: undefined
+[Auth Middleware] userId from clerk: undefined
+[Auth Middleware] sessionClaims from clerk: undefined
+[Auth Middleware] No userId from clerkMiddleware, trying Authorization header
+[Auth Middleware] Found token in Authorization header (first 10 chars): eyJhbGciOi... attempting to verify...
+[Auth Middleware] Decoded token payload: {
+  "azp": "http://localhost:5173",
+  "exp": 1779926470,
+  "fva": [
+    5858,
+    -1
+  ],
+  "iat": 1779926410,
+  "iss": "https://feasible-honeybee-43.clerk.accounts.dev",
+  "nbf": 1779926400,
+  "sid": "sess_3E8zIXLL30ZijEjnadEa1Jp6kIV",
+  "sts": "active",
+  "sub": "user_3E8zITqZw2RYmopCJmFwdfqlje6",
+  "v": 2
+}
+[Auth Middleware] Extracted userId from token payload: user_3E8zITqZw2RYmopCJmFwdfqlje6
+[Auth Middleware] Final userId: user_3E8zITqZw2RYmopCJmFwdfqlje6
+[Auth Middleware] User authenticated successfully, calling next()
+[Auth Middleware] Headers: {
+  "host": "localhost:3000",
+  "connection": "keep-alive",
+  "sec-ch-ua-platform": "\"macOS\"",
+  "authorization": "Bearer eyJhbGciOiJSUzI1NiIsImNhdCI6ImNsX0I3ZDRQRDExMUFBQSIsImtpZCI6Imluc18zRThmeEtpSGk4d2xiUlRRbDVRaGNxQzBETnMiLCJvaWF0IjoxNzc5OTI2NDEwLCJ0eXAiOiJKV1QifQ.eyJhenAiOiJodHRwOi8vbG9jYWxob3N0OjUxNzMiLCJleHAiOjE3Nzk5MjY0NzAsImZ2YSI6WzU4NTgsLTFdLCJpYXQiOjE3Nzk5MjY0MTAsImlzcyI6Imh0dHBzOi8vZmVhc2libGUtaG9uZXliZWUtNDMuY2xlcmsuYWNjb3VudHMuZGV2IiwibmJmIjoxNzc5OTI2NDAwLCJzaWQiOiJzZXNzXzNFOHpJWExMMzBaaWpFam5hZEVhMUpwNmtJViIsInN0cyI6ImFjdGl2ZSIsInN1YiI6InVzZXJfM0U4eklUcVp3MlJZbW9wQ0ptRndkZnFsamU2IiwidiI6Mn0.jOA7_NBkTYmpcvFmeWhN-cCwDGzhe1u7J711titTA42hoPxOrQ_HX_sjQiEmlJ7oSt5u2WY2IzhYZIA36vjGiyrzE_ChjqhKFFpxphAlL-bJjTBiSoKI1U_w6ISQP4byPAJPaW1w59KYzBUv659dmjM4GtuNdzSonDVfhVqx5N4gK1JJvHKfQsBhxi9BAu3KDC7UWwmuiBlnyAY8mwN62ZvkoBR_DWAKVP-RRdDyZ-nerxiKaWmoKpN3UA-DoR9WlxRsBqTmq0kC_RKU7Lk9zRBCOVuqzF9w2_kkjvJDb_rl6-tf8_fVeghIJOnCxpOCRtdf_gc6RmkeJlm6aemwOA",
+  "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+  "accept": "application/json, text/plain, */*",
+  "sec-ch-ua": "\"Chromium\";v=\"148\", \"Google Chrome\";v=\"148\", \"Not/A)Brand\";v=\"99\"",
+  "sec-ch-ua-mobile": "?0",
+  "origin": "http://localhost:5173",
+  "sec-fetch-site": "same-site",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-dest": "empty",
+  "referer": "http://localhost:5173/",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "en-GB,en-US;q=0.9,en;q=0.8,es;q=0.7",
+  "if-none-match": "W/\"179-jkiuKUQLWrag+Buma977QmU7qoQ\""
+}
+[Auth Middleware] Authorization header: Bearer eyJhbGciOiJSUzI1NiIsImNhdCI6ImNsX0I3ZDRQRDExMUFBQSIsImtpZCI6Imluc18zRThmeEtpSGk4d2xiUlRRbDVRaGNxQzBETnMiLCJvaWF0IjoxNzc5OTI2NDEwLCJ0eXAiOiJKV1QifQ.eyJhenAiOiJodHRwOi8vbG9jYWxob3N0OjUxNzMiLCJleHAiOjE3Nzk5MjY0NzAsImZ2YSI6WzU4NTgsLTFdLCJpYXQiOjE3Nzk5MjY0MTAsImlzcyI6Imh0dHBzOi8vZmVhc2libGUtaG9uZXliZWUtNDMuY2xlcmsuYWNjb3VudHMuZGV2IiwibmJmIjoxNzc5OTI2NDAwLCJzaWQiOiJzZXNzXzNFOHpJWExMMzBaaWpFam5hZEVhMUpwNmtJViIsInN0cyI6ImFjdGl2ZSIsInN1YiI6InVzZXJfM0U4eklUcVp3MlJZbW9wQ0ptRndkZnFsamU2IiwidiI6Mn0.jOA7_NBkTYmpcvFmeWhN-cCwDGzhe1u7J711titTA42hoPxOrQ_HX_sjQiEmlJ7oSt5u2WY2IzhYZIA36vjGiyrzE_ChjqhKFFpxphAlL-bJjTBiSoKI1U_w6ISQP4byPAJPaW1w59KYzBUv659dmjM4GtuNdzSonDVfhVqx5N4gK1JJvHKfQsBhxi9BAu3KDC7UWwmuiBlnyAY8mwN62ZvkoBR_DWAKVP-RRdDyZ-nerxiKaWmoKpN3UA-DoR9WlxRsBqTmq0kC_RKU7Lk9zRBCOVuqzF9w2_kkjvJDb_rl6-tf8_fVeghIJOnCxpOCRtdf_gc6RmkeJlm6aemwOA
+[Auth Middleware] Auth object from clerkMiddleware: Present
+[Auth Middleware] Auth object details: {
+  "userId": "user_3E8zITqZw2RYmopCJmFwdfqlje6",
+  "sessionId": "sess_3E8zIXLL30ZijEjnadEa1Jp6kIV",
+  "sessionClaims": {
+    "azp": "http://localhost:5173",
+    "exp": 1779926470,
+    "fva": [
+      5858,
+      -1
+    ],
+    "iat": 1779926410,
+    "iss": "https://feasible-honeybee-43.clerk.accounts.dev",
+    "nbf": 1779926400,
+    "sid": "sess_3E8zIXLL30ZijEjnadEa1Jp6kIV",
+    "sts": "active",
+    "sub": "user_3E8zITqZw2RYmopCJmFwdfqlje6",
+    "v": 2
+  }
+}
+[Auth Middleware] userId from clerk: user_3E8zITqZw2RYmopCJmFwdfqlje6
+[Auth Middleware] sessionClaims from clerk: {
+  azp: 'http://localhost:5173',
+  exp: 1779926470,
+  fva: [ 5858, -1 ],
+  iat: 1779926410,
+  iss: 'https://feasible-honeybee-43.clerk.accounts.dev',
+  nbf: 1779926400,
+  sid: 'sess_3E8zIXLL30ZijEjnadEa1Jp6kIV',
+  sts: 'active',
+  sub: 'user_3E8zITqZw2RYmopCJmFwdfqlje6',
+  v: 2
+}
+[Auth Middleware] Final userId: user_3E8zITqZw2RYmopCJmFwdfqlje6
+[Auth Middleware] User authenticated successfully, calling next()
+[Auth Middleware] User authenticated successfully, calling next()
+[Auth Middleware] Headers: {
+  "host": "localhost:3000",
+  "connection": "keep-alive",
+  "sec-ch-ua-platform": "\"macOS\"",
+  "authorization": "Bearer eyJhbGciOiJSUzI1NiIsImNhdCI6ImNsX0I3ZDRQRDExMUFBQSIsImtpZCI6Imluc18zRThmeEtpSGk4d2xiUlRRbDVRaGNxQzBETnMiLCJvaWF0IjoxNzc5OTI2NDEwLCJ0eXAiOiJKV1QifQ.eyJhenAiOiJodHRwOi8vbG9jYWxob3N0OjUxNzMiLCJleHAiOjE3Nzk5MjY0NzAsImZ2YSI6WzU4NTgsLTFdLCJpYXQiOjE3Nzk5MjY0MTAsImlzcyI6Imh0dHBzOi8vZmVhc2libGUtaG9uZXliZWUtNDMuY2xlcmsuYWNjb3VudHMuZGV2IiwibmJmIjoxNzc5OTI2NDAwLCJzaWQiOiJzZXNzXzNFOHpJWExMMzBaaWpFam5hZEVhMUpwNmtJViIsInN0cyI6ImFjdGl2ZSIsInN1YiI6InVzZXJfM0U4eklUcVp3MlJZbW9wQ0ptRndkZnFsamU2IiwidiI6Mn0.jOA7_NBkTYmpcvFmeWhN-cCwDGzhe1u7J711titTA42hoPxOrQ_HX_sjQiEmlJ7oSt5u2WY2IzhYZIA36vjGiyrzE_ChjqhKFFpxphAlL-bJjTBiSoKI1U_w6ISQP4byPAJPaW1w59KYzBUv659dmjM4GtuNdzSonDVfhVqx5N4gK1JJvHKfQsBhxi9BAu3KDC7UWwmuiBlnyAY8mwN62ZvkoBR_DWAKVP-RRdDyZ-nerxiKaWmoKpN3UA-DoR9WlxRsBqTmq0kC_RKU7Lk9zRBCOVuqzF9w2_kkjvJDb_rl6-tf8_fVeghIJOnCxpOCRtdf_gc6RmkeJlm6aemwOA",
+  "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+  "accept": "application/json, text/plain, */*",
+  "sec-ch-ua": "\"Chromium\";v=\"148\", \"Google Chrome\";v=\"148\", \"Not/A)Brand\";v=\"99\"",
+  "sec-ch-ua-mobile": "?0",
+  "origin": "http://localhost:5173",
+  "sec-fetch-site": "same-site",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-dest": "empty",
+  "referer": "http://localhost:5173/",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "en-GB,en-US;q=0.9,en;q=0.8,es;q=0.7",
+  "if-none-match": "W/\"3c-lryfOn8cXqqwrJ5cJfQzfwhnCZ4\""
+}
+[Auth Middleware] Authorization header: Bearer eyJhbGciOiJSUzI1NiIsImNhdCI6ImNsX0I3ZDRQRDExMUFBQSIsImtpZCI6Imluc18zRThmeEtpSGk4d2xiUlRRbDVRaGNxQzBETnMiLCJvaWF0IjoxNzc5OTI2NDEwLCJ0eXAiOiJKV1QifQ.eyJhenAiOiJodHRwOi8vbG9jYWxob3N0OjUxNzMiLCJleHAiOjE3Nzk5MjY0NzAsImZ2YSI6WzU4NTgsLTFdLCJpYXQiOjE3Nzk5MjY0MTAsImlzcyI6Imh0dHBzOi8vZmVhc2libGUtaG9uZXliZWUtNDMuY2xlcmsuYWNjb3VudHMuZGV2IiwibmJmIjoxNzc5OTI2NDAwLCJzaWQiOiJzZXNzXzNFOHpJWExMMzBaaWpFam5hZEVhMUpwNmtJViIsInN0cyI6ImFjdGl2ZSIsInN1YiI6InVzZXJfM0U4eklUcVp3MlJZbW9wQ0ptRndkZnFsamU2IiwidiI6Mn0.jOA7_NBkTYmpcvFmeWhN-cCwDGzhe1u7J711titTA42hoPxOrQ_HX_sjQiEmlJ7oSt5u2WY2IzhYZIA36vjGiyrzE_ChjqhKFFpxphAlL-bJjTBiSoKI1U_w6ISQP4byPAJPaW1w59KYzBUv659dmjM4GtuNdzSonDVfhVqx5N4gK1JJvHKfQsBhxi9BAu3KDC7UWwmuiBlnyAY8mwN62ZvkoBR_DWAKVP-RRdDyZ-nerxiKaWmoKpN3UA-DoR9WlxRsBqTmq0kC_RKU7Lk9zRBCOVuqzF9w2_kkjvJDb_rl6-tf8_fVeghIJOnCxpOCRtdf_gc6RmkeJlm6aemwOA
+[Auth Middleware] Auth object from clerkMiddleware: Present
+[Auth Middleware] Auth object details: {
+  "userId": "user_3E8zITqZw2RYmopCJmFwdfqlje6",
+  "sessionId": "sess_3E8zIXLL30ZijEjnadEa1Jp6kIV",
+  "sessionClaims": {
+    "azp": "http://localhost:5173",
+    "exp": 1779926470,
+    "fva": [
+      5858,
+      -1
+    ],
+    "iat": 1779926410,
+    "iss": "https://feasible-honeybee-43.clerk.accounts.dev",
+    "nbf": 1779926400,
+    "sid": "sess_3E8zIXLL30ZijEjnadEa1Jp6kIV",
+    "sts": "active",
+    "sub": "user_3E8zITqZw2RYmopCJmFwdfqlje6",
+    "v": 2
+  }
+}
+[Auth Middleware] userId from clerk: user_3E8zITqZw2RYmopCJmFwdfqlje6
+[Auth Middleware] sessionClaims from clerk: {
+  azp: 'http://localhost:5173',
+  exp: 1779926470,
+  fva: [ 5858, -1 ],
+  iat: 1779926410,
+  iss: 'https://feasible-honeybee-43.clerk.accounts.dev',
+  nbf: 1779926400,
+  sid: 'sess_3E8zIXLL30ZijEjnadEa1Jp6kIV',
+  sts: 'active',
+  sub: 'user_3E8zITqZw2RYmopCJmFwdfqlje6',
+  v: 2
+}
+[Auth Middleware] Final userId: user_3E8zITqZw2RYmopCJmFwdfqlje6
+[Auth Middleware] User authenticated successfully, calling next()
+[Auth Middleware] Headers: {
+  "host": "localhost:3000",
+  "connection": "keep-alive",
+  "sec-ch-ua-platform": "\"macOS\"",
+  "authorization": "Bearer eyJhbGciOiJSUzI1NiIsImNhdCI6ImNsX0I3ZDRQRDExMUFBQSIsImtpZCI6Imluc18zRThmeEtpSGk4d2xiUlRRbDVRaGNxQzBETnMiLCJvaWF0IjoxNzgwMDgzOTYzLCJ0eXAiOiJKV1QifQ.eyJhenAiOiJodHRwOi8vbG9jYWxob3N0OjUxNzMiLCJleHAiOjE3ODAwODQwMjMsImZ2YSI6Wzg0ODQsLTFdLCJpYXQiOjE3ODAwODM5NjMsImlzcyI6Imh0dHBzOi8vZmVhc2libGUtaG9uZXliZWUtNDMuY2xlcmsuYWNjb3VudHMuZGV2IiwibmJmIjoxNzgwMDgzOTUzLCJzaWQiOiJzZXNzXzNFOHpJWExMMzBaaWpFam5hZEVhMUpwNmtJViIsInN0cyI6ImFjdGl2ZSIsInN1YiI6InVzZXJfM0U4eklUcVp3MlJZbW9wQ0ptRndkZnFsamU2IiwidiI6Mn0.LwakU6vqIDiwopglvHNz519aV9Hrd6GSCX5rnx7vfOh5nKuIqNZiFOb3OMzGquKx3t9r1c7B6G50N0ZazHVsaBavHG4q4Lff4-xIK8zrGL3zssdmj36GSDot2-OEYtJJ7ICU57_16bugBhzNcIorbWG0aYKFkGdsT1V6v3uH1CQTD-bJNnFZvSg_Ulxt446-4X_qUtGSX7xEEO93U0qc6RnJ1qDKPDCp0bUHUH_QQQLExZ1Z-wVW4uU9ug3-e1ybqCeR8GciG0l6rHeU9aWXxevePGjyAfrOVtXfDzUrmyzRFVD9EI4a7AaDswP_PI97utEZ5O5znmXI3l6WMx5tOw",
+  "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+  "accept": "application/json, text/plain, */*",
+  "sec-ch-ua": "\"Chromium\";v=\"148\", \"Google Chrome\";v=\"148\", \"Not/A)Brand\";v=\"99\"",
+  "sec-ch-ua-mobile": "?0",
+  "origin": "http://localhost:5173",
+  "sec-fetch-site": "same-site",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-dest": "empty",
+  "referer": "http://localhost:5173/",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "en-GB,en-US;q=0.9,en;q=0.8,es;q=0.7",
+  "if-none-match": "W/\"3c-lryfOn8cXqqwrJ5cJfQzfwhnCZ4\""
+}
+[Auth Middleware] Authorization header: Bearer eyJhbGciOiJSUzI1NiIsImNhdCI6ImNsX0I3ZDRQRDExMUFBQSIsImtpZCI6Imluc18zRThmeEtpSGk4d2xiUlRRbDVRaGNxQzBETnMiLCJvaWF0IjoxNzgwMDgzOTYzLCJ0eXAiOiJKV1QifQ.eyJhenAiOiJodHRwOi8vbG9jYWxob3N0OjUxNzMiLCJleHAiOjE3ODAwODQwMjMsImZ2YSI6Wzg0ODQsLTFdLCJpYXQiOjE3ODAwODM5NjMsImlzcyI6Imh0dHBzOi8vZmVhc2libGUtaG9uZXliZWUtNDMuY2xlcmsuYWNjb3VudHMuZGV2IiwibmJmIjoxNzgwMDgzOTUzLCJzaWQiOiJzZXNzXzNFOHpJWExMMzBaaWpFam5hZEVhMUpwNmtJViIsInN0cyI6ImFjdGl2ZSIsInN1YiI6InVzZXJfM0U4eklUcVp3MlJZbW9wQ0ptRndkZnFsamU2IiwidiI6Mn0.LwakU6vqIDiwopglvHNz519aV9Hrd6GSCX5rnx7vfOh5nKuIqNZiFOb3OMzGquKx3t9r1c7B6G50N0ZazHVsaBavHG4q4Lff4-xIK8zrGL3zssdmj36GSDot2-OEYtJJ7ICU57_16bugBhzNcIorbWG0aYKFkGdsT1V6v3uH1CQTD-bJNnFZvSg_Ulxt446-4X_qUtGSX7xEEO93U0qc6RnJ1qDKPDCp0bUHUH_QQQLExZ1Z-wVW4uU9ug3-e1ybqCeR8GciG0l6rHeU9aWXxevePGjyAfrOVtXfDzUrmyzRFVD9EI4a7AaDswP_PI97utEZ5O5znmXI3l6WMx5tOw
+[Auth Middleware] Auth object from clerkMiddleware: Present
+[Auth Middleware] Auth object details: undefined
+[Auth Middleware] userId from clerk: undefined
+[Auth Middleware] sessionClaims from clerk: undefined
+[Auth Middleware] No userId from clerkMiddleware, trying Authorization header
+[Auth Middleware] Found token in Authorization header (first 10 chars): eyJhbGciOi... attempting to verify...
+[Auth Middleware] Decoded token payload: {
+  "azp": "http://localhost:5173",
+  "exp": 1780084023,
+  "fva": [
+    8484,
+    -1
+  ],
+  "iat": 1780083963,
+  "iss": "https://feasible-honeybee-43.clerk.accounts.dev",
+  "nbf": 1780083953,
+  "sid": "sess_3E8zIXLL30ZijEjnadEa1Jp6kIV",
+  "sts": "active",
+  "sub": "user_3E8zITqZw2RYmopCJmFwdfqlje6",
+  "v": 2
+}
+[Auth Middleware] Extracted userId from token payload: user_3E8zITqZw2RYmopCJmFwdfqlje6
+[Auth Middleware] Final userId: user_3E8zITqZw2RYmopCJmFwdfqlje6
+[Auth Middleware] User authenticated successfully, calling next()
+[Auth Middleware] Headers: {
+  "host": "localhost:3000",
+  "connection": "keep-alive",
+  "sec-ch-ua-platform": "\"macOS\"",
+  "authorization": "Bearer eyJhbGciOiJSUzI1NiIsImNhdCI6ImNsX0I3ZDRQRDExMUFBQSIsImtpZCI6Imluc18zRThmeEtpSGk4d2xiUlRRbDVRaGNxQzBETnMiLCJvaWF0IjoxNzgwMDgzOTYzLCJ0eXAiOiJKV1QifQ.eyJhenAiOiJodHRwOi8vbG9jYWxob3N0OjUxNzMiLCJleHAiOjE3ODAwODQwMjMsImZ2YSI6Wzg0ODQsLTFdLCJpYXQiOjE3ODAwODM5NjMsImlzcyI6Imh0dHBzOi8vZmVhc2libGUtaG9uZXliZWUtNDMuY2xlcmsuYWNjb3VudHMuZGV2IiwibmJmIjoxNzgwMDgzOTUzLCJzaWQiOiJzZXNzXzNFOHpJWExMMzBaaWpFam5hZEVhMUpwNmtJViIsInN0cyI6ImFjdGl2ZSIsInN1YiI6InVzZXJfM0U4eklUcVp3MlJZbW9wQ0ptRndkZnFsamU2IiwidiI6Mn0.LwakU6vqIDiwopglvHNz519aV9Hrd6GSCX5rnx7vfOh5nKuIqNZiFOb3OMzGquKx3t9r1c7B6G50N0ZazHVsaBavHG4q4Lff4-xIK8zrGL3zssdmj36GSDot2-OEYtJJ7ICU57_16bugBhzNcIorbWG0aYKFkGdsT1V6v3uH1CQTD-bJNnFZvSg_Ulxt446-4X_qUtGSX7xEEO93U0qc6RnJ1qDKPDCp0bUHUH_QQQLExZ1Z-wVW4uU9ug3-e1ybqCeR8GciG0l6rHeU9aWXxevePGjyAfrOVtXfDzUrmyzRFVD9EI4a7AaDswP_PI97utEZ5O5znmXI3l6WMx5tOw",
+  "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+  "accept": "application/json, text/plain, */*",
+  "sec-ch-ua": "\"Chromium\";v=\"148\", \"Google Chrome\";v=\"148\", \"Not/A)Brand\";v=\"99\"",
+  "sec-ch-ua-mobile": "?0",
+  "origin": "http://localhost:5173",
+  "sec-fetch-site": "same-site",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-dest": "empty",
+  "referer": "http://localhost:5173/",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "en-GB,en-US;q=0.9,en;q=0.8,es;q=0.7",
+  "if-none-match": "W/\"3c-lryfOn8cXqqwrJ5cJfQzfwhnCZ4\""
+}
+[Auth Middleware] Authorization header: Bearer eyJhbGciOiJSUzI1NiIsImNhdCI6ImNsX0I3ZDRQRDExMUFBQSIsImtpZCI6Imluc18zRThmeEtpSGk4d2xiUlRRbDVRaGNxQzBETnMiLCJvaWF0IjoxNzgwMDgzOTYzLCJ0eXAiOiJKV1QifQ.eyJhenAiOiJodHRwOi8vbG9jYWxob3N0OjUxNzMiLCJleHAiOjE3ODAwODQwMjMsImZ2YSI6Wzg0ODQsLTFdLCJpYXQiOjE3ODAwODM5NjMsImlzcyI6Imh0dHBzOi8vZmVhc2libGUtaG9uZXliZWUtNDMuY2xlcmsuYWNjb3VudHMuZGV2IiwibmJmIjoxNzgwMDgzOTUzLCJzaWQiOiJzZXNzXzNFOHpJWExMMzBaaWpFam5hZEVhMUpwNmtJViIsInN0cyI6ImFjdGl2ZSIsInN1YiI6InVzZXJfM0U4eklUcVp3MlJZbW9wQ0ptRndkZnFsamU2IiwidiI6Mn0.LwakU6vqIDiwopglvHNz519aV9Hrd6GSCX5rnx7vfOh5nKuIqNZiFOb3OMzGquKx3t9r1c7B6G50N0ZazHVsaBavHG4q4Lff4-xIK8zrGL3zssdmj36GSDot2-OEYtJJ7ICU57_16bugBhzNcIorbWG0aYKFkGdsT1V6v3uH1CQTD-bJNnFZvSg_Ulxt446-4X_qUtGSX7xEEO93U0qc6RnJ1qDKPDCp0bUHUH_QQQLExZ1Z-wVW4uU9ug3-e1ybqCeR8GciG0l6rHeU9aWXxevePGjyAfrOVtXfDzUrmyzRFVD9EI4a7AaDswP_PI97utEZ5O5znmXI3l6WMx5tOw
+[Auth Middleware] Auth object from clerkMiddleware: Present
+[Auth Middleware] Auth object details: {
+  "userId": "user_3E8zITqZw2RYmopCJmFwdfqlje6",
+  "sessionId": "sess_3E8zIXLL30ZijEjnadEa1Jp6kIV",
+  "sessionClaims": {
+    "azp": "http://localhost:5173",
+    "exp": 1780084023,
+    "fva": [
+      8484,
+      -1
+    ],
+    "iat": 1780083963,
+    "iss": "https://feasible-honeybee-43.clerk.accounts.dev",
+    "nbf": 1780083953,
+    "sid": "sess_3E8zIXLL30ZijEjnadEa1Jp6kIV",
+    "sts": "active",
+    "sub": "user_3E8zITqZw2RYmopCJmFwdfqlje6",
+    "v": 2
+  }
+}
+[Auth Middleware] userId from clerk: user_3E8zITqZw2RYmopCJmFwdfqlje6
+[Auth Middleware] sessionClaims from clerk: {
+  azp: 'http://localhost:5173',
+  exp: 1780084023,
+  fva: [ 8484, -1 ],
+  iat: 1780083963,
+  iss: 'https://feasible-honeybee-43.clerk.accounts.dev',
+  nbf: 1780083953,
+  sid: 'sess_3E8zIXLL30ZijEjnadEa1Jp6kIV',
+  sts: 'active',
+  sub: 'user_3E8zITqZw2RYmopCJmFwdfqlje6',
+  v: 2
+}
+[Auth Middleware] Final userId: user_3E8zITqZw2RYmopCJmFwdfqlje6
+[Auth Middleware] User authenticated successfully, calling next()
+[Auth Middleware] Headers: {
+  "host": "localhost:3000",
+  "connection": "keep-alive",
+  "sec-ch-ua-platform": "\"macOS\"",
+  "authorization": "Bearer eyJhbGciOiJSUzI1NiIsImNhdCI6ImNsX0I3ZDRQRDExMUFBQSIsImtpZCI6Imluc18zRThmeEtpSGk4d2xiUlRRbDVRaGNxQzBETnMiLCJvaWF0IjoxNzgwMDgzOTYzLCJ0eXAiOiJKV1QifQ.eyJhenAiOiJodHRwOi8vbG9jYWxob3N0OjUxNzMiLCJleHAiOjE3ODAwODQwMjMsImZ2YSI6Wzg0ODQsLTFdLCJpYXQiOjE3ODAwODM5NjMsImlzcyI6Imh0dHBzOi8vZmVhc2libGUtaG9uZXliZWUtNDMuY2xlcmsuYWNjb3VudHMuZGV2IiwibmJmIjoxNzgwMDgzOTUzLCJzaWQiOiJzZXNzXzNFOHpJWExMMzBaaWpFam5hZEVhMUpwNmtJViIsInN0cyI6ImFjdGl2ZSIsInN1YiI6InVzZXJfM0U4eklUcVp3MlJZbW9wQ0ptRndkZnFsamU2IiwidiI6Mn0.LwakU6vqIDiwopglvHNz519aV9Hrd6GSCX5rnx7vfOh5nKuIqNZiFOb3OMzGquKx3t9r1c7B6G50N0ZazHVsaBavHG4q4Lff4-xIK8zrGL3zssdmj36GSDot2-OEYtJJ7ICU57_16bugBhzNcIorbWG0aYKFkGdsT1V6v3uH1CQTD-bJNnFZvSg_Ulxt446-4X_qUtGSX7xEEO93U0qc6RnJ1qDKPDCp0bUHUH_QQQLExZ1Z-wVW4uU9ug3-e1ybqCeR8GciG0l6rHeU9aWXxevePGjyAfrOVtXfDzUrmyzRFVD9EI4a7AaDswP_PI97utEZ5O5znmXI3l6WMx5tOw",
+  "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+  "accept": "application/json, text/plain, */*",
+  "sec-ch-ua": "\"Chromium\";v=\"148\", \"Google Chrome\";v=\"148\", \"Not/A)Brand\";v=\"99\"",
+  "sec-ch-ua-mobile": "?0",
+  "origin": "http://localhost:5173",
+  "sec-fetch-site": "same-site",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-dest": "empty",
+  "referer": "http://localhost:5173/",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "en-GB,en-US;q=0.9,en;q=0.8,es;q=0.7",
+  "if-none-match": "W/\"179-jkiuKUQLWrag+Buma977QmU7qoQ\""
+}
+[Auth Middleware] Authorization header: Bearer eyJhbGciOiJSUzI1NiIsImNhdCI6ImNsX0I3ZDRQRDExMUFBQSIsImtpZCI6Imluc18zRThmeEtpSGk4d2xiUlRRbDVRaGNxQzBETnMiLCJvaWF0IjoxNzgwMDgzOTYzLCJ0eXAiOiJKV1QifQ.eyJhenAiOiJodHRwOi8vbG9jYWxob3N0OjUxNzMiLCJleHAiOjE3ODAwODQwMjMsImZ2YSI6Wzg0ODQsLTFdLCJpYXQiOjE3ODAwODM5NjMsImlzcyI6Imh0dHBzOi8vZmVhc2libGUtaG9uZXliZWUtNDMuY2xlcmsuYWNjb3VudHMuZGV2IiwibmJmIjoxNzgwMDgzOTUzLCJzaWQiOiJzZXNzXzNFOHpJWExMMzBaaWpFam5hZEVhMUpwNmtJViIsInN0cyI6ImFjdGl2ZSIsInN1YiI6InVzZXJfM0U4eklUcVp3MlJZbW9wQ0ptRndkZnFsamU2IiwidiI6Mn0.LwakU6vqIDiwopglvHNz519aV9Hrd6GSCX5rnx7vfOh5nKuIqNZiFOb3OMzGquKx3t9r1c7B6G50N0ZazHVsaBavHG4q4Lff4-xIK8zrGL3zssdmj36GSDot2-OEYtJJ7ICU57_16bugBhzNcIorbWG0aYKFkGdsT1V6v3uH1CQTD-bJNnFZvSg_Ulxt446-4X_qUtGSX7xEEO93U0qc6RnJ1qDKPDCp0bUHUH_QQQLExZ1Z-wVW4uU9ug3-e1ybqCeR8GciG0l6rHeU9aWXxevePGjyAfrOVtXfDzUrmyzRFVD9EI4a7AaDswP_PI97utEZ5O5znmXI3l6WMx5tOw
+[Auth Middleware] Auth object from clerkMiddleware: Present
+[Auth Middleware] Auth object details: undefined
+[Auth Middleware] userId from clerk: undefined
+[Auth Middleware] sessionClaims from clerk: undefined
+[Auth Middleware] No userId from clerkMiddleware, trying Authorization header
+[Auth Middleware] Found token in Authorization header (first 10 chars): eyJhbGciOi... attempting to verify...
+[Auth Middleware] Decoded token payload: {
+  "azp": "http://localhost:5173",
+  "exp": 1780084023,
+  "fva": [
+    8484,
+    -1
+  ],
+  "iat": 1780083963,
+  "iss": "https://feasible-honeybee-43.clerk.accounts.dev",
+  "nbf": 1780083953,
+  "sid": "sess_3E8zIXLL30ZijEjnadEa1Jp6kIV",
+  "sts": "active",
+  "sub": "user_3E8zITqZw2RYmopCJmFwdfqlje6",
+  "v": 2
+}
+[Auth Middleware] Extracted userId from token payload: user_3E8zITqZw2RYmopCJmFwdfqlje6
+[Auth Middleware] Final userId: user_3E8zITqZw2RYmopCJmFwdfqlje6
+[Auth Middleware] User authenticated successfully, calling next()
+[Auth Middleware] Headers: {
+  "host": "localhost:3000",
+  "connection": "keep-alive",
+  "sec-ch-ua-platform": "\"macOS\"",
+  "authorization": "Bearer eyJhbGciOiJSUzI1NiIsImNhdCI6ImNsX0I3ZDRQRDExMUFBQSIsImtpZCI6Imluc18zRThmeEtpSGk4d2xiUlRRbDVRaGNxQzBETnMiLCJvaWF0IjoxNzgwMDgzOTYzLCJ0eXAiOiJKV1QifQ.eyJhenAiOiJodHRwOi8vbG9jYWxob3N0OjUxNzMiLCJleHAiOjE3ODAwODQwMjMsImZ2YSI6Wzg0ODQsLTFdLCJpYXQiOjE3ODAwODM5NjMsImlzcyI6Imh0dHBzOi8vZmVhc2libGUtaG9uZXliZWUtNDMuY2xlcmsuYWNjb3VudHMuZGV2IiwibmJmIjoxNzgwMDgzOTUzLCJzaWQiOiJzZXNzXzNFOHpJWExMMzBaaWpFam5hZEVhMUpwNmtJViIsInN0cyI6ImFjdGl2ZSIsInN1YiI6InVzZXJfM0U4eklUcVp3MlJZbW9wQ0ptRndkZnFsamU2IiwidiI6Mn0.LwakU6vqIDiwopglvHNz519aV9Hrd6GSCX5rnx7vfOh5nKuIqNZiFOb3OMzGquKx3t9r1c7B6G50N0ZazHVsaBavHG4q4Lff4-xIK8zrGL3zssdmj36GSDot2-OEYtJJ7ICU57_16bugBhzNcIorbWG0aYKFkGdsT1V6v3uH1CQTD-bJNnFZvSg_Ulxt446-4X_qUtGSX7xEEO93U0qc6RnJ1qDKPDCp0bUHUH_QQQLExZ1Z-wVW4uU9ug3-e1ybqCeR8GciG0l6rHeU9aWXxevePGjyAfrOVtXfDzUrmyzRFVD9EI4a7AaDswP_PI97utEZ5O5znmXI3l6WMx5tOw",
+  "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+  "accept": "application/json, text/plain, */*",
+  "sec-ch-ua": "\"Chromium\";v=\"148\", \"Google Chrome\";v=\"148\", \"Not/A)Brand\";v=\"99\"",
+  "sec-ch-ua-mobile": "?0",
+  "origin": "http://localhost:5173",
+  "sec-fetch-site": "same-site",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-dest": "empty",
+  "referer": "http://localhost:5173/",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "en-GB,en-US;q=0.9,en;q=0.8,es;q=0.7",
+  "if-none-match": "W/\"179-jkiuKUQLWrag+Buma977QmU7qoQ\""
+}
+[Auth Middleware] Authorization header: Bearer eyJhbGciOiJSUzI1NiIsImNhdCI6ImNsX0I3ZDRQRDExMUFBQSIsImtpZCI6Imluc18zRThmeEtpSGk4d2xiUlRRbDVRaGNxQzBETnMiLCJvaWF0IjoxNzgwMDgzOTYzLCJ0eXAiOiJKV1QifQ.eyJhenAiOiJodHRwOi8vbG9jYWxob3N0OjUxNzMiLCJleHAiOjE3ODAwODQwMjMsImZ2YSI6Wzg0ODQsLTFdLCJpYXQiOjE3ODAwODM5NjMsImlzcyI6Imh0dHBzOi8vZmVhc2libGUtaG9uZXliZWUtNDMuY2xlcmsuYWNjb3VudHMuZGV2IiwibmJmIjoxNzgwMDgzOTUzLCJzaWQiOiJzZXNzXzNFOHpJWExMMzBaaWpFam5hZEVhMUpwNmtJViIsInN0cyI6ImFjdGl2ZSIsInN1YiI6InVzZXJfM0U4eklUcVp3MlJZbW9wQ0ptRndkZnFsamU2IiwidiI6Mn0.LwakU6vqIDiwopglvHNz519aV9Hrd6GSCX5rnx7vfOh5nKuIqNZiFOb3OMzGquKx3t9r1c7B6G50N0ZazHVsaBavHG4q4Lff4-xIK8zrGL3zssdmj36GSDot2-OEYtJJ7ICU57_16bugBhzNcIorbWG0aYKFkGdsT1V6v3uH1CQTD-bJNnFZvSg_Ulxt446-4X_qUtGSX7xEEO93U0qc6RnJ1qDKPDCp0bUHUH_QQQLExZ1Z-wVW4uU9ug3-e1ybqCeR8GciG0l6rHeU9aWXxevePGjyAfrOVtXfDzUrmyzRFVD9EI4a7AaDswP_PI97utEZ5O5znmXI3l6WMx5tOw
+[Auth Middleware] Auth object from clerkMiddleware: Present
+[Auth Middleware] Auth object details: {
+  "userId": "user_3E8zITqZw2RYmopCJmFwdfqlje6",
+  "sessionId": "sess_3E8zIXLL30ZijEjnadEa1Jp6kIV",
+  "sessionClaims": {
+    "azp": "http://localhost:5173",
+    "exp": 1780084023,
+    "fva": [
+      8484,
+      -1
+    ],
+    "iat": 1780083963,
+    "iss": "https://feasible-honeybee-43.clerk.accounts.dev",
+    "nbf": 1780083953,
+    "sid": "sess_3E8zIXLL30ZijEjnadEa1Jp6kIV",
+    "sts": "active",
+    "sub": "user_3E8zITqZw2RYmopCJmFwdfqlje6",
+    "v": 2
+  }
+}
+[Auth Middleware] userId from clerk: user_3E8zITqZw2RYmopCJmFwdfqlje6
+[Auth Middleware] sessionClaims from clerk: {
+  azp: 'http://localhost:5173',
+  exp: 1780084023,
+  fva: [ 8484, -1 ],
+  iat: 1780083963,
+  iss: 'https://feasible-honeybee-43.clerk.accounts.dev',
+  nbf: 1780083953,
+  sid: 'sess_3E8zIXLL30ZijEjnadEa1Jp6kIV',
+  sts: 'active',
+  sub: 'user_3E8zITqZw2RYmopCJmFwdfqlje6',
+  v: 2
+}
+[Auth Middleware] Final userId: user_3E8zITqZw2RYmopCJmFwdfqlje6
+[Auth Middleware] User authenticated successfully, calling next()
+[Auth Middleware] Headers: {
+  "host": "localhost:3000",
+  "connection": "keep-alive",
+  "sec-ch-ua-platform": "\"macOS\"",
+  "authorization": "Bearer eyJhbGciOiJSUzI1NiIsImNhdCI6ImNsX0I3ZDRQRDExMUFBQSIsImtpZCI6Imluc18zRThmeEtpSGk4d2xiUlRRbDVRaGNxQzBETnMiLCJvaWF0IjoxNzgwMDkyMTMwLCJ0eXAiOiJKV1QifQ.eyJhenAiOiJodHRwOi8vbG9jYWxob3N0OjUxNzMiLCJleHAiOjE3ODAwOTIxOTAsImZ2YSI6Wzg2MjAsLTFdLCJpYXQiOjE3ODAwOTIxMzAsImlzcyI6Imh0dHBzOi8vZmVhc2libGUtaG9uZXliZWUtNDMuY2xlcmsuYWNjb3VudHMuZGV2IiwibmJmIjoxNzgwMDkyMTIwLCJzaWQiOiJzZXNzXzNFOHpJWExMMzBaaWpFam5hZEVhMUpwNmtJViIsInN0cyI6ImFjdGl2ZSIsInN1YiI6InVzZXJfM0U4eklUcVp3MlJZbW9wQ0ptRndkZnFsamU2IiwidiI6Mn0.A7mg36_rgD5-jCjvTmbFsZkt7WX_ZzkcVYG6nkZj6Es8vzcQxA33Y0Fg0IecuXrnhFQhl8PDoGzObXZ-HjU3GymOIcVnvqSxQ-tyYMFFhyyXiumrzk1Io57JeBZ778WLbbpRc-deEGn7-ZKoC1G6oL-bMj2Bp8unErzcW5Y8Tf8hel4rBlWtYHWboJFFSc4499x_yutNF0vWpmkbqWYF9tlWxlZxBf3ccLzjChokf37A0AwTwEWXKUfJPAtUsSZomEgL4T-nkH7djtD4YkIxTC8QWS8MdPndjQ0MVuaxCxitIhEmQORmbzpG3ZWkIba7IgpfIkAyxteHqV9gP4MfZg",
+  "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+  "accept": "application/json, text/plain, */*",
+  "sec-ch-ua": "\"Chromium\";v=\"148\", \"Google Chrome\";v=\"148\", \"Not/A)Brand\";v=\"99\"",
+  "sec-ch-ua-mobile": "?0",
+  "origin": "http://localhost:5173",
+  "sec-fetch-site": "same-site",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-dest": "empty",
+  "referer": "http://localhost:5173/",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "en-GB,en-US;q=0.9,en;q=0.8,es;q=0.7",
+  "if-none-match": "W/\"179-jkiuKUQLWrag+Buma977QmU7qoQ\""
+}
+[Auth Middleware] Authorization header: Bearer eyJhbGciOiJSUzI1NiIsImNhdCI6ImNsX0I3ZDRQRDExMUFBQSIsImtpZCI6Imluc18zRThmeEtpSGk4d2xiUlRRbDVRaGNxQzBETnMiLCJvaWF0IjoxNzgwMDkyMTMwLCJ0eXAiOiJKV1QifQ.eyJhenAiOiJodHRwOi8vbG9jYWxob3N0OjUxNzMiLCJleHAiOjE3ODAwOTIxOTAsImZ2YSI6Wzg2MjAsLTFdLCJpYXQiOjE3ODAwOTIxMzAsImlzcyI6Imh0dHBzOi8vZmVhc2libGUtaG9uZXliZWUtNDMuY2xlcmsuYWNjb3VudHMuZGV2IiwibmJmIjoxNzgwMDkyMTIwLCJzaWQiOiJzZXNzXzNFOHpJWExMMzBaaWpFam5hZEVhMUpwNmtJViIsInN0cyI6ImFjdGl2ZSIsInN1YiI6InVzZXJfM0U4eklUcVp3MlJZbW9wQ0ptRndkZnFsamU2IiwidiI6Mn0.A7mg36_rgD5-jCjvTmbFsZkt7WX_ZzkcVYG6nkZj6Es8vzcQxA33Y0Fg0IecuXrnhFQhl8PDoGzObXZ-HjU3GymOIcVnvqSxQ-tyYMFFhyyXiumrzk1Io57JeBZ778WLbbpRc-deEGn7-ZKoC1G6oL-bMj2Bp8unErzcW5Y8Tf8hel4rBlWtYHWboJFFSc4499x_yutNF0vWpmkbqWYF9tlWxlZxBf3ccLzjChokf37A0AwTwEWXKUfJPAtUsSZomEgL4T-nkH7djtD4YkIxTC8QWS8MdPndjQ0MVuaxCxitIhEmQORmbzpG3ZWkIba7IgpfIkAyxteHqV9gP4MfZg
+[Auth Middleware] Auth object from clerkMiddleware: Present
+[Auth Middleware] Auth object details: undefined
+[Auth Middleware] userId from clerk: undefined
+[Auth Middleware] sessionClaims from clerk: undefined
+[Auth Middleware] No userId from clerkMiddleware, trying Authorization header
+[Auth Middleware] Found token in Authorization header (first 10 chars): eyJhbGciOi... attempting to verify...
+[Auth Middleware] Decoded token payload: {
+  "azp": "http://localhost:5173",
+  "exp": 1780092190,
+  "fva": [
+    8620,
+    -1
+  ],
+  "iat": 1780092130,
+  "iss": "https://feasible-honeybee-43.clerk.accounts.dev",
+  "nbf": 1780092120,
+  "sid": "sess_3E8zIXLL30ZijEjnadEa1Jp6kIV",
+  "sts": "active",
+  "sub": "user_3E8zITqZw2RYmopCJmFwdfqlje6",
+  "v": 2
+}
+[Auth Middleware] Extracted userId from token payload: user_3E8zITqZw2RYmopCJmFwdfqlje6
+[Auth Middleware] Final userId: user_3E8zITqZw2RYmopCJmFwdfqlje6
+[Auth Middleware] Headers: {
+  "host": "localhost:3000",
+  "connection": "keep-alive",
+  "sec-ch-ua-platform": "\"macOS\"",
+  "authorization": "Bearer eyJhbGciOiJSUzI1NiIsImNhdCI6ImNsX0I3ZDRQRDExMUFBQSIsImtpZCI6Imluc18zRThmeEtpSGk4d2xiUlRRbDVRaGNxQzBETnMiLCJvaWF0IjoxNzgwMDkyMTMwLCJ0eXAiOiJKV1QifQ.eyJhenAiOiJodHRwOi8vbG9jYWxob3N0OjUxNzMiLCJleHAiOjE3ODAwOTIxOTAsImZ2YSI6Wzg2MjAsLTFdLCJpYXQiOjE3ODAwOTIxMzAsImlzcyI6Imh0dHBzOi8vZmVhc2libGUtaG9uZXliZWUtNDMuY2xlcmsuYWNjb3VudHMuZGV2IiwibmJmIjoxNzgwMDkyMTIwLCJzaWQiOiJzZXNzXzNFOHpJWExMMzBaaWpFam5hZEVhMUpwNmtJViIsInN0cyI6ImFjdGl2ZSIsInN1YiI6InVzZXJfM0U4eklUcVp3MlJZbW9wQ0ptRndkZnFsamU2IiwidiI6Mn0.A7mg36_rgD5-jCjvTmbFsZkt7WX_ZzkcVYG6nkZj6Es8vzcQxA33Y0Fg0IecuXrnhFQhl8PDoGzObXZ-HjU3GymOIcVnvqSxQ-tyYMFFhyyXiumrzk1Io57JeBZ778WLbbpRc-deEGn7-ZKoC1G6oL-bMj2Bp8unErzcW5Y8Tf8hel4rBlWtYHWboJFFSc4499x_yutNF0vWpmkbqWYF9tlWxlZxBf3ccLzjChokf37A0AwTwEWXKUfJPAtUsSZomEgL4T-nkH7djtD4YkIxTC8QWS8MdPndjQ0MVuaxCxitIhEmQORmbzpG3ZWkIba7IgpfIkAyxteHqV9gP4MfZg",
+  "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+  "accept": "application/json, text/plain, */*",
+  "sec-ch-ua": "\"Chromium\";v=\"148\", \"Google Chrome\";v=\"148\", \"Not/A)Brand\";v=\"99\"",
+  "sec-ch-ua-mobile": "?0",
+  "origin": "http://localhost:5173",
+  "sec-fetch-site": "same-site",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-dest": "empty",
+  "referer": "http://localhost:5173/",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "en-GB,en-US;q=0.9,en;q=0.8,es;q=0.7",
+  "if-none-match": "W/\"3c-lryfOn8cXqqwrJ5cJfQzfwhnCZ4\""
+}
+[Auth Middleware] Authorization header: Bearer eyJhbGciOiJSUzI1NiIsImNhdCI6ImNsX0I3ZDRQRDExMUFBQSIsImtpZCI6Imluc18zRThmeEtpSGk4d2xiUlRRbDVRaGNxQzBETnMiLCJvaWF0IjoxNzgwMDkyMTMwLCJ0eXAiOiJKV1QifQ.eyJhenAiOiJodHRwOi8vbG9jYWxob3N0OjUxNzMiLCJleHAiOjE3ODAwOTIxOTAsImZ2YSI6Wzg2MjAsLTFdLCJpYXQiOjE3ODAwOTIxMzAsImlzcyI6Imh0dHBzOi8vZmVhc2libGUtaG9uZXliZWUtNDMuY2xlcmsuYWNjb3VudHMuZGV2IiwibmJmIjoxNzgwMDkyMTIwLCJzaWQiOiJzZXNzXzNFOHpJWExMMzBaaWpFam5hZEVhMUpwNmtJViIsInN0cyI6ImFjdGl2ZSIsInN1YiI6InVzZXJfM0U4eklUcVp3MlJZbW9wQ0ptRndkZnFsamU2IiwidiI6Mn0.A7mg36_rgD5-jCjvTmbFsZkt7WX_ZzkcVYG6nkZj6Es8vzcQxA33Y0Fg0IecuXrnhFQhl8PDoGzObXZ-HjU3GymOIcVnvqSxQ-tyYMFFhyyXiumrzk1Io57JeBZ778WLbbpRc-deEGn7-ZKoC1G6oL-bMj2Bp8unErzcW5Y8Tf8hel4rBlWtYHWboJFFSc4499x_yutNF0vWpmkbqWYF9tlWxlZxBf3ccLzjChokf37A0AwTwEWXKUfJPAtUsSZomEgL4T-nkH7djtD4YkIxTC8QWS8MdPndjQ0MVuaxCxitIhEmQORmbzpG3ZWkIba7IgpfIkAyxteHqV9gP4MfZg
+[Auth Middleware] Auth object from clerkMiddleware: Present
+[Auth Middleware] Auth object details: undefined
+[Auth Middleware] userId from clerk: undefined
+[Auth Middleware] sessionClaims from clerk: undefined
+[Auth Middleware] No userId from clerkMiddleware, trying Authorization header
+[Auth Middleware] Found token in Authorization header (first 10 chars): eyJhbGciOi... attempting to verify...
+[Auth Middleware] Decoded token payload: {
+  "azp": "http://localhost:5173",
+  "exp": 1780092190,
+  "fva": [
+    8620,
+    -1
+  ],
+  "iat": 1780092130,
+  "iss": "https://feasible-honeybee-43.clerk.accounts.dev",
+  "nbf": 1780092120,
+  "sid": "sess_3E8zIXLL30ZijEjnadEa1Jp6kIV",
+  "sts": "active",
+  "sub": "user_3E8zITqZw2RYmopCJmFwdfqlje6",
+  "v": 2
+}
+[Auth Middleware] Extracted userId from token payload: user_3E8zITqZw2RYmopCJmFwdfqlje6
+[Auth Middleware] Final userId: user_3E8zITqZw2RYmopCJmFwdfqlje6
+[Auth Middleware] User authenticated successfully, calling next()
+[Auth Middleware] Headers: {
+  "host": "localhost:3000",
+  "connection": "keep-alive",
+  "sec-ch-ua-platform": "\"macOS\"",
+  "authorization": "Bearer eyJhbGciOiJSUzI1NiIsImNhdCI6ImNsX0I3ZDRQRDExMUFBQSIsImtpZCI6Imluc18zRThmeEtpSGk4d2xiUlRRbDVRaGNxQzBETnMiLCJvaWF0IjoxNzgwMDkyMTMwLCJ0eXAiOiJKV1QifQ.eyJhenAiOiJodHRwOi8vbG9jYWxob3N0OjUxNzMiLCJleHAiOjE3ODAwOTIxOTAsImZ2YSI6Wzg2MjAsLTFdLCJpYXQiOjE3ODAwOTIxMzAsImlzcyI6Imh0dHBzOi8vZmVhc2libGUtaG9uZXliZWUtNDMuY2xlcmsuYWNjb3VudHMuZGV2IiwibmJmIjoxNzgwMDkyMTIwLCJzaWQiOiJzZXNzXzNFOHpJWExMMzBaaWpFam5hZEVhMUpwNmtJViIsInN0cyI6ImFjdGl2ZSIsInN1YiI6InVzZXJfM0U4eklUcVp3MlJZbW9wQ0ptRndkZnFsamU2IiwidiI6Mn0.A7mg36_rgD5-jCjvTmbFsZkt7WX_ZzkcVYG6nkZj6Es8vzcQxA33Y0Fg0IecuXrnhFQhl8PDoGzObXZ-HjU3GymOIcVnvqSxQ-tyYMFFhyyXiumrzk1Io57JeBZ778WLbbpRc-deEGn7-ZKoC1G6oL-bMj2Bp8unErzcW5Y8Tf8hel4rBlWtYHWboJFFSc4499x_yutNF0vWpmkbqWYF9tlWxlZxBf3ccLzjChokf37A0AwTwEWXKUfJPAtUsSZomEgL4T-nkH7djtD4YkIxTC8QWS8MdPndjQ0MVuaxCxitIhEmQORmbzpG3ZWkIba7IgpfIkAyxteHqV9gP4MfZg",
+  "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+  "accept": "application/json, text/plain, */*",
+  "sec-ch-ua": "\"Chromium\";v=\"148\", \"Google Chrome\";v=\"148\", \"Not/A)Brand\";v=\"99\"",
+  "sec-ch-ua-mobile": "?0",
+  "origin": "http://localhost:5173",
+  "sec-fetch-site": "same-site",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-dest": "empty",
+  "referer": "http://localhost:5173/",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "en-GB,en-US;q=0.9,en;q=0.8,es;q=0.7",
+  "if-none-match": "W/\"3c-lryfOn8cXqqwrJ5cJfQzfwhnCZ4\""
+}
+[Auth Middleware] Authorization header: Bearer eyJhbGciOiJSUzI1NiIsImNhdCI6ImNsX0I3ZDRQRDExMUFBQSIsImtpZCI6Imluc18zRThmeEtpSGk4d2xiUlRRbDVRaGNxQzBETnMiLCJvaWF0IjoxNzgwMDkyMTMwLCJ0eXAiOiJKV1QifQ.eyJhenAiOiJodHRwOi8vbG9jYWxob3N0OjUxNzMiLCJleHAiOjE3ODAwOTIxOTAsImZ2YSI6Wzg2MjAsLTFdLCJpYXQiOjE3ODAwOTIxMzAsImlzcyI6Imh0dHBzOi8vZmVhc2libGUtaG9uZXliZWUtNDMuY2xlcmsuYWNjb3VudHMuZGV2IiwibmJmIjoxNzgwMDkyMTIwLCJzaWQiOiJzZXNzXzNFOHpJWExMMzBaaWpFam5hZEVhMUpwNmtJViIsInN0cyI6ImFjdGl2ZSIsInN1YiI6InVzZXJfM0U4eklUcVp3MlJZbW9wQ0ptRndkZnFsamU2IiwidiI6Mn0.A7mg36_rgD5-jCjvTmbFsZkt7WX_ZzkcVYG6nkZj6Es8vzcQxA33Y0Fg0IecuXrnhFQhl8PDoGzObXZ-HjU3GymOIcVnvqSxQ-tyYMFFhyyXiumrzk1Io57JeBZ778WLbbpRc-deEGn7-ZKoC1G6oL-bMj2Bp8unErzcW5Y8Tf8hel4rBlWtYHWboJFFSc4499x_yutNF0vWpmkbqWYF9tlWxlZxBf3ccLzjChokf37A0AwTwEWXKUfJPAtUsSZomEgL4T-nkH7djtD4YkIxTC8QWS8MdPndjQ0MVuaxCxitIhEmQORmbzpG3ZWkIba7IgpfIkAyxteHqV9gP4MfZg
+[Auth Middleware] Auth object from clerkMiddleware: Present
+[Auth Middleware] Auth object details: {
+  "userId": "user_3E8zITqZw2RYmopCJmFwdfqlje6",
+  "sessionId": "sess_3E8zIXLL30ZijEjnadEa1Jp6kIV",
+  "sessionClaims": {
+    "azp": "http://localhost:5173",
+    "exp": 1780092190,
+    "fva": [
+      8620,
+      -1
+    ],
+    "iat": 1780092130,
+    "iss": "https://feasible-honeybee-43.clerk.accounts.dev",
+    "nbf": 1780092120,
+    "sid": "sess_3E8zIXLL30ZijEjnadEa1Jp6kIV",
+    "sts": "active",
+    "sub": "user_3E8zITqZw2RYmopCJmFwdfqlje6",
+    "v": 2
+  }
+}
+[Auth Middleware] userId from clerk: user_3E8zITqZw2RYmopCJmFwdfqlje6
+[Auth Middleware] sessionClaims from clerk: {
+  azp: 'http://localhost:5173',
+  exp: 1780092190,
+  fva: [ 8620, -1 ],
+  iat: 1780092130,
+  iss: 'https://feasible-honeybee-43.clerk.accounts.dev',
+  nbf: 1780092120,
+  sid: 'sess_3E8zIXLL30ZijEjnadEa1Jp6kIV',
+  sts: 'active',
+  sub: 'user_3E8zITqZw2RYmopCJmFwdfqlje6',
+  v: 2
+}
+[Auth Middleware] Final userId: user_3E8zITqZw2RYmopCJmFwdfqlje6
+[Auth Middleware] User authenticated successfully, calling next()
+[Auth Middleware] Headers: {
+  "host": "localhost:3000",
+  "connection": "keep-alive",
+  "sec-ch-ua-platform": "\"macOS\"",
+  "authorization": "Bearer eyJhbGciOiJSUzI1NiIsImNhdCI6ImNsX0I3ZDRQRDExMUFBQSIsImtpZCI6Imluc18zRThmeEtpSGk4d2xiUlRRbDVRaGNxQzBETnMiLCJvaWF0IjoxNzgwMDkyMTMwLCJ0eXAiOiJKV1QifQ.eyJhenAiOiJodHRwOi8vbG9jYWxob3N0OjUxNzMiLCJleHAiOjE3ODAwOTIxOTAsImZ2YSI6Wzg2MjAsLTFdLCJpYXQiOjE3ODAwOTIxMzAsImlzcyI6Imh0dHBzOi8vZmVhc2libGUtaG9uZXliZWUtNDMuY2xlcmsuYWNjb3VudHMuZGV2IiwibmJmIjoxNzgwMDkyMTIwLCJzaWQiOiJzZXNzXzNFOHpJWExMMzBaaWpFam5hZEVhMUpwNmtJViIsInN0cyI6ImFjdGl2ZSIsInN1YiI6InVzZXJfM0U4eklUcVp3MlJZbW9wQ0ptRndkZnFsamU2IiwidiI6Mn0.A7mg36_rgD5-jCjvTmbFsZkt7WX_ZzkcVYG6nkZj6Es8vzcQxA33Y0Fg0IecuXrnhFQhl8PDoGzObXZ-HjU3GymOIcVnvqSxQ-tyYMFFhyyXiumrzk1Io57JeBZ778WLbbpRc-deEGn7-ZKoC1G6oL-bMj2Bp8unErzcW5Y8Tf8hel4rBlWtYHWboJFFSc4499x_yutNF0vWpmkbqWYF9tlWxlZxBf3ccLzjChokf37A0AwTwEWXKUfJPAtUsSZomEgL4T-nkH7djtD4YkIxTC8QWS8MdPndjQ0MVuaxCxitIhEmQORmbzpG3ZWkIba7IgpfIkAyxteHqV9gP4MfZg",
+  "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+  "accept": "application/json, text/plain, */*",
+  "sec-ch-ua": "\"Chromium\";v=\"148\", \"Google Chrome\";v=\"148\", \"Not/A)Brand\";v=\"99\"",
+  "sec-ch-ua-mobile": "?0",
+  "origin": "http://localhost:5173",
+  "sec-fetch-site": "same-site",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-dest": "empty",
+  "referer": "http://localhost:5173/",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "en-GB,en-US;q=0.9,en;q=0.8,es;q=0.7",
+  "if-none-match": "W/\"179-jkiuKUQLWrag+Buma977QmU7qoQ\""
+}
+[Auth Middleware] Authorization header: Bearer eyJhbGciOiJSUzI1NiIsImNhdCI6ImNsX0I3ZDRQRDExMUFBQSIsImtpZCI6Imluc18zRThmeEtpSGk4d2xiUlRRbDVRaGNxQzBETnMiLCJvaWF0IjoxNzgwMDkyMTMwLCJ0eXAiOiJKV1QifQ.eyJhenAiOiJodHRwOi8vbG9jYWxob3N0OjUxNzMiLCJleHAiOjE3ODAwOTIxOTAsImZ2YSI6Wzg2MjAsLTFdLCJpYXQiOjE3ODAwOTIxMzAsImlzcyI6Imh0dHBzOi8vZmVhc2libGUtaG9uZXliZWUtNDMuY2xlcmsuYWNjb3VudHMuZGV2IiwibmJmIjoxNzgwMDkyMTIwLCJzaWQiOiJzZXNzXzNFOHpJWExMMzBaaWpFam5hZEVhMUpwNmtJViIsInN0cyI6ImFjdGl2ZSIsInN1YiI6InVzZXJfM0U4eklUcVp3MlJZbW9wQ0ptRndkZnFsamU2IiwidiI6Mn0.A7mg36_rgD5-jCjvTmbFsZkt7WX_ZzkcVYG6nkZj6Es8vzcQxA33Y0Fg0IecuXrnhFQhl8PDoGzObXZ-HjU3GymOIcVnvqSxQ-tyYMFFhyyXiumrzk1Io57JeBZ778WLbbpRc-deEGn7-ZKoC1G6oL-bMj2Bp8unErzcW5Y8Tf8hel4rBlWtYHWboJFFSc4499x_yutNF0vWpmkbqWYF9tlWxlZxBf3ccLzjChokf37A0AwTwEWXKUfJPAtUsSZomEgL4T-nkH7djtD4YkIxTC8QWS8MdPndjQ0MVuaxCxitIhEmQORmbzpG3ZWkIba7IgpfIkAyxteHqV9gP4MfZg
+[Auth Middleware] Auth object from clerkMiddleware: Present
+[Auth Middleware] Auth object details: {
+  "userId": "user_3E8zITqZw2RYmopCJmFwdfqlje6",
+  "sessionId": "sess_3E8zIXLL30ZijEjnadEa1Jp6kIV",
+  "sessionClaims": {
+    "azp": "http://localhost:5173",
+    "exp": 1780092190,
+    "fva": [
+      8620,
+      -1
+    ],
+    "iat": 1780092130,
+    "iss": "https://feasible-honeybee-43.clerk.accounts.dev",
+    "nbf": 1780092120,
+    "sid": "sess_3E8zIXLL30ZijEjnadEa1Jp6kIV",
+    "sts": "active",
+    "sub": "user_3E8zITqZw2RYmopCJmFwdfqlje6",
+    "v": 2
+  }
+}
+[Auth Middleware] userId from clerk: user_3E8zITqZw2RYmopCJmFwdfqlje6
+[Auth Middleware] sessionClaims from clerk: {
+  azp: 'http://localhost:5173',
+  exp: 1780092190,
+  fva: [ 8620, -1 ],
+  iat: 1780092130,
+  iss: 'https://feasible-honeybee-43.clerk.accounts.dev',
+  nbf: 1780092120,
+  sid: 'sess_3E8zIXLL30ZijEjnadEa1Jp6kIV',
+  sts: 'active',
+  sub: 'user_3E8zITqZw2RYmopCJmFwdfqlje6',
+  v: 2
+}
+[Auth Middleware] Final userId: user_3E8zITqZw2RYmopCJmFwdfqlje6
+[Auth Middleware] User authenticated successfully, calling next()
+[Auth Middleware] User authenticated successfully, calling next()
+[Auth Middleware] Headers: {
+  "host": "localhost:3000",
+  "connection": "keep-alive",
+  "sec-ch-ua-platform": "\"macOS\"",
+  "authorization": "Bearer eyJhbGciOiJSUzI1NiIsImNhdCI6ImNsX0I3ZDRQRDExMUFBQSIsImtpZCI6Imluc18zRThmeEtpSGk4d2xiUlRRbDVRaGNxQzBETnMiLCJvaWF0IjoxNzgwMTQ2MTAxLCJ0eXAiOiJKV1QifQ.eyJhenAiOiJodHRwOi8vbG9jYWxob3N0OjUxNzMiLCJleHAiOjE3ODAxNDYxNjEsImZ2YSI6Wzk1MTksLTFdLCJpYXQiOjE3ODAxNDYxMDEsImlzcyI6Imh0dHBzOi8vZmVhc2libGUtaG9uZXliZWUtNDMuY2xlcmsuYWNjb3VudHMuZGV2IiwibmJmIjoxNzgwMTQ2MDkxLCJzaWQiOiJzZXNzXzNFOHpJWExMMzBaaWpFam5hZEVhMUpwNmtJViIsInN0cyI6ImFjdGl2ZSIsInN1YiI6InVzZXJfM0U4eklUcVp3MlJZbW9wQ0ptRndkZnFsamU2IiwidiI6Mn0.QCiQVcFaNr8HHCSwB37x0XVm2RH1msFEbvREZX-oiXvlK9QiEtVdUOPmInBkn-RfPMtAiHaqC1kDLOvc2wlmxrqrXQoSTrrKhYcvJDpiItdTpqoVvvsNMU4OSCvV9RgqtvsrWjiuqiP1lkYX2tM0LpK6cWdGg6q2ulW5rNhwiqAPGDrK4E26gteVURzzMfXKe9lntxAV1jrDCKhEBzEirAfdnsQBZOmP-om0VCz-Cs9GPFAV4YTHf46nLVNPMsAfyOADSlCXoenEi0yUmSJUckxaTO6zOLGqY5KvXsR1jFpP2hpI3YgDuCLZvyvhLoX6Af-ORw_BIo70tlQ1R2SgFQ",
+  "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+  "accept": "application/json, text/plain, */*",
+  "sec-ch-ua": "\"Chromium\";v=\"148\", \"Google Chrome\";v=\"148\", \"Not/A)Brand\";v=\"99\"",
+  "sec-ch-ua-mobile": "?0",
+  "origin": "http://localhost:5173",
+  "sec-fetch-site": "same-site",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-dest": "empty",
+  "referer": "http://localhost:5173/",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "en-GB,en-US;q=0.9,en;q=0.8,es;q=0.7",
+  "if-none-match": "W/\"3c-lryfOn8cXqqwrJ5cJfQzfwhnCZ4\""
+}
+[Auth Middleware] Authorization header: Bearer eyJhbGciOiJSUzI1NiIsImNhdCI6ImNsX0I3ZDRQRDExMUFBQSIsImtpZCI6Imluc18zRThmeEtpSGk4d2xiUlRRbDVRaGNxQzBETnMiLCJvaWF0IjoxNzgwMTQ2MTAxLCJ0eXAiOiJKV1QifQ.eyJhenAiOiJodHRwOi8vbG9jYWxob3N0OjUxNzMiLCJleHAiOjE3ODAxNDYxNjEsImZ2YSI6Wzk1MTksLTFdLCJpYXQiOjE3ODAxNDYxMDEsImlzcyI6Imh0dHBzOi8vZmVhc2libGUtaG9uZXliZWUtNDMuY2xlcmsuYWNjb3VudHMuZGV2IiwibmJmIjoxNzgwMTQ2MDkxLCJzaWQiOiJzZXNzXzNFOHpJWExMMzBaaWpFam5hZEVhMUpwNmtJViIsInN0cyI6ImFjdGl2ZSIsInN1YiI6InVzZXJfM0U4eklUcVp3MlJZbW9wQ0ptRndkZnFsamU2IiwidiI6Mn0.QCiQVcFaNr8HHCSwB37x0XVm2RH1msFEbvREZX-oiXvlK9QiEtVdUOPmInBkn-RfPMtAiHaqC1kDLOvc2wlmxrqrXQoSTrrKhYcvJDpiItdTpqoVvvsNMU4OSCvV9RgqtvsrWjiuqiP1lkYX2tM0LpK6cWdGg6q2ulW5rNhwiqAPGDrK4E26gteVURzzMfXKe9lntxAV1jrDCKhEBzEirAfdnsQBZOmP-om0VCz-Cs9GPFAV4YTHf46nLVNPMsAfyOADSlCXoenEi0yUmSJUckxaTO6zOLGqY5KvXsR1jFpP2hpI3YgDuCLZvyvhLoX6Af-ORw_BIo70tlQ1R2SgFQ
+[Auth Middleware] Auth object from clerkMiddleware: Present
+[Auth Middleware] Auth object details: undefined
+[Auth Middleware] userId from clerk: undefined
+[Auth Middleware] sessionClaims from clerk: undefined
+[Auth Middleware] No userId from clerkMiddleware, trying Authorization header
+[Auth Middleware] Found token in Authorization header (first 10 chars): eyJhbGciOi... attempting to verify...
+[Auth Middleware] Decoded token payload: {
+  "azp": "http://localhost:5173",
+  "exp": 1780146161,
+  "fva": [
+    9519,
+    -1
+  ],
+  "iat": 1780146101,
+  "iss": "https://feasible-honeybee-43.clerk.accounts.dev",
+  "nbf": 1780146091,
+  "sid": "sess_3E8zIXLL30ZijEjnadEa1Jp6kIV",
+  "sts": "active",
+  "sub": "user_3E8zITqZw2RYmopCJmFwdfqlje6",
+  "v": 2
+}
+[Auth Middleware] Extracted userId from token payload: user_3E8zITqZw2RYmopCJmFwdfqlje6
+[Auth Middleware] Final userId: user_3E8zITqZw2RYmopCJmFwdfqlje6
+[Auth Middleware] Headers: {
+  "host": "localhost:3000",
+  "connection": "keep-alive",
+  "sec-ch-ua-platform": "\"macOS\"",
+  "authorization": "Bearer eyJhbGciOiJSUzI1NiIsImNhdCI6ImNsX0I3ZDRQRDExMUFBQSIsImtpZCI6Imluc18zRThmeEtpSGk4d2xiUlRRbDVRaGNxQzBETnMiLCJvaWF0IjoxNzgwMTQ2MTAxLCJ0eXAiOiJKV1QifQ.eyJhenAiOiJodHRwOi8vbG9jYWxob3N0OjUxNzMiLCJleHAiOjE3ODAxNDYxNjEsImZ2YSI6Wzk1MTksLTFdLCJpYXQiOjE3ODAxNDYxMDEsImlzcyI6Imh0dHBzOi8vZmVhc2libGUtaG9uZXliZWUtNDMuY2xlcmsuYWNjb3VudHMuZGV2IiwibmJmIjoxNzgwMTQ2MDkxLCJzaWQiOiJzZXNzXzNFOHpJWExMMzBaaWpFam5hZEVhMUpwNmtJViIsInN0cyI6ImFjdGl2ZSIsInN1YiI6InVzZXJfM0U4eklUcVp3MlJZbW9wQ0ptRndkZnFsamU2IiwidiI6Mn0.QCiQVcFaNr8HHCSwB37x0XVm2RH1msFEbvREZX-oiXvlK9QiEtVdUOPmInBkn-RfPMtAiHaqC1kDLOvc2wlmxrqrXQoSTrrKhYcvJDpiItdTpqoVvvsNMU4OSCvV9RgqtvsrWjiuqiP1lkYX2tM0LpK6cWdGg6q2ulW5rNhwiqAPGDrK4E26gteVURzzMfXKe9lntxAV1jrDCKhEBzEirAfdnsQBZOmP-om0VCz-Cs9GPFAV4YTHf46nLVNPMsAfyOADSlCXoenEi0yUmSJUckxaTO6zOLGqY5KvXsR1jFpP2hpI3YgDuCLZvyvhLoX6Af-ORw_BIo70tlQ1R2SgFQ",
+  "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+  "accept": "application/json, text/plain, */*",
+  "sec-ch-ua": "\"Chromium\";v=\"148\", \"Google Chrome\";v=\"148\", \"Not/A)Brand\";v=\"99\"",
+  "sec-ch-ua-mobile": "?0",
+  "origin": "http://localhost:5173",
+  "sec-fetch-site": "same-site",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-dest": "empty",
+  "referer": "http://localhost:5173/",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "en-GB,en-US;q=0.9,en;q=0.8,es;q=0.7",
+  "if-none-match": "W/\"179-jkiuKUQLWrag+Buma977QmU7qoQ\""
+}
+[Auth Middleware] Authorization header: Bearer eyJhbGciOiJSUzI1NiIsImNhdCI6ImNsX0I3ZDRQRDExMUFBQSIsImtpZCI6Imluc18zRThmeEtpSGk4d2xiUlRRbDVRaGNxQzBETnMiLCJvaWF0IjoxNzgwMTQ2MTAxLCJ0eXAiOiJKV1QifQ.eyJhenAiOiJodHRwOi8vbG9jYWxob3N0OjUxNzMiLCJleHAiOjE3ODAxNDYxNjEsImZ2YSI6Wzk1MTksLTFdLCJpYXQiOjE3ODAxNDYxMDEsImlzcyI6Imh0dHBzOi8vZmVhc2libGUtaG9uZXliZWUtNDMuY2xlcmsuYWNjb3VudHMuZGV2IiwibmJmIjoxNzgwMTQ2MDkxLCJzaWQiOiJzZXNzXzNFOHpJWExMMzBaaWpFam5hZEVhMUpwNmtJViIsInN0cyI6ImFjdGl2ZSIsInN1YiI6InVzZXJfM0U4eklUcVp3MlJZbW9wQ0ptRndkZnFsamU2IiwidiI6Mn0.QCiQVcFaNr8HHCSwB37x0XVm2RH1msFEbvREZX-oiXvlK9QiEtVdUOPmInBkn-RfPMtAiHaqC1kDLOvc2wlmxrqrXQoSTrrKhYcvJDpiItdTpqoVvvsNMU4OSCvV9RgqtvsrWjiuqiP1lkYX2tM0LpK6cWdGg6q2ulW5rNhwiqAPGDrK4E26gteVURzzMfXKe9lntxAV1jrDCKhEBzEirAfdnsQBZOmP-om0VCz-Cs9GPFAV4YTHf46nLVNPMsAfyOADSlCXoenEi0yUmSJUckxaTO6zOLGqY5KvXsR1jFpP2hpI3YgDuCLZvyvhLoX6Af-ORw_BIo70tlQ1R2SgFQ
+[Auth Middleware] Auth object from clerkMiddleware: Present
+[Auth Middleware] Auth object details: undefined
+[Auth Middleware] userId from clerk: undefined
+[Auth Middleware] sessionClaims from clerk: undefined
+[Auth Middleware] No userId from clerkMiddleware, trying Authorization header
+[Auth Middleware] Found token in Authorization header (first 10 chars): eyJhbGciOi... attempting to verify...
+[Auth Middleware] Decoded token payload: {
+  "azp": "http://localhost:5173",
+  "exp": 1780146161,
+  "fva": [
+    9519,
+    -1
+  ],
+  "iat": 1780146101,
+  "iss": "https://feasible-honeybee-43.clerk.accounts.dev",
+  "nbf": 1780146091,
+  "sid": "sess_3E8zIXLL30ZijEjnadEa1Jp6kIV",
+  "sts": "active",
+  "sub": "user_3E8zITqZw2RYmopCJmFwdfqlje6",
+  "v": 2
+}
+[Auth Middleware] Extracted userId from token payload: user_3E8zITqZw2RYmopCJmFwdfqlje6
+[Auth Middleware] Final userId: user_3E8zITqZw2RYmopCJmFwdfqlje6
+[Auth Middleware] User authenticated successfully, calling next()
+[Auth Middleware] Headers: {
+  "host": "localhost:3000",
+  "connection": "keep-alive",
+  "sec-ch-ua-platform": "\"macOS\"",
+  "authorization": "Bearer eyJhbGciOiJSUzI1NiIsImNhdCI6ImNsX0I3ZDRQRDExMUFBQSIsImtpZCI6Imluc18zRThmeEtpSGk4d2xiUlRRbDVRaGNxQzBETnMiLCJvaWF0IjoxNzgwMTQ2MTAxLCJ0eXAiOiJKV1QifQ.eyJhenAiOiJodHRwOi8vbG9jYWxob3N0OjUxNzMiLCJleHAiOjE3ODAxNDYxNjEsImZ2YSI6Wzk1MTksLTFdLCJpYXQiOjE3ODAxNDYxMDEsImlzcyI6Imh0dHBzOi8vZmVhc2libGUtaG9uZXliZWUtNDMuY2xlcmsuYWNjb3VudHMuZGV2IiwibmJmIjoxNzgwMTQ2MDkxLCJzaWQiOiJzZXNzXzNFOHpJWExMMzBaaWpFam5hZEVhMUpwNmtJViIsInN0cyI6ImFjdGl2ZSIsInN1YiI6InVzZXJfM0U4eklUcVp3MlJZbW9wQ0ptRndkZnFsamU2IiwidiI6Mn0.QCiQVcFaNr8HHCSwB37x0XVm2RH1msFEbvREZX-oiXvlK9QiEtVdUOPmInBkn-RfPMtAiHaqC1kDLOvc2wlmxrqrXQoSTrrKhYcvJDpiItdTpqoVvvsNMU4OSCvV9RgqtvsrWjiuqiP1lkYX2tM0LpK6cWdGg6q2ulW5rNhwiqAPGDrK4E26gteVURzzMfXKe9lntxAV1jrDCKhEBzEirAfdnsQBZOmP-om0VCz-Cs9GPFAV4YTHf46nLVNPMsAfyOADSlCXoenEi0yUmSJUckxaTO6zOLGqY5KvXsR1jFpP2hpI3YgDuCLZvyvhLoX6Af-ORw_BIo70tlQ1R2SgFQ",
+  "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+  "accept": "application/json, text/plain, */*",
+  "sec-ch-ua": "\"Chromium\";v=\"148\", \"Google Chrome\";v=\"148\", \"Not/A)Brand\";v=\"99\"",
+  "sec-ch-ua-mobile": "?0",
+  "origin": "http://localhost:5173",
+  "sec-fetch-site": "same-site",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-dest": "empty",
+  "referer": "http://localhost:5173/",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "en-GB,en-US;q=0.9,en;q=0.8,es;q=0.7",
+  "if-none-match": "W/\"179-jkiuKUQLWrag+Buma977QmU7qoQ\""
+}
+[Auth Middleware] Authorization header: Bearer eyJhbGciOiJSUzI1NiIsImNhdCI6ImNsX0I3ZDRQRDExMUFBQSIsImtpZCI6Imluc18zRThmeEtpSGk4d2xiUlRRbDVRaGNxQzBETnMiLCJvaWF0IjoxNzgwMTQ2MTAxLCJ0eXAiOiJKV1QifQ.eyJhenAiOiJodHRwOi8vbG9jYWxob3N0OjUxNzMiLCJleHAiOjE3ODAxNDYxNjEsImZ2YSI6Wzk1MTksLTFdLCJpYXQiOjE3ODAxNDYxMDEsImlzcyI6Imh0dHBzOi8vZmVhc2libGUtaG9uZXliZWUtNDMuY2xlcmsuYWNjb3VudHMuZGV2IiwibmJmIjoxNzgwMTQ2MDkxLCJzaWQiOiJzZXNzXzNFOHpJWExMMzBaaWpFam5hZEVhMUpwNmtJViIsInN0cyI6ImFjdGl2ZSIsInN1YiI6InVzZXJfM0U4eklUcVp3MlJZbW9wQ0ptRndkZnFsamU2IiwidiI6Mn0.QCiQVcFaNr8HHCSwB37x0XVm2RH1msFEbvREZX-oiXvlK9QiEtVdUOPmInBkn-RfPMtAiHaqC1kDLOvc2wlmxrqrXQoSTrrKhYcvJDpiItdTpqoVvvsNMU4OSCvV9RgqtvsrWjiuqiP1lkYX2tM0LpK6cWdGg6q2ulW5rNhwiqAPGDrK4E26gteVURzzMfXKe9lntxAV1jrDCKhEBzEirAfdnsQBZOmP-om0VCz-Cs9GPFAV4YTHf46nLVNPMsAfyOADSlCXoenEi0yUmSJUckxaTO6zOLGqY5KvXsR1jFpP2hpI3YgDuCLZvyvhLoX6Af-ORw_BIo70tlQ1R2SgFQ
+[Auth Middleware] Auth object from clerkMiddleware: Present
+[Auth Middleware] Auth object details: {
+  "userId": "user_3E8zITqZw2RYmopCJmFwdfqlje6",
+  "sessionId": "sess_3E8zIXLL30ZijEjnadEa1Jp6kIV",
+  "sessionClaims": {
+    "azp": "http://localhost:5173",
+    "exp": 1780146161,
+    "fva": [
+      9519,
+      -1
+    ],
+    "iat": 1780146101,
+    "iss": "https://feasible-honeybee-43.clerk.accounts.dev",
+    "nbf": 1780146091,
+    "sid": "sess_3E8zIXLL30ZijEjnadEa1Jp6kIV",
+    "sts": "active",
+    "sub": "user_3E8zITqZw2RYmopCJmFwdfqlje6",
+    "v": 2
+  }
+}
+[Auth Middleware] userId from clerk: user_3E8zITqZw2RYmopCJmFwdfqlje6
+[Auth Middleware] sessionClaims from clerk: {
+  azp: 'http://localhost:5173',
+  exp: 1780146161,
+  fva: [ 9519, -1 ],
+  iat: 1780146101,
+  iss: 'https://feasible-honeybee-43.clerk.accounts.dev',
+  nbf: 1780146091,
+  sid: 'sess_3E8zIXLL30ZijEjnadEa1Jp6kIV',
+  sts: 'active',
+  sub: 'user_3E8zITqZw2RYmopCJmFwdfqlje6',
+  v: 2
+}
+[Auth Middleware] Final userId: user_3E8zITqZw2RYmopCJmFwdfqlje6
+[Auth Middleware] User authenticated successfully, calling next()
+[Auth Middleware] User authenticated successfully, calling next()
+[Auth Middleware] Headers: {
+  "host": "localhost:3000",
+  "connection": "keep-alive",
+  "sec-ch-ua-platform": "\"macOS\"",
+  "authorization": "Bearer eyJhbGciOiJSUzI1NiIsImNhdCI6ImNsX0I3ZDRQRDExMUFBQSIsImtpZCI6Imluc18zRThmeEtpSGk4d2xiUlRRbDVRaGNxQzBETnMiLCJvaWF0IjoxNzgwMTQ2MTAxLCJ0eXAiOiJKV1QifQ.eyJhenAiOiJodHRwOi8vbG9jYWxob3N0OjUxNzMiLCJleHAiOjE3ODAxNDYxNjEsImZ2YSI6Wzk1MTksLTFdLCJpYXQiOjE3ODAxNDYxMDEsImlzcyI6Imh0dHBzOi8vZmVhc2libGUtaG9uZXliZWUtNDMuY2xlcmsuYWNjb3VudHMuZGV2IiwibmJmIjoxNzgwMTQ2MDkxLCJzaWQiOiJzZXNzXzNFOHpJWExMMzBaaWpFam5hZEVhMUpwNmtJViIsInN0cyI6ImFjdGl2ZSIsInN1YiI6InVzZXJfM0U4eklUcVp3MlJZbW9wQ0ptRndkZnFsamU2IiwidiI6Mn0.QCiQVcFaNr8HHCSwB37x0XVm2RH1msFEbvREZX-oiXvlK9QiEtVdUOPmInBkn-RfPMtAiHaqC1kDLOvc2wlmxrqrXQoSTrrKhYcvJDpiItdTpqoVvvsNMU4OSCvV9RgqtvsrWjiuqiP1lkYX2tM0LpK6cWdGg6q2ulW5rNhwiqAPGDrK4E26gteVURzzMfXKe9lntxAV1jrDCKhEBzEirAfdnsQBZOmP-om0VCz-Cs9GPFAV4YTHf46nLVNPMsAfyOADSlCXoenEi0yUmSJUckxaTO6zOLGqY5KvXsR1jFpP2hpI3YgDuCLZvyvhLoX6Af-ORw_BIo70tlQ1R2SgFQ",
+  "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+  "accept": "application/json, text/plain, */*",
+  "sec-ch-ua": "\"Chromium\";v=\"148\", \"Google Chrome\";v=\"148\", \"Not/A)Brand\";v=\"99\"",
+  "sec-ch-ua-mobile": "?0",
+  "origin": "http://localhost:5173",
+  "sec-fetch-site": "same-site",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-dest": "empty",
+  "referer": "http://localhost:5173/",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "en-GB,en-US;q=0.9,en;q=0.8,es;q=0.7",
+  "if-none-match": "W/\"3c-lryfOn8cXqqwrJ5cJfQzfwhnCZ4\""
+}
+[Auth Middleware] Authorization header: Bearer eyJhbGciOiJSUzI1NiIsImNhdCI6ImNsX0I3ZDRQRDExMUFBQSIsImtpZCI6Imluc18zRThmeEtpSGk4d2xiUlRRbDVRaGNxQzBETnMiLCJvaWF0IjoxNzgwMTQ2MTAxLCJ0eXAiOiJKV1QifQ.eyJhenAiOiJodHRwOi8vbG9jYWxob3N0OjUxNzMiLCJleHAiOjE3ODAxNDYxNjEsImZ2YSI6Wzk1MTksLTFdLCJpYXQiOjE3ODAxNDYxMDEsImlzcyI6Imh0dHBzOi8vZmVhc2libGUtaG9uZXliZWUtNDMuY2xlcmsuYWNjb3VudHMuZGV2IiwibmJmIjoxNzgwMTQ2MDkxLCJzaWQiOiJzZXNzXzNFOHpJWExMMzBaaWpFam5hZEVhMUpwNmtJViIsInN0cyI6ImFjdGl2ZSIsInN1YiI6InVzZXJfM0U4eklUcVp3MlJZbW9wQ0ptRndkZnFsamU2IiwidiI6Mn0.QCiQVcFaNr8HHCSwB37x0XVm2RH1msFEbvREZX-oiXvlK9QiEtVdUOPmInBkn-RfPMtAiHaqC1kDLOvc2wlmxrqrXQoSTrrKhYcvJDpiItdTpqoVvvsNMU4OSCvV9RgqtvsrWjiuqiP1lkYX2tM0LpK6cWdGg6q2ulW5rNhwiqAPGDrK4E26gteVURzzMfXKe9lntxAV1jrDCKhEBzEirAfdnsQBZOmP-om0VCz-Cs9GPFAV4YTHf46nLVNPMsAfyOADSlCXoenEi0yUmSJUckxaTO6zOLGqY5KvXsR1jFpP2hpI3YgDuCLZvyvhLoX6Af-ORw_BIo70tlQ1R2SgFQ
+[Auth Middleware] Auth object from clerkMiddleware: Present
+[Auth Middleware] Auth object details: {
+  "userId": "user_3E8zITqZw2RYmopCJmFwdfqlje6",
+  "sessionId": "sess_3E8zIXLL30ZijEjnadEa1Jp6kIV",
+  "sessionClaims": {
+    "azp": "http://localhost:5173",
+    "exp": 1780146161,
+    "fva": [
+      9519,
+      -1
+    ],
+    "iat": 1780146101,
+    "iss": "https://feasible-honeybee-43.clerk.accounts.dev",
+    "nbf": 1780146091,
+    "sid": "sess_3E8zIXLL30ZijEjnadEa1Jp6kIV",
+    "sts": "active",
+    "sub": "user_3E8zITqZw2RYmopCJmFwdfqlje6",
+    "v": 2
+  }
+}
+[Auth Middleware] userId from clerk: user_3E8zITqZw2RYmopCJmFwdfqlje6
+[Auth Middleware] sessionClaims from clerk: {
+  azp: 'http://localhost:5173',
+  exp: 1780146161,
+  fva: [ 9519, -1 ],
+  iat: 1780146101,
+  iss: 'https://feasible-honeybee-43.clerk.accounts.dev',
+  nbf: 1780146091,
+  sid: 'sess_3E8zIXLL30ZijEjnadEa1Jp6kIV',
+  sts: 'active',
+  sub: 'user_3E8zITqZw2RYmopCJmFwdfqlje6',
+  v: 2
+}
+[Auth Middleware] Final userId: user_3E8zITqZw2RYmopCJmFwdfqlje6
+[Auth Middleware] User authenticated successfully, calling next()
+[Auth Middleware] Headers: {
+  "host": "localhost:3000",
+  "connection": "keep-alive",
+  "sec-ch-ua-platform": "\"macOS\"",
+  "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+  "accept": "application/json, text/plain, */*",
+  "sec-ch-ua": "\"Chromium\";v=\"148\", \"Google Chrome\";v=\"148\", \"Not/A)Brand\";v=\"99\"",
+  "sec-ch-ua-mobile": "?0",
+  "origin": "http://localhost:5173",
+  "sec-fetch-site": "same-site",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-dest": "empty",
+  "referer": "http://localhost:5173/",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "en-GB,en-US;q=0.9,en;q=0.8,es;q=0.7",
+  "if-none-match": "W/\"d66-Xs6zRz31+MFJqFImMVBOsmdD/fc\""
+}
+[Auth Middleware] Authorization header: undefined
+[Auth Middleware] Auth object from clerkMiddleware: Present
+[Auth Middleware] Auth object details: undefined
+[Auth Middleware] userId from clerk: undefined
+[Auth Middleware] sessionClaims from clerk: undefined
+[Auth Middleware] Final userId: undefined
+[Auth Middleware] No userId available, returning 401
