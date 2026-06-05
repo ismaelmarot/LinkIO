@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query'
-import api from '../../../../services/api'
+import api from '@/services/api'
 import type { DashboardStats, RawActivity } from '../../../../interface'
 import { mapActivity } from '../../../activities/pages/Activities/useActivities'
 
