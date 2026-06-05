@@ -1,31 +1,7 @@
 import { useQuery } from '@tanstack/react-query'
 import api from '../../../../services/api'
+import type { DashboardStats, RawActivity } from '../../../../interface'
 import { mapActivity } from '../../../activities/pages/Activities/useActivities'
-
-interface RawActivity {
-  id: string;
-  sportType: string;
-  distance: number;
-  duration: number;
-  startTime: string;
-  timestamp: string;
-  avgSpeed: number;
-  maxSpeed: number;
-  points: Array<{
-    latitude: number;
-    longitude: number;
-    altitude: number;
-    speed: number;
-    timestamp: string;
-  }>;
-}
-
-interface DashboardStats {
-  weeklyDistance: string;
-  totalDuration: string;
-  totalActivities: number;
-  thisWeek: number;
-}
 
 export const useDashboard = () => {
   const { data: rawActivities = [] } = useQuery<RawActivity[]>({
