@@ -1,1 +1,1 @@
-export { DashboardCard } from "./DashboardCard";
+export { DashboardCard } from './DashboardCard'
