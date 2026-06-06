@@ -1,4 +1,4 @@
-import { useDashboard } from "./useDashboard";
+import { useDashboard } from './useDashboard'
 import {
   Container,
   Header,
@@ -13,10 +13,10 @@ import {
   ActivityName,
   ActivityMeta,
   EmptyState,
-} from "./Dashboard.styles";
+} from './Dashboard.styles'
 
 export const Dashboard = () => {
-  const { stats, recentActivities } = useDashboard();
+  const { stats, recentActivities } = useDashboard()
 
   return (
     <Container>
@@ -61,5 +61,5 @@ export const Dashboard = () => {
         )}
       </Section>
     </Container>
-  );
-};
+  )
+}
