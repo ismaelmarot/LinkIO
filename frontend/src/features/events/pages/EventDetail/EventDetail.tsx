@@ -1,6 +1,6 @@
-import { useParams, useNavigate } from "react-router-dom";
-import { FiArrowLeft, FiStar, FiCopy, FiMapPin, FiCalendar } from "react-icons/fi";
-import { useEventDetail } from "./useEventDetail";
+import { useParams, useNavigate } from 'react-router-dom'
+import { FiArrowLeft, FiStar, FiCopy, FiMapPin, FiCalendar } from 'react-icons/fi'
+import { useEventDetail } from './useEventDetail'
 import {
   Container,
   TopBar,
@@ -13,24 +13,24 @@ import {
   FavoriteButton,
   DuplicateButton,
   LoadingState,
-} from "./EventDetail.styles";
+} from './EventDetail.styles'
 
 export const EventDetail = () => {
-  const { id } = useParams<{ id: string }>();
-  const navigate = useNavigate();
-  const { event, loading, toggleFavorite, duplicateEvent } = useEventDetail(id!);
+  const { id } = useParams<{ id: string }>()
+  const navigate = useNavigate()
+  const { event, loading, toggleFavorite, duplicateEvent } = useEventDetail(id!)
 
   if (loading || !event) {
-    return <LoadingState>Cargando...</LoadingState>;
+    return <LoadingState>Cargando...</LoadingState>
   }
 
   return (
     <Container>
       <TopBar>
-        <BackButton onClick={() => navigate("/events")}>
+        <BackButton onClick={() => navigate('/events')}>
           <FiArrowLeft size={22} />
         </BackButton>
-        <div style={{ display: "flex", gap: 8 }}>
+        <div style={{ display: 'flex', gap: 8 }}>
           <FavoriteButton
             $active={event.isFavorite}
             onClick={toggleFavorite}
@@ -61,5 +61,5 @@ export const EventDetail = () => {
         )}
       </MetaList>
     </Container>
-  );
-};
+  )
+}
