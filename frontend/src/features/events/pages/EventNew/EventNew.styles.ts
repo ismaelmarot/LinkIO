@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const Container = styled.div`
   display: flex;
@@ -12,36 +12,36 @@ export const Container = styled.div`
   @media (max-width: 768px) {
     padding-bottom: calc(${({ theme }) => theme.spacing.lg} * 3);
   }
-`;
+`
 
 export const Header = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-`;
+`
 
 export const Title = styled.h1`
   font-size: ${({ theme }) => theme.fontSize.xl};
   font-weight: 700;
-`;
+`
 
 export const Form = styled.form`
   display: flex;
   flex-direction: column;
   gap: ${({ theme }) => theme.spacing.md};
-`;
+`
 
 export const InputGroup = styled.div`
   display: flex;
   flex-direction: column;
   gap: ${({ theme }) => theme.spacing.xs};
-`;
+`
 
 export const Label = styled.label`
   font-size: ${({ theme }) => theme.fontSize.sm};
   font-weight: 500;
   color: ${({ theme }) => theme.colors.textSecondary};
-`;
+`
 
 export const Input = styled.input`
   padding: ${({ theme }) => theme.spacing.sm} ${({ theme }) => theme.spacing.md};
@@ -54,7 +54,7 @@ export const Input = styled.input`
   &:focus {
     border-color: ${({ theme }) => theme.colors.primary};
   }
-`;
+`
 
 export const TextArea = styled.textarea`
   padding: ${({ theme }) => theme.spacing.sm} ${({ theme }) => theme.spacing.md};
@@ -69,13 +69,13 @@ export const TextArea = styled.textarea`
   &:focus {
     border-color: ${({ theme }) => theme.colors.primary};
   }
-`;
+`
 
 export const Row = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: ${({ theme }) => theme.spacing.md};
-`;
+`
 
 export const MapWrapper = styled.div`
   position: relative;
@@ -101,13 +101,13 @@ export const MapWrapper = styled.div`
   @media (max-width: 480px) {
     height: 160px;
   }
-`;
+`
 
 export const PhotoPreview = styled.div`
   display: flex;
   align-items: center;
   gap: ${({ theme }) => theme.spacing.md};
-`;
+`
 
 export const PhotoPreviewImg = styled.img`
   width: 80px;
@@ -127,7 +127,7 @@ export const PhotoButton = styled.button`
   color: ${({ theme }) => theme.colors.textPrimary};
   font-size: ${({ theme }) => theme.fontSize.sm};
   cursor: pointer;
-`;
+`
 
 export const ToggleRow = styled.div`
   display: flex;
@@ -136,12 +136,12 @@ export const ToggleRow = styled.div`
   padding: ${({ theme }) => theme.spacing.md};
   background: ${({ theme }) => theme.colors.surface};
   border-radius: ${({ theme }) => theme.borderRadius.md};
-`;
+`
 
 export const ToggleLabel = styled.span`
   font-size: ${({ theme }) => theme.fontSize.md};
   font-weight: 500;
-`;
+`
 
 export const ToggleSwitch = styled.div<{ $active: boolean }>`
   width: 44px;
@@ -165,7 +165,7 @@ export const ToggleSwitch = styled.div<{ $active: boolean }>`
     background: ${({ theme }) => theme.colors.secondary};
     transition: left 0.2s;
   }
-`;
+`
 
 export const SubmitButton = styled.button`
   width: 100%;
@@ -184,7 +184,7 @@ export const SubmitButton = styled.button`
   &:hover:not(:disabled) {
     opacity: 0.9;
   }
-`;
+`
 
 export const DrawingControls = styled.div`
   display: flex;
@@ -223,4 +223,4 @@ export const DrawingButton = styled.button<{ $active: boolean }>`
   &:active {
     transform: scale(0.98);
   }
-`;
+`

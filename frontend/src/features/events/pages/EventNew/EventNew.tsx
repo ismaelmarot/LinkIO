@@ -1,4 +1,4 @@
-import { useEventNew } from "./useEventNew";
+import { useEventNew } from './useEventNew'
 import {
   Container,
   Header,
@@ -19,7 +19,7 @@ import {
   SubmitButton,
   DrawingControls,
   DrawingButton,
-} from "./EventNew.styles";
+} from './EventNew.styles'
 
 export const EventNew = () => {
   const {
@@ -32,7 +32,7 @@ export const EventNew = () => {
     handleSubmit,
     saving,
     toggleDrawingMode,
-  } = useEventNew();
+  } = useEventNew()
 
   return (
     <Container>
@@ -64,7 +64,7 @@ export const EventNew = () => {
           <InputGroup>
             <Label>Fecha</Label>
             <Input
-              type="date"
+              type='date'
               value={form.date}
               onChange={(e) => setForm({ ...form, date: e.target.value })}
               required
@@ -73,7 +73,7 @@ export const EventNew = () => {
           <InputGroup>
             <Label>Hora</Label>
             <Input
-              type="time"
+              type='time'
               value={form.time}
               onChange={(e) => setForm({ ...form, time: e.target.value })}
               required
@@ -94,7 +94,7 @@ export const EventNew = () => {
         <InputGroup>
           <Label>Ubicación en el mapa</Label>
           <MapWrapper>
-            <div id="event-map" style={{ width: "100%", height: "100%" }} />
+            <div id='event-map' style={{ width: "100%", height: "100%" }} />
           </MapWrapper>
           <DrawingControls>
 <DrawingButton
@@ -117,19 +117,19 @@ export const EventNew = () => {
             <PhotoPreview>
               <PhotoPreviewImg src={photoPreview} alt="Preview" />
               <PhotoButton type="button" onClick={() => {
-                setForm({ ...form, photoUrl: "" });
-                handlePhotoChange({ target: { files: null } } as any);
+                setForm({ ...form, photoUrl: "" })
+                handlePhotoChange({ target: { files: null } } as any)
               }}>
                 Quitar
               </PhotoButton>
             </PhotoPreview>
           ) : (
-            <PhotoButton as="label" htmlFor="photo-input">
+            <PhotoButton as='label' htmlFor='photo-input'>
               Subir foto
               <input
-                id="photo-input"
-                type="file"
-                accept="image/*"
+                id='photo-input'
+                type='file'
+                accept='image/*'
                 hidden
                 onChange={handlePhotoChange}
               />
@@ -150,5 +150,5 @@ export const EventNew = () => {
         </SubmitButton>
       </Form>
     </Container>
-  );
-};
+  )
+}

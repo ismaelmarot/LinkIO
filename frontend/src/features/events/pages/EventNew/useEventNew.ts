@@ -5,7 +5,6 @@ import 'leaflet/dist/leaflet.css'
 import api from '@/services/api'
 import type { EventForm } from '@/interface'
 
-
 const NOMINATIM = 'https://nominatim.openstreetmap.org/search'
 
 export const useEventNew = () => {
