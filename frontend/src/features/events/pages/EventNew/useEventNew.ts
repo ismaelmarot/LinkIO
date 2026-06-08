@@ -3,20 +3,8 @@ import { useNavigate } from 'react-router-dom'
 import L from 'leaflet'
 import 'leaflet/dist/leaflet.css'
 import api from '@/services/api'
+import type { EventForm } from '@/interface'
 
-interface EventForm {
-  title: string;
-  description: string;
-  date: string;
-  time: string;
-  location: string;
-  latitude: number | null;
-  longitude: number | null;
-  photoUrl: string;
-  isTemplate: boolean;
-  route: Array<{ latitude: number; longitude: number }> | null;
-  isDrawing: boolean;
-}
 
 const NOMINATIM = 'https://nominatim.openstreetmap.org/search'
 
