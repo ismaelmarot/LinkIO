@@ -1,6 +1,6 @@
-import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import api from "../../../../services/api";
-import { db } from "../../../../lib/db";
+import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
+import api from '@/services/api'
+import { db } from '@/lib/db'
 
 interface Activity {
   id: string;
@@ -20,40 +20,40 @@ export const mapActivity = (a: any): Activity => ({
     month: "short",
     year: "numeric",
   }),
-});
+})
 
 export const useActivities = () => {
-  const queryClient = useQueryClient();
+  const queryClient = useQueryClient()
   
   const { data: activities = [] } = useQuery<Activity[]>({
     queryKey: ["activities"],
     queryFn: async () => {
       try {
-        const { data } = await api.get("/activities");
-        return data.map(mapActivity);
+        const { data } = await api.get("/activities")
+        return data.map(mapActivity)
       } catch (err: any) {
         if (err.isNetworkError) {
-          const local = await db.getAllActivities();
-          return local.map(mapActivity);
+          const local = await db.getAllActivities()
+          return local.map(mapActivity)
         }
         throw err;
       }
     },
-  });
+  })
 
   const deleteActivityMutation = useMutation({
     mutationFn: async (activityId: string) => {
-      await api.delete(`/activities/${activityId}`);
+      await api.delete(`/activities/${activityId}`)
     },
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["activities"] });
-      queryClient.invalidateQueries({ queryKey: ["dashboard"] });
-      queryClient.invalidateQueries({ queryKey: ["profile-stats"] });
+      queryClient.invalidateQueries({ queryKey: ["activities"] })
+      queryClient.invalidateQueries({ queryKey: ["dashboard"] })
+      queryClient.invalidateQueries({ queryKey: ["profile-stats"] })
     },
-  });
+  })
 
   return { 
     activities,
     deleteActivityMutation
-  };
-};
+  }
+}
