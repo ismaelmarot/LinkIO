@@ -1,6 +1,6 @@
-import { useActivities } from "./useActivities";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useActivities } from './useActivities'
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import {
   Container,
   Header,
@@ -15,27 +15,27 @@ import {
   StatValue,
   StatLabel,
   EmptyState,
-} from "./Activities.styles";
+} from './Activities.styles'
 
 export const Activities = () => {
-  const { activities, deleteActivityMutation } = useActivities();
-  const [confirmDeleteId, setConfirmDeleteId] = useState<string | null>(null);
-  const navigate = useNavigate();
+  const { activities, deleteActivityMutation } = useActivities()
+  const [confirmDeleteId, setConfirmDeleteId] = useState<string | null>(null)
+  const navigate = useNavigate()
 
   const handleDelete = (id: string) => {
     setConfirmDeleteId(id);
-  };
+  }
 
   const handleConfirmDelete = () => {
     if (confirmDeleteId) {
-      deleteActivityMutation.mutate(confirmDeleteId);
-      setConfirmDeleteId(null);
+      deleteActivityMutation.mutate(confirmDeleteId)
+      setConfirmDeleteId(null)
     }
-  };
+  }
 
   const handleCancelDelete = () => {
-    setConfirmDeleteId(null);
-  };
+    setConfirmDeleteId(null)
+  }
 
   return (
     <Container>
@@ -88,5 +88,5 @@ export const Activities = () => {
         </List>
       )}
     </Container>
-  );
-};
+  )
+}
