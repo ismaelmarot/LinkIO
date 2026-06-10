@@ -1,14 +1,7 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
 import api from '@/services/api'
 import { db } from '@/lib/db'
-
-interface Activity {
-  id: string;
-  name: string;
-  distance: string;
-  duration: string;
-  date: string;
-}
+import type { Activity } from '@/interface'
 
 export const mapActivity = (a: any): Activity => ({
   id: a.id,

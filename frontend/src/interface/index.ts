@@ -1,3 +1,4 @@
+export type { Activity } from './activity.interface'
 export type { DashboardStats } from './dashboardStats.interface'
 export type { EventDetailData } from './eventDetailData.interface'
 export type { EventForm } from './eventForm.interface'
