@@ -2,21 +2,8 @@ import { useQuery } from '@tanstack/react-query'
 import { useAuthStore } from '@/store/authStore'
 import api from '@/services/api'
 import { db } from '@/lib/db'
-
-interface ProfileStats {
-  totalOutings: number;
-  totalDistance: string;
-  totalEvents: number;
-}
-
-interface LastActivity {
-  id: string;
-  name: string;
-  distance: string;
-  duration: string;
-  date: string;
-}
-
+import type { LastActivity, ProfileStats } from '@/interface'
+ 
 export const useProfile = () => {
   const user = useAuthStore((state) => state.user)
 
