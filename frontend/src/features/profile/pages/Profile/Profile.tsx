@@ -1,5 +1,5 @@
-import { useNavigate } from "react-router-dom";
-import { useProfile } from "./useProfile";
+import { useNavigate } from 'react-router-dom'
+import { useProfile } from './useProfile'
 import {
   Container,
   Avatar,
@@ -20,11 +20,11 @@ import {
   LastActivityStats,
   LastActivityStat,
   HistoryButton,
-} from "./Profile.styles";
+} from './Profile.styles'
 
 export const Profile = () => {
-  const { user, stats, lastActivity } = useProfile();
-  const navigate = useNavigate();
+  const { user, stats, lastActivity } = useProfile()
+  const navigate = useNavigate()
 
   return (
     <Container>
@@ -75,5 +75,5 @@ export const Profile = () => {
         Ver historial completo
       </HistoryButton>
     </Container>
-  );
-};
+  )
+}

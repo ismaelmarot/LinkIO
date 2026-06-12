@@ -1,7 +1,7 @@
-import { useQuery } from "@tanstack/react-query";
-import { useAuthStore } from "../../../../store/authStore";
-import api from "../../../../services/api";
-import { db } from "../../../../lib/db";
+import { useQuery } from '@tanstack/react-query'
+import { useAuthStore } from '@/store/authStore'
+import api from '@/services/api'
+import { db } from '@/lib/db'
 
 interface ProfileStats {
   totalOutings: number;
@@ -18,17 +18,17 @@ interface LastActivity {
 }
 
 export const useProfile = () => {
-  const user = useAuthStore((state) => state.user);
+  const user = useAuthStore((state) => state.user)
 
   const { data: stats } = useQuery<ProfileStats>({
     queryKey: ["profile-stats"],
     queryFn: async () => {
       try {
-        const { data } = await api.get("/activities/stats");
-        return data;
+        const { data } = await api.get("/activities/stats")
+        return data
       } catch (err: any) {
         if (err.isNetworkError) {
-          const local = await db.getAllActivities();
+          const local = await db.getAllActivities()
           const totalOutings = local.length;
           const totalDistance = local.reduce(
             (sum: number, a: any) => sum + (Number(a.distance) || 0),
@@ -50,9 +50,9 @@ export const useProfile = () => {
     queryKey: ["last-activity"],
     queryFn: async () => {
       try {
-        const { data } = await api.get("/activities?limit=1");
-        const activity = data[0];
-        if (!activity) return null;
+        const { data } = await api.get("/activities?limit=1")
+        const activity = data[0]
+        if (!activity) return null
         return {
           id: activity.id,
           name: activity.sportType || "Salida",
@@ -67,12 +67,12 @@ export const useProfile = () => {
             month: "short",
             year: "numeric",
           }),
-        };
+        }
       } catch (err: any) {
         if (err.isNetworkError) {
-          const local = await db.getAllActivities();
-          const last = local[local.length - 1];
-          if (!last) return null;
+          const local = await db.getAllActivities()
+          const last = local[local.length - 1]
+          if (!last) return null
           return {
             id: last.id,
             name: last.sportType || last.name || "Salida",
@@ -96,7 +96,7 @@ export const useProfile = () => {
       }
     },
     enabled: !!user,
-  });
+  })
 
   return {
     user: {
@@ -111,5 +111,5 @@ export const useProfile = () => {
       totalEvents: 0,
     },
     lastActivity,
-  };
-};
+  }
+}
