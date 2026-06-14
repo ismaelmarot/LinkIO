@@ -1,5 +1,5 @@
-import { FiUser, FiMoon, FiGlobe, FiInfo } from "react-icons/fi";
-import { useSettings } from "./useSettings";
+import { FiUser, FiMoon, FiGlobe, FiInfo } from 'react-icons/fi'
+import { useSettings } from './useSettings'
 import {
   Container,
   Header,
@@ -12,10 +12,10 @@ import {
   OptionDescription,
   Toggle,
   Badge,
-} from "./Settings.styles";
+} from './Settings.styles'
 
 export const Settings = () => {
-  const { mode, handleToggleTheme } = useSettings();
+  const { mode, handleToggleTheme } = useSettings()
 
   return (
     <Container>
@@ -43,7 +43,7 @@ export const Settings = () => {
             </OptionDescription>
           </OptionInfo>
         </OptionLeft>
-        <Toggle $active={mode === "dark"} />
+        <Toggle $active={mode === 'dark'} />
       </OptionCard>
 
       <OptionCard onClick={() => {}}>
@@ -67,5 +67,5 @@ export const Settings = () => {
         <Badge>v1.0.0</Badge>
       </OptionCard>
     </Container>
-  );
-};
+  )
+}
