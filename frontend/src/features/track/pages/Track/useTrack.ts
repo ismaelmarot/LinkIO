@@ -1,102 +1,102 @@
-import { useState, useEffect, useRef, useCallback } from "react";
-import L from "leaflet";
-import "leaflet/dist/leaflet.css";
-import { useThemeMode } from "../../../../store/themeStore";
-import { useTrackingStore } from "../../../../store/trackingStore";
-import { useGeolocation } from "../../../../shared/hooks/useGeolocation";
-import api from "../../../../services/api";
-import { db } from "../../../../lib/db";
-import { sync } from "../../../../lib/sync";
-import { useQueryClient } from "@tanstack/react-query";
+import { useState, useEffect, useRef, useCallback } from 'react'
+import L from 'leaflet'
+import 'leaflet/dist/leaflet.css'
+import { useThemeMode } from '@/store/themeStore'
+import { useTrackingStore } from '@/store/trackingStore'
+import { useGeolocation } from '@/shared/hooks/useGeolocation'
+import api from '@/services/api'
+import { db } from '@/lib/db'
+import { sync } from '@/lib/sync'
+import { useQueryClient } from '@tanstack/react-query'
 
 const TILES = {
   light:
     "https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png",
   dark: "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
-};
+}
 
 const ATTRIBUTION =
-  "&copy; <a href='https://www.openstreetmap.org/copyright'>OSM</a> &copy; <a href='https://carto.com/'>CARTO</a>";
+  "&copy; <a href='https://www.openstreetmap.org/copyright'>OSM</a> &copy; <a href='https://carto.com/'>CARTO</a>"
 
-const DEFAULT_CENTER: [number, number] = [-34.6037, -58.3816];
+const DEFAULT_CENTER: [number, number] = [-34.6037, -58.3816]
 
 export const useTrack = () => {
-  const mapRef = useRef<L.Map | null>(null);
-  const tileLayerRef = useRef<L.TileLayer | null>(null);
-  const polylineRef = useRef<L.Polyline | null>(null);
-  const markerRef = useRef<L.CircleMarker | null>(null);
-  const [mapReady, setMapReady] = useState(false);
-  const mode = useThemeMode((s) => s.mode);
-  const queryClient = useQueryClient();
+  const mapRef = useRef<L.Map | null>(null)
+  const tileLayerRef = useRef<L.TileLayer | null>(null)
+  const polylineRef = useRef<L.Polyline | null>(null)
+  const markerRef = useRef<L.CircleMarker | null>(null)
+  const [mapReady, setMapReady] = useState(false)
+  const mode = useThemeMode((s) => s.mode)
+  const queryClient = useQueryClient()
 
-  const status = useTrackingStore((s) => s.status);
-  const path = useTrackingStore((s) => s.path);
-  const metrics = useTrackingStore((s) => s.metrics);
-  const startTracking = useTrackingStore((s) => s.startTracking);
-  const pauseTracking = useTrackingStore((s) => s.pauseTracking);
-  const resumeTracking = useTrackingStore((s) => s.resumeTracking);
-  const stopTracking = useTrackingStore((s) => s.stopTracking);
-  const addPoint = useTrackingStore((s) => s.addPoint);
+  const status = useTrackingStore((s) => s.status)
+  const path = useTrackingStore((s) => s.path)
+  const metrics = useTrackingStore((s) => s.metrics)
+  const startTracking = useTrackingStore((s) => s.startTracking)
+  const pauseTracking = useTrackingStore((s) => s.pauseTracking)
+  const resumeTracking = useTrackingStore((s) => s.resumeTracking)
+  const stopTracking = useTrackingStore((s) => s.stopTracking)
+  const addPoint = useTrackingStore((s) => s.addPoint)
 
-  const { position, error, startWatching, stopWatching } = useGeolocation();
+  const { position, error, startWatching, stopWatching } = useGeolocation()
 
-  const [elapsed, setElapsed] = useState(0);
+  const [elapsed, setElapsed] = useState(0)
 
   useEffect(() => {
-    if (mapRef.current) return;
+    if (mapRef.current) return
 
     const map = L.map("track-map", {
       center: DEFAULT_CENTER,
       zoom: 13,
       zoomControl: false,
-    });
+    })
 
     tileLayerRef.current = L.tileLayer(TILES[mode], {
       attribution: ATTRIBUTION,
       subdomains: "abcd",
       maxZoom: 19,
-    }).addTo(map);
+    }).addTo(map)
 
-    L.control.zoom({ position: "bottomright" }).addTo(map);
+    L.control.zoom({ position: "bottomright" }).addTo(map)
 
-    mapRef.current = map;
-    setMapReady(true);
+    mapRef.current = map
+    setMapReady(true)
 
     return () => {
-      map.remove();
-      mapRef.current = null;
-      tileLayerRef.current = null;
-      setMapReady(false);
+      map.remove()
+      mapRef.current = null
+      tileLayerRef.current = null
+      setMapReady(false)
     };
-  }, []);
+  }, [])
 
   useEffect(() => {
-    if (!tileLayerRef.current) return;
-    tileLayerRef.current.setUrl(TILES[mode]);
-  }, [mode]);
+    if (!tileLayerRef.current) return
+    tileLayerRef.current.setUrl(TILES[mode])
+  }, [mode])
 
   useEffect(() => {
-    if (!mapRef.current || !mapReady) return;
+    if (!mapRef.current || !mapReady) return
 
     if (polylineRef.current) {
-      polylineRef.current.remove();
+      polylineRef.current.remove()
     }
 
-    if (path.length < 2) return;
+    if (path.length < 2) return
 
-    const latlngs = path.map((p) => [p.latitude, p.longitude] as [number, number]);
+    const latlngs = path.map((p) => [p.latitude, p.longitude] as [number, number])
     polylineRef.current = L.polyline(latlngs, {
       color: "#FFDE21",
       weight: 4,
       opacity: 0.8,
-    }).addTo(mapRef.current);
-  }, [path.length, mapReady]);
+    }).addTo(mapRef.current)
+  }, [path.length, mapReady])
 
   useEffect(() => {
-    if (!mapRef.current || !mapReady) return;
+    if (!mapRef.current || !mapReady) return
 
     if (markerRef.current) {
-      markerRef.current.remove();
+      markerRef.current.remove()
     }
 
     if (!position) return;
@@ -109,17 +109,17 @@ export const useTrack = () => {
       weight: 2,
       fillOpacity: 1,
       className: "gps-marker",
-    }).addTo(mapRef.current);
+    }).addTo(mapRef.current)
 
     if (status === "tracking") {
-      mapRef.current.setView([latitude, longitude], mapRef.current.getZoom());
+      mapRef.current.setView([latitude, longitude], mapRef.current.getZoom())
     }
-  }, [position, status, mapReady]);
+  }, [position, status, mapReady])
 
     useEffect(() => {
-      startWatching();
-      return () => stopWatching();
-    }, [startWatching, stopWatching]);
+      startWatching()
+      return () => stopWatching()
+    }, [startWatching, stopWatching])
 
     // Auto-retry geolocation if we get a persistent error
     useEffect(() => {
@@ -127,48 +127,48 @@ export const useTrack = () => {
         // If we have an error and are idle, try to restart watching after a delay
         const timer = setTimeout(() => {
           // Clear current watch
-          stopWatching();
+          stopWatching()
           // Start watching again
-          startWatching();
+          startWatching()
         }, 10000); // Retry after 10 seconds
         
-        return () => clearTimeout(timer);
+        return () => clearTimeout(timer)
       }
-    }, [error, status, startWatching, stopWatching]);
+    }, [error, status, startWatching, stopWatching])
 
   useEffect(() => {
-    if (status !== "tracking" || !position) return;
-    addPoint(position.latitude, position.longitude, position.altitude, position.speed);
-  }, [position?.latitude, position?.longitude]);
+    if (status !== "tracking" || !position) return
+    addPoint(position.latitude, position.longitude, position.altitude, position.speed)
+  }, [position?.latitude, position?.longitude])
 
   useEffect(() => {
     if (status === "idle") {
-      setElapsed(0);
-      return;
+      setElapsed(0)
+      return
     }
-    if (status !== "tracking") return;
+    if (status !== "tracking") return
     const interval = setInterval(() => {
-      setElapsed((prev) => prev + 1);
-    }, 1000);
-    return () => clearInterval(interval);
-  }, [status]);
+      setElapsed((prev) => prev + 1)
+    }, 1000)
+    return () => clearInterval(interval)
+  }, [status])
 
   const handleStart = useCallback(() => {
-    if (!position) return;
-    startTracking(position.latitude, position.longitude, position.altitude);
-  }, [position, startTracking]);
+    if (!position) return
+    startTracking(position.latitude, position.longitude, position.altitude)
+  }, [position, startTracking])
 
   const handlePause = useCallback(() => {
-    pauseTracking();
-  }, [pauseTracking]);
+    pauseTracking()
+  }, [pauseTracking])
 
   const handleResume = useCallback(() => {
-    if (!position) return;
-    resumeTracking(position.latitude, position.longitude, position.altitude);
-  }, [position, resumeTracking]);
+    if (!position) return
+    resumeTracking(position.latitude, position.longitude, position.altitude)
+  }, [position, resumeTracking])
 
    const handleStop = useCallback(async () => {
-     const state = useTrackingStore.getState();
+     const state = useTrackingStore.getState()
      const activity = {
        sportType: "running",
        startTime: new Date(state.startTime!).toISOString(),
@@ -184,54 +184,54 @@ export const useTrack = () => {
          speed: p.speed,
          timestamp: new Date(p.timestamp).toISOString(),
        })),
-     };
+     }
 
-     stopTracking();
+     stopTracking()
 
      try {
        if (navigator.onLine) {
-         await api.post("/activities", activity);
+         await api.post("/activities", activity)
        } else {
-         throw new Error("Offline");
+         throw new Error("Offline")
        }
        
        // Invalidate activity queries to refetch data
-       queryClient.invalidateQueries({ queryKey: ["activities"] });
-       queryClient.invalidateQueries({ queryKey: ["profile-stats"] });
-       queryClient.invalidateQueries({ queryKey: ["last-activity"] });
-       queryClient.invalidateQueries({ queryKey: ["dashboard"] });
+       queryClient.invalidateQueries({ queryKey: ["activities"] })
+       queryClient.invalidateQueries({ queryKey: ["profile-stats"] })
+       queryClient.invalidateQueries({ queryKey: ["last-activity"] })
+       queryClient.invalidateQueries({ queryKey: ["dashboard"] })
      } catch (error) {
        await db.saveActivity({
          ...activity,
          id: crypto.randomUUID(),
          status: "pending",
-       });
-       await sync.enqueue("/activities", "POST", activity);
+       })
+       await sync.enqueue("/activities", "POST", activity)
        
        // Even when offline, we might want to update optimistically
        // But since we're saving to local DB, the sync will handle it later
      }
 
      if (polylineRef.current) {
-       polylineRef.current.remove();
-       polylineRef.current = null;
+       polylineRef.current.remove()
+       polylineRef.current = null
      }
      if (markerRef.current) {
-       markerRef.current.remove();
-       markerRef.current = null;
+       markerRef.current.remove()
+       markerRef.current = null
      }
      if (mapRef.current) {
-       mapRef.current.setView(DEFAULT_CENTER, 13);
+       mapRef.current.setView(DEFAULT_CENTER, 13)
      }
-    }, [stopTracking]);
+    }, [stopTracking])
 
   const gpsQuality = (): "good" | "weak" | "lost" | "searching" => {
-    if (error) return "lost";
-    if (!position) return "searching";
-    if (position.accuracy !== null && position.accuracy < 20) return "good";
-    if (position.accuracy !== null && position.accuracy < 100) return "weak";
-    return "weak";
-  };
+    if (error) return "lost"
+    if (!position) return "searching"
+    if (position.accuracy !== null && position.accuracy < 20) return "good"
+    if (position.accuracy !== null && position.accuracy < 100) return "weak"
+    return "weak"
+  }
 
   return {
     status,
@@ -245,5 +245,5 @@ export const useTrack = () => {
     handlePause,
     handleResume,
     handleStop,
-  };
-};
+  }
+}
