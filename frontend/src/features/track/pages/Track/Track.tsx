@@ -1,5 +1,5 @@
-import { useTrack } from "./useTrack";
-import { formatDistance, formatDuration } from "../../../../utils/geo";
+import { useTrack } from './useTrack'
+import { formatDistance, formatDuration } from '@/utils/geo'
 import {
   Container,
   MapWrapper,
@@ -17,7 +17,7 @@ import {
   GpsDot,
   GpsText,
   IdleHint,
-} from "./Track.styles";
+} from './Track.styles'
 
 export const Track = () => {
   const {
@@ -31,10 +31,10 @@ export const Track = () => {
     handlePause,
     handleResume,
     handleStop,
-  } = useTrack();
+  } = useTrack()
 
-  const quality = gpsQuality();
-  const displayDuration = formatDuration(elapsed);
+  const quality = gpsQuality()
+  const displayDuration = formatDuration(elapsed)
 
   return (
     <Container>
@@ -132,5 +132,5 @@ export const Track = () => {
         )}
       </BottomBar>
     </Container>
-  );
-};
+  )
+}
