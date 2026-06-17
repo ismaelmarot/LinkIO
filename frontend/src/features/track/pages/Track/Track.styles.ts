@@ -1,4 +1,4 @@
-import styled, { css, createGlobalStyle, keyframes } from "styled-components";
+import styled, { css, createGlobalStyle, keyframes } from 'styled-components'
 
 const pulseKeyframes = keyframes`
   0%, 100% {
@@ -7,13 +7,13 @@ const pulseKeyframes = keyframes`
   50% {
     opacity: 0.35;
   }
-`;
+`
 
 export const PulseStyle = createGlobalStyle`
   .gps-marker {
     animation: ${pulseKeyframes} 2s ease-in-out infinite;
   }
-`;
+`
 
 export const Container = styled.div`
   display: flex;
@@ -23,7 +23,7 @@ export const Container = styled.div`
   @media (min-width: 768px) {
     height: 100vh;
   }
-`;
+`
 
 export const MapWrapper = styled.div`
   flex: 1;
@@ -34,7 +34,7 @@ export const MapWrapper = styled.div`
     height: 100%;
     z-index: 1;
   }
-`;
+`
 
 export const MetricsOverlay = styled.div`
   position: absolute;
@@ -49,32 +49,32 @@ export const MetricsOverlay = styled.div`
   backdrop-filter: blur(8px);
   border-radius: ${({ theme }) => theme.borderRadius.md};
   z-index: 10;
-`;
+`
 
 export const MetricRow = styled.div`
   display: flex;
   gap: ${({ theme }) => theme.spacing.lg};
-`;
+`
 
 export const MetricItem = styled.div`
   flex: 1;
   display: flex;
   flex-direction: column;
   gap: 2px;
-`;
+`
 
 export const MetricLabel = styled.span`
   font-size: ${({ theme }) => theme.fontSize.xs};
   color: ${({ theme }) => theme.colors.textSecondary};
   text-transform: uppercase;
   letter-spacing: 0.5px;
-`;
+`
 
 export const MetricValue = styled.span`
   font-size: ${({ theme }) => theme.fontSize.lg};
   font-weight: 700;
   color: ${({ theme }) => theme.colors.textPrimary};
-`;
+`
 
 export const GpsIndicator = styled.div<{ $quality: "good" | "weak" | "lost" | "searching" }>`
   position: absolute;
@@ -87,7 +87,7 @@ export const GpsIndicator = styled.div<{ $quality: "good" | "weak" | "lost" | "s
   background: rgba(0, 0, 0, 0.6);
   border-radius: ${({ theme }) => theme.borderRadius.sm};
   z-index: 10;
-`;
+`
 
 export const GpsDot = styled.span<{ $quality: "good" | "weak" | "lost" | "searching" }>`
   width: 8px;
@@ -101,12 +101,12 @@ export const GpsDot = styled.span<{ $quality: "good" | "weak" | "lost" | "search
       : $quality === "lost"
       ? theme.colors.gpsLost
       : theme.colors.textMuted};
-`;
+`
 
 export const GpsText = styled.span`
   font-size: 11px;
   color: ${({ theme }) => theme.colors.textPrimary};
-`;
+`
 
 export const BottomBar = styled.div`
   display: flex;
@@ -115,13 +115,13 @@ export const BottomBar = styled.div`
   padding: ${({ theme }) => theme.spacing.lg};
   background: ${({ theme }) => theme.colors.surface};
   border-top: 1px solid ${({ theme }) => theme.colors.border};
-`;
+`
 
 export const ButtonGroup = styled.div`
   display: flex;
   align-items: center;
   gap: ${({ theme }) => theme.spacing.md};
-`;
+`
 
 export const TrackButton = styled.button<{
   $variant: "start" | "pause" | "resume";
@@ -168,7 +168,7 @@ export const TrackButton = styled.button<{
         }
       }
     `}
-`;
+`
 
 export const StopButton = styled.button`
   width: 56px;
@@ -190,9 +190,9 @@ export const StopButton = styled.button`
   &:active {
     transform: scale(0.95);
   }
-`;
+`
 
 export const IdleHint = styled.span`
   font-size: ${({ theme }) => theme.fontSize.sm};
   color: ${({ theme }) => theme.colors.textMuted};
-`;
+`
