@@ -1,11 +1,11 @@
-import api from "../services/api";
-import { db } from "./db";
+import api from '@/services/api'
+import { db } from './db'
 
-let isSyncing = false;
+let isSyncing = false
 
 export const sync = {
   enqueue(url: string, method: string, body?: any) {
-    return db.enqueue({ url, method, body });
+    return db.enqueue({ url, method, body })
   },
 
   async processQueryClient(): Promise<void> {
@@ -20,7 +20,7 @@ export const sync = {
     isSyncing = true;
 
     try {
-      const queue = await db.getQueue();
+      const queue = await db.getQueue()
 
       for (const item of queue) {
         try {
@@ -29,9 +29,9 @@ export const sync = {
             url: item.url,
             data: item.body,
           });
-          await db.dequeue(item.id as number);
+          await db.dequeue(item.id as number)
         } catch {
-          break;
+          break
         }
       }
       
@@ -39,7 +39,7 @@ export const sync = {
       // In a production app, we might use an event emitter or other communication mechanism
       // For now, we'll rely on periodic refetching or manual refresh
     } finally {
-      isSyncing = false;
+      isSyncing = false
     }
   },
-};
+}
