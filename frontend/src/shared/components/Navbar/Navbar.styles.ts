@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const Container = styled.nav`
   position: fixed;
@@ -22,7 +22,7 @@ export const Container = styled.nav`
     border-top: none;
     border-right: 1px solid ${({ theme }) => theme.colors.border};
   }
-`;
+`
 
 export const NavItem = styled.button<{ $active: boolean }>`
   display: flex;
@@ -38,7 +38,7 @@ export const NavItem = styled.button<{ $active: boolean }>`
     gap: 4px;
     padding: ${({ theme }) => theme.spacing.md};
   }
-`;
+`
 
 export const Icon = styled.svg<{ $active: boolean }>`
   width: 24px;
@@ -48,7 +48,7 @@ export const Icon = styled.svg<{ $active: boolean }>`
     width: 28px;
     height: 28px;
   }
-`;
+`
 
 export const Label = styled.span`
   display: none;
@@ -58,4 +58,4 @@ export const Label = styled.span`
   @media (min-width: 768px) {
     display: block;
   }
-`;
+`
