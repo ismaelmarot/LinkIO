@@ -1,7 +1,7 @@
-import { useLocation, useNavigate } from "react-router-dom";
-import { useUser } from "@clerk/clerk-react";
-import { FiGrid, FiUser, FiCalendar, FiMapPin, FiSettings } from "react-icons/fi";
-import { Container, NavItem, Icon, Label } from "./Navbar.styles";
+import { useLocation, useNavigate } from 'react-router-dom'
+import { useUser } from '@clerk/clerk-react'
+import { FiGrid, FiUser, FiCalendar, FiMapPin, FiSettings } from 'react-icons/fi'
+import { Container, NavItem, Icon, Label } from './Navbar.styles'
 
 const items = [
   { path: "/dashboard", label: "Dashboard", icon: FiGrid },
@@ -9,14 +9,14 @@ const items = [
   { path: "/events", label: "Evento", icon: FiCalendar },
   { path: "/track", label: "Track", icon: FiMapPin },
   { path: "/settings", label: "Configuración", icon: FiSettings },
-];
+]
 
 export const Navbar = () => {
-  const location = useLocation();
-  const navigate = useNavigate();
-  const { isSignedIn } = useUser();
+  const location = useLocation()
+  const navigate = useNavigate()
+  const { isSignedIn } = useUser()
 
-  if (!isSignedIn) return null;
+  if (!isSignedIn) return null
 
   return (
     <Container>
@@ -31,5 +31,5 @@ export const Navbar = () => {
         </NavItem>
       ))}
     </Container>
-  );
-};
+  )
+}
