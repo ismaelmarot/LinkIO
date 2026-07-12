@@ -1,1 +1,1 @@
-export { OfflineBanner } from "./OfflineBanner";
+export { OfflineBanner } from './OfflineBanner'
