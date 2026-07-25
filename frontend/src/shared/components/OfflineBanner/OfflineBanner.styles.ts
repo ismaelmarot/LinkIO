@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const Bar = styled.div`
   display: flex;
@@ -11,14 +11,14 @@ export const Bar = styled.div`
   font-size: ${({ theme }) => theme.fontSize.sm};
   font-weight: 500;
   z-index: 200;
-`;
+`
 
 export const Icon = styled.svg`
   width: 16px;
   height: 16px;
   flex-shrink: 0;
-`;
+`
 
 export const Text = styled.span`
   text-align: center;
-`;
+`
