@@ -1,5 +1,5 @@
-import { FiWifiOff } from "react-icons/fi";
-import { Bar, Icon, Text } from "./OfflineBanner.styles";
+import { FiWifiOff } from 'react-icons/fi'
+import { Bar, Icon, Text } from './OfflineBanner.styles'
 
 export const OfflineBanner = () => {
   return (
@@ -7,5 +7,5 @@ export const OfflineBanner = () => {
       <Icon as={FiWifiOff} />
       <Text>Sin conexión — los datos se guardarán localmente</Text>
     </Bar>
-  );
-};
+  )
+}
