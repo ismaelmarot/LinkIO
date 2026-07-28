@@ -1,19 +1,19 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback } from 'react'
 
 export const useNetworkStatus = () => {
-  const [isOnline, setIsOnline] = useState(navigator.onLine);
+  const [isOnline, setIsOnline] = useState(navigator.onLine)
 
-  const handleOnline = useCallback(() => setIsOnline(true), []);
-  const handleOffline = useCallback(() => setIsOnline(false), []);
+  const handleOnline = useCallback(() => setIsOnline(true), [])
+  const handleOffline = useCallback(() => setIsOnline(false), [])
 
   useEffect(() => {
-    window.addEventListener("online", handleOnline);
-    window.addEventListener("offline", handleOffline);
+    window.addEventListener("online", handleOnline)
+    window.addEventListener("offline", handleOffline)
     return () => {
-      window.removeEventListener("online", handleOnline);
-      window.removeEventListener("offline", handleOffline);
+      window.removeEventListener("online", handleOnline)
+      window.removeEventListener("offline", handleOffline)
     };
-  }, [handleOnline, handleOffline]);
+  }, [handleOnline, handleOffline])
 
-  return { isOnline };
-};
+  return { isOnline }
+}
